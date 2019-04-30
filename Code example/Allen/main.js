@@ -43,13 +43,14 @@ function create ()
     cursors = this.input.keyboard.createCursorKeys();
 
     player = this.physics.add.image(400, 300, 'ship');
+    this.cameras.main.startFollow(player);
+    this.cameras.main.followOffset.set(-300, 0);
 
     player.setCollideWorldBounds(true);
     player.create(400,300).setGravity(0,-120);
 
-    this.cameras.main.startFollow(player);
 
-    this.cameras.main.followOffset.set(-300, 0);
+
 }
 
 function update ()
