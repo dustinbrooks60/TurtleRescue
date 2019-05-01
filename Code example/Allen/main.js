@@ -5,7 +5,7 @@ var config = {
         default: 'arcade',
         arcade: {
             debug: true,
-            gravity: {y: 60}
+            gravity: {y: 0}
         }
     },
     scene: {
@@ -46,15 +46,9 @@ function create ()
     this.cameras.main.followOffset.set(-300, 0);
 
     player.setCollideWorldBounds(true);
-    // player.create(400,300).setGravity(0,-120);
+    player.Phaser.Physics.Arcade.Body.setAccelerationY(-120);
 
     cursors = this.input.keyboard.createCursorKeys();
-
-
-
-
-
-
 }
 
 function update ()
@@ -76,7 +70,7 @@ function update ()
 
     if (cursors.up.isDown)
     {
-        player.setVelocityY(-500);
+        player.setAccelerationY(500);
     }
     else if (cursors.down.isDown)
     {

@@ -4,12 +4,33 @@ class example1 extends Phaser.Scene {
     }
 
     preload(){
+        this.load.image('bg', 'images/ocean.png');
         this.load.image('turtle', 'images/turtle.gif');
+        this.load.image('garbage', 'images/garbage.gif')
 
     }
 
     create(){
         this.image = this.add.image(400,300,'turtle');
+        this.cameras.main.setBounds(0, 0, 1697, 1191);
+        this.physics.world.setBounds(0, 0, 1697, 1191);
+        this.physics.world.gravity.y = 60;
+
+
+        this.add.image(0, 0, 'bg').setOrigin(0);
+        this.add.image(1697, 0, 'bg').setOrigin(0).setFlipX(true);
+
+        let player = this.physics.add.image(128, 128, 'turtle');
+        this.cameras.main.startFollow(player);
+        this.cameras.main.followOffset.set(-300, 0);
+
+
+        this.cameras.main.startFollow(player); // useful to follow character
+        this.cameras.main.followOffset.set(-300, 0);
+
+        player.setCollideWorldBounds(true);
+
+
 
         this.input.keyboard.on('keyup_D', function(event){
             this.image.x += 10;
