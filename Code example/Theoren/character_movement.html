@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <title>Character Movement</title>
     <style>
-    body {
-        overflow: hidden ;
-        margin: 0;
-    }
+        body {
+            overflow: hidden ;
+            margin: 0;
+        }
+        canvas {
+            background-image: url("./images/ocean.png");
+            background-size: contain;
+        }
     </style>
 </head>
-<body onclick="accelerate(-0.2)" onmouseup="accelerate(0.05)">
+<body onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)" onload="startGame()">
 
 <script>
+    let character;
+
+    function startGame(){
+        character = new Element('image', './images/turtlepic.png', 100, 130, 50, 300);
+        gameCanvas.start();
+
+    }
+
     let gameCanvas = {
         canvas : document.createElement('canvas'),
         start: function(){
@@ -20,14 +32,16 @@
             this.canvas.width = window.innerWidth;
             this.context = this.canvas.getContext('2d');
             document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-            this.canvas.style.background = 'lightblue';
             this.interval = setInterval(updateGameCanvas, 20);
+
         },
         clear: function(){
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
         }
     };
-    gameCanvas.start();
+
+
+
 
     function Element(type, color, height, width, x, y) {
         this.type = type;
@@ -84,7 +98,9 @@
         character.gravity = n;
     }
 
-    let character = new Element('image', './images/turtlepic.png', 100, 130, 50, 300);
+    // function velocity(){
+    //     xVelocity =
+    // }
 
     function updateGameCanvas(){
         gameCanvas.clear();
