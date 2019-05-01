@@ -24,8 +24,8 @@
 
     function startGame() {
         turtle = new Element(130, 100, './images/turtlepic.png', 10, 120, "image");
-        jellyfish = new Element(90, 120, './images/jellyfish.png', 300, 300, "image");
-        oceanBackground = new Element(windowWidth, windowHeight, './images/ocean.png', 0, 0, "background");
+        // jellyfish = new Element(90, 120, './images/jellyfish.png', 300, 300, "image");
+        oceanBackground = new Element(windowWidth, windowHeight, './images/ocean_2.png', 0, 0, "background");
         gameCanvas.start();
     }
 
@@ -129,8 +129,8 @@
         oceanBackground.speedX = -1;
         oceanBackground.newPos();
         oceanBackground.update();
-        jellyfish.newPos();
-        jellyfish.update();
+        // jellyfish.newPos();
+        // jellyfish.update();
         turtle.newPos();
         turtle.update();
     }
