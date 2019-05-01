@@ -8,40 +8,29 @@
             overflow: hidden ;
             margin: 0;
         }
-        canvas {
-            background-image: url("./images/ocean.png");
-            background-size: contain;
-        }
     </style>
 </head>
-<body onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)" onload="startGame()">
+<body ontouchstart="clickManager(-99)">
+<p id="display_height">height</p>
+<p id="display_gravity">gravity</p>
+
 
 <script>
-    let character;
-
-    function startGame(){
-        character = new Element('image', './images/turtlepic.png', 100, 130, 50, 300);
-        gameCanvas.start();
-
-    }
-
     let gameCanvas = {
         canvas : document.createElement('canvas'),
         start: function(){
-            this.canvas.height = window.innerHeight;
+            this.canvas.height = window.innerHeight - 100;
             this.canvas.width = window.innerWidth;
             this.context = this.canvas.getContext('2d');
             document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+            this.canvas.style.background = 'lightblue';
             this.interval = setInterval(updateGameCanvas, 20);
-
         },
         clear: function(){
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
         }
     };
-
-
-
+    gameCanvas.start();
 
     function Element(type, color, height, width, x, y) {
         this.type = type;
@@ -53,12 +42,13 @@
         }
         this.xSpeed = 0;
         this.ySpeed = 0;
-        this.gravity = 0.05;
+        this.gravity = 0.08;
         this.gravitySpeed = 0;
         this.height = height;
         this.width = width;
         this.xCoord = x;
         this.yCoord = y;
+
         this.update = function(){
             let ctx = gameCanvas.context;
             if (this.type === 'image'){
@@ -69,19 +59,14 @@
                 ctx.fillRect(this.xCoord, this.yCoord, this.width, this.height)
             }
         };
-        this.newPosition = function(){
-            this.gravitySpeed += this.gravity;
-            this.xCoord += this.xSpeed;
-            this.yCoord += this.ySpeed + this.gravitySpeed;
-            this.hitBottom();
-            this.hitTop();
-        };
+
         this.hitBottom = function(){
             let oceanFloor = gameCanvas.canvas.height - this.height;
             if (this.yCoord > oceanFloor) {
                 this.yCoord = oceanFloor;
                 this.gravitySpeed = 0;
             }
+            accelerate(0.1)
         };
         this.hitTop = function(){
             let oceanSurface = 0;
@@ -90,29 +75,38 @@
                 this.gravitySpeed = 0;
             }
 
-        }
+        };
+        this.newPosition = function(){
+            this.gravitySpeed += this.gravity;
+            if (this.gravitySpeed < - 4) {this.gravitySpeed = -4}
 
+                this.xCoord += this.xSpeed;
+            this.yCoord += this.ySpeed + this.gravitySpeed;
+            this.hitBottom();
+            this.hitTop();
+        };
+    }
+
+    let character = new Element('image', './images/turtle.gif', 80, 80, 42, 300);
+    function clickManager(n){
+        accelerate(n);
+        console.log('clicked');
+    }
+    function down(n){
+        accelerate(n)
     }
 
     function accelerate(n){
         character.gravity = n;
     }
 
-    // function velocity(){
-    //     xVelocity =
-    // }
-
     function updateGameCanvas(){
         gameCanvas.clear();
         character.newPosition();
         character.update();
+        document.getElementById("display_height").innerHTML = "Height: " + String(Math.round(character.yCoord));
+        document.getElementById("display_gravity").innerHTML = "Gravity: " + String(Math.round(character.gravitySpeed));
     }
-
-
-
-
-
-
 </script>
 </body>
 </html>
