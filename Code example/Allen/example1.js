@@ -14,12 +14,13 @@ class example1 extends Phaser.Scene {
 
         this.cameras.main.setBounds(0, 0, 1697, 1191);
         this.physics.world.setBounds(0, 0, 1697, 1191);
-        this.physics.world.gravity.y = -60;
+        this.physics.world.gravity.y = 10;
 
 
         this.add.image(0, 0, 'bg').setOrigin(0);
         this.add.image(1697, 0, 'bg').setOrigin(0).setFlipX(true);
-        this.image = this.add.image(400,300,'turtle');
+        this.image = this.physics.add.image(400,300,'turtle').setCollideWorldBounds(true);
+
 
 
         // let player = this.physics.add.image(128, 128, 'turtle');
@@ -29,7 +30,6 @@ class example1 extends Phaser.Scene {
         this.cameras.main.startFollow(this.image); // useful to follow character
 
 
-        // this.setCollideWorldBounds(true);
 
 
 
