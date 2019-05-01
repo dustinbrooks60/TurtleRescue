@@ -10,7 +10,7 @@
         }
     </style>
 </head>
-<body onmousedown="accelerate(-10)" onmouseup="accelerate(0.08)">
+<body ontouchstart="clickManager(-99)">
 <p id="display_height">height</p>
 <p id="display_gravity">gravity</p>
 
@@ -19,8 +19,8 @@
     let gameCanvas = {
         canvas : document.createElement('canvas'),
         start: function(){
-            this.canvas.height = window.innerHeight- 100;
-            this.canvas.width = window.innerWidth - 100;
+            this.canvas.height = window.innerHeight - 100;
+            this.canvas.width = window.innerWidth;
             this.context = this.canvas.getContext('2d');
             document.body.insertBefore(this.canvas, document.body.childNodes[0]);
             this.canvas.style.background = 'lightblue';
@@ -66,6 +66,7 @@
                 this.yCoord = oceanFloor;
                 this.gravitySpeed = 0;
             }
+            accelerate(0.1)
         };
         this.hitTop = function(){
             let oceanSurface = 0;
@@ -77,7 +78,7 @@
         };
         this.newPosition = function(){
             this.gravitySpeed += this.gravity;
-            if (this.gravitySpeed < - 4) {this.gravitySpeed = -3}
+            if (this.gravitySpeed < - 4) {this.gravitySpeed = -4}
 
                 this.xCoord += this.xSpeed;
             this.yCoord += this.ySpeed + this.gravitySpeed;
@@ -86,7 +87,14 @@
         };
     }
 
-    let character = new Element('image', './images/turtle.gif', 130, 130, 69, 300);
+    let character = new Element('image', './images/turtle.gif', 80, 80, 42, 300);
+    function clickManager(n){
+        accelerate(n);
+        console.log('clicked');
+    }
+    function down(n){
+        accelerate(n)
+    }
 
     function accelerate(n){
         character.gravity = n;
@@ -97,14 +105,8 @@
         character.newPosition();
         character.update();
         document.getElementById("display_height").innerHTML = "Height: " + String(Math.round(character.yCoord));
-        document.getElementById("display_gravity").innerHTML = "Gravity: " + String(character.gravitySpeed);
+        document.getElementById("display_gravity").innerHTML = "Gravity: " + String(Math.round(character.gravitySpeed));
     }
-
-
-
-
-
-
 </script>
 </body>
 </html>
