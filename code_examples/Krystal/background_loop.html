@@ -24,6 +24,7 @@
 
     function startGame() {
         turtle = new Element(130, 100, './images/turtlepic.png', 10, 120, "image");
+        turtle.gravity = 0.08;
         // jellyfish = new Element(90, 120, './images/jellyfish.png', 300, 300, "image");
         oceanBackground = new Element(windowWidth, windowHeight, './images/ocean_2.png', 0, 0, "background");
         gameCanvas.start();
@@ -57,7 +58,7 @@
         this.height = height;
         this.speedX = 0;
         this.speedY = 0;
-        this.gravity = 0.08;
+        this.gravity = 0;
         this.gravitySpeed = 0;
         this.x = x;
         this.y = y;
