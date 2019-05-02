@@ -12,14 +12,17 @@ class example1 extends Phaser.Scene {
 
     create(){
 
-        this.cameras.main.setBounds(0, 0, 1697, 1191);
-        this.physics.world.setBounds(0, 0, 1697, 1191);
+        this.cameras.main.setBounds(0, 0, 4*1697, 1191);
+        this.physics.world.setBounds(0, 0, 4*1697, 1191);
         this.physics.world.gravity.y = 10;
 
 
         this.add.image(0, 0, 'bg').setOrigin(0);
         this.add.image(1697, 0, 'bg').setOrigin(0).setFlipX(true);
-        this.image = this.physics.add.image(400,300,'turtle').setCollideWorldBounds(true);
+        this.add.image(1697*2, 0, 'bg').setOrigin(0).setFlipX(true);
+        this.add.image(1697*3, 0, 'bg').setOrigin(0).setFlipX(true);
+        this.image = this.physics.add.image(128,100,'turtle').setCollideWorldBounds(true);
+
 
 
 
@@ -60,6 +63,9 @@ class example1 extends Phaser.Scene {
             }
         }, this)
 
+        for (let i = 1; i < 30; i++) {
+            let garbage = this.physics.add.image(i*100, i*10, 'garbage').setCollideWorldBounds(true);
+        }
     }
 
     update(delta){
