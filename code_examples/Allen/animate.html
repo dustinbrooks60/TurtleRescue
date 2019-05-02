@@ -61,7 +61,7 @@
     ctx.translate(width/2, height/2); // set canvas point in center
 
     var image = new Image();
-    image.src = 'images/turtle-sprite-sheet.png'; // set image var
+    image.src = 'images/turtle-sprite.png'; // set image var
 
     // ctx.drawImage(image, 50,50)
 
@@ -73,7 +73,7 @@
     function draw(){
         ctx.fillRect(-(width/2), -(height/2), width, height); // specify top left corner of rectangle to start
 
-        ctx.drawImage(image, (sprite*150), 0, 150, 113, 0+posX, -56.5, 150, 113); // draw image (9 param version)
+        ctx.drawImage(image, (sprite*800), 0, 800, 450, 0+posX, -225, 800, 450); // draw image (9 param version)
 
         // determine frame rate
         if (posX % 13 === 0) {

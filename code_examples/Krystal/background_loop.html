@@ -39,7 +39,7 @@
             this.context = this.canvas.getContext("2d");
             document.body.insertBefore(this.canvas, document.body.childNodes[0]);
             this.frameNo = 0;
-            this.interval = setInterval(updateGameArea, 20);
+            this.interval = setInterval(updateGameArea, 15);
         },
         clear : function() {
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -137,17 +137,21 @@
         oceanBackground.speedX = -1;
         oceanBackground.newPos();
         oceanBackground.update();
-        turtle.newPos();
-        turtle.update();
-        if (gameCanvas.frameNo === 1 || everyInterval(150)) {
+        if (gameCanvas.frameNo === 1 || everyInterval(350)) {
+            let enemyImages = ['./images/jellyfish.png', './images/pufferfish.png'];
+            let enemy = enemyImages[Math.floor(Math.random() * (enemyImages.length ))];
+            console.log(Math.floor(Math.random() * (enemyImages.length)));
             let x = gameCanvas.canvas.width;
-            let randomY = Math.floor(Math.random() * (gameCanvas.canvas.height - 100));
-            enemies.push(new Element(60, 80, './images/jellyfish.png', x, randomY, "image"));
+
+            let randomY = Math.floor(Math.random() * (gameCanvas.canvas.height - 300) + 150);
+            enemies.push(new Element(80, 90, enemy, x, randomY, "image"));
         }
         for (let i = 0; i < enemies.length; i++) {
             enemies[i].x += -1;
             enemies[i].update();
         }
+        turtle.newPos();
+        turtle.update();
     }
 
 
