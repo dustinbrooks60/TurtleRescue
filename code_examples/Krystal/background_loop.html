@@ -19,11 +19,12 @@
 
     let turtle;
     let oceanBackground;
+    let enemies = [];
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
 
     function startGame() {
-        turtle = new Element(130, 100, './images/turtlepic.png', 10, 120, "image");
+        turtle = new Element(260, 200, './images/turtle.png', 10, 120, "image");
         turtle.gravity = 0.08;
         // jellyfish = new Element(90, 120, './images/jellyfish.png', 300, 300, "image");
         oceanBackground = new Element(windowWidth, windowHeight, './images/ocean_2.png', 0, 0, "background");
@@ -125,15 +126,28 @@
         turtle.gravity = n;
     }
 
+    function everyInterval(n) {
+        return (gameCanvas.frameNo / n) % 1 === 0;
+
+    }
+
     function updateGameArea() {
         gameCanvas.clear();
+        gameCanvas.frameNo += 1;
         oceanBackground.speedX = -1;
         oceanBackground.newPos();
         oceanBackground.update();
-        // jellyfish.newPos();
-        // jellyfish.update();
         turtle.newPos();
         turtle.update();
+        if (gameCanvas.frameNo === 1 || everyInterval(150)) {
+            let x = gameCanvas.canvas.width;
+            let randomY = Math.floor(Math.random() * (gameCanvas.canvas.height - 100) + 100);
+            enemies.push(new Element(100, 130, './images/jellyfish.png', x, randomY, "image"));
+        }
+        for (let i = 0; i < enemies.length; i++) {
+            enemies[i].x += -1;
+            enemies[i].update();
+        }
     }
 
 
