@@ -5,7 +5,7 @@ class example1 extends Phaser.Scene {
 
     preload(){
         this.load.image('bg', 'images/ocean.png');
-        this.load.image('turtle', 'images/turtle.gif');
+        this.load.image('turtle', 'images/turtle.png');
         this.load.image('garbage', 'images/garbage.gif')
 
     }
@@ -63,10 +63,28 @@ class example1 extends Phaser.Scene {
             }
         }, this)
 
-        for (let i = 1; i < 30; i++) {
-            let garbage = this.physics.add.image(i*100, i*10, 'garbage').setCollideWorldBounds(true);
-        }
+        // for (let i = 1; i < 30; i++) {
+        //     let garbage = this.physics.add.image(i*100, i*10, 'garbage').setCollideWorldBounds(true);
+        // }
+
+        let garbage = this.physics.add.group({
+            key: 'garbage',
+            repeat: 11,
+            setXY: {x:12, y:0, stepX: 70}
+        });
+
+
+        garbage.children.iterate(function (child) {
+
+            //  Give each star a slightly different bounce
+            child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+
+        });
+
+        this.physics.add.collider(garbage, this)
+
     }
+
 
     update(delta){
         if (this.key_A.isDown)
