@@ -10,7 +10,7 @@
         }
         canvas {
             border:1px solid #d3d3d3;
-            background-color: #f1f1f1;
+            /*background-color: #f1f1f1;*/
         }
     </style>
 </head>
@@ -19,15 +19,14 @@
 
     let turtle;
     let oceanBackground;
-    let enemies = [];
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
 
     function startGame() {
-        turtle = new Element(260, 200, './images/turtle.png', 10, 120, "image");
+        turtle = new Element(130, 100, './images/turtlepic.png', 10, 120, "image");
         turtle.gravity = 0.08;
-        // jellyfish = new Element(90, 120, './images/jellyfish.png', 300, 300, "image");
-        oceanBackground = new Element(1500, windowHeight, './images/ocean_2.png', 0, 0, "background");
+        // jellyfzish = new Element(90, 120, './images/jellyfish.png', 300, 300, "image");
+        oceanBackground = new Element(1536, windowHeight, './images/ocean_2.png', 0, 0, "background");
         gameCanvas.start();
     }
 
@@ -39,7 +38,7 @@
             this.context = this.canvas.getContext("2d");
             document.body.insertBefore(this.canvas, document.body.childNodes[0]);
             this.frameNo = 0;
-            this.interval = setInterval(updateGameArea, 15);
+            this.interval = setInterval(updateGameArea, 20);
         },
         clear : function() {
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -50,6 +49,7 @@
     };
 
     function Element(width, height, color, x, y, type) {
+        console.log('created');
         this.type = type;
         if (type === "image" || type === "background") {
             this.image = new Image();
@@ -86,8 +86,8 @@
             this.y += this.speedY + this.gravitySpeed;
             if (this.type === 'image') {
                 this.gravitySpeed += this.gravity;
-                if (this.gravitySpeed <-3) {
-                    this.gravitySpeed = -3
+                if (this.gravitySpeed <-4) {
+                    this.gravitySpeed = -4
                 }
                 this.hitBottom();
                 this.hitTop();
@@ -126,29 +126,13 @@
         turtle.gravity = n;
     }
 
-    function everyInterval(n) {
-        return (gameCanvas.frameNo / n) % 1 === 0;
-
-    }
-
     function updateGameArea() {
         gameCanvas.clear();
-        gameCanvas.frameNo += 1;
         oceanBackground.speedX = -1;
         oceanBackground.newPos();
         oceanBackground.update();
-        if (gameCanvas.frameNo === 1 || everyInterval(350)) {
-            let enemyImages = ['./images/jellyfish.png', './images/pufferfish.png'];
-            let enemy = enemyImages[Math.floor(Math.random() * (enemyImages.length ))];
-            console.log(Math.floor(Math.random() * (enemyImages.length)));
-            let x = gameCanvas.canvas.width;
-            let randomY = Math.floor(Math.random() * (gameCanvas.canvas.height - 300) + 150);
-            enemies.push(new Element(130, 130, enemy, x, randomY, "image"));
-        }
-        for (let i = 0; i < enemies.length; i++) {
-            enemies[i].x += -1;
-            enemies[i].update();
-        }
+        // jellyfish.newPos();
+        // jellyfish.update();
         turtle.newPos();
         turtle.update();
     }
