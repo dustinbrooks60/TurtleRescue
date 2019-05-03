@@ -111,7 +111,22 @@
                 this.y = oceanSurface;
                 this.gravitySpeed = 0;
             }
-        }
+        };
+        this.crashWith = function(otherobj) {
+            let turtleLeft = this.x;
+            let turtleRight = this.x + (this.width);
+            let turtleTop = this.y;
+            let turtleBottom = this.y + (this.height);
+            let enemyLeft = otherobj.x + 14;
+            let enemyRight = otherobj.x + (otherobj.width) - 14;
+            let enemyTop = otherobj.y - 14;
+            let enemyBottom = otherobj.y + (otherobj.height) + 14;
+            let crash = true;
+            if ((turtleBottom < enemyTop) || (turtleTop > enemyBottom) || (turtleRight < enemyLeft) || (turtleLeft > enemyRight)) {
+                crash = false;
+            }
+            return crash;
+        };
     }
 
     function clickManager(n){
@@ -129,6 +144,11 @@
     }
 
     function updateGameArea() {
+        for (i = 0; i < enemies.length; i += 1) {
+            if (turtle.crashWith(enemies[i])) {
+                return;
+            }
+        }
         gameCanvas.clear();
         gameCanvas.frameNo += 1;
         oceanBackground.speedX = -1;
