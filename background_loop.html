@@ -21,6 +21,8 @@
     let oceanBackground;
     let enemies = [];
     let garbageArr = [];
+    let displayScore;
+    let score;
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
 
@@ -28,6 +30,8 @@
         turtle = new Element(100, 70, './images/turtle.png', 10, 120, "image");
         turtle.gravity = 0.08;
         oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background");
+        displayScore = new Element("30px", "Consolas", "black", 10, 30, "text");
+        score = 0;
         gameCanvas.start();
     }
 
@@ -65,6 +69,11 @@
         this.y = y;
         this.update = function() {
             let ctx = gameCanvas.context;
+            if (type === "text") {
+                ctx.font = this.width + " " + this.height;
+                ctx.fillStyle = color;
+                ctx.fillText(this.text, this.x, this.y);
+            }
             if (type === "image" || type === "background") {
                 ctx.drawImage(this.image,
                     this.x,
@@ -184,6 +193,8 @@
             garbageArr[i].x += -1;
             garbageArr[i].update();
         }
+        displayScore.text = "Garbage Collected:" + score;
+        displayScore.update();
         turtle.newPos();
         turtle.update();
     }
