@@ -150,7 +150,11 @@
                 return;
             }
         }
-
+        for (i = 0; i < garbageArr.length; i++) {
+            if (turtle.crashWith(garbageArr[i])) {
+                garbageArr.splice(i, 1);
+            }
+        }
         gameCanvas.clear();
         gameCanvas.frameNo += 1;
         oceanBackground.speedX = -1;
