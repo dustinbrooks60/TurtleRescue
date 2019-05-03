@@ -30,7 +30,7 @@
         turtle = new Element(100, 70, './images/turtle.png', 10, 120, "image");
         turtle.gravity = 0.08;
         oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background");
-        displayScore = new Element("30px", "Consolas", "black", 10, 30, "text");
+        displayScore = new Element("30px", "Consolas", "black", 10, 40, "text");
         score = 0;
         gameCanvas.start();
     }
@@ -162,6 +162,7 @@
         for (i = 0; i < garbageArr.length; i++) {
             if (turtle.crashWith(garbageArr[i])) {
                 garbageArr.splice(i, 1);
+                score ++;
             }
         }
         gameCanvas.clear();
