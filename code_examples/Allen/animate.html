@@ -22,13 +22,18 @@
     var height = canvas.height = window.innerHeight;
     var ctx = canvas.getContext('2d');
     var image = new Image();
+
+    image.src = 'images/turtle-sprite.png'; // set image var
+
     var sprite = 0;
     var posX = 0;
-    ctx.fillRect(0, 0, width, height);
     ctx.fillStyle = 'rgb(0, 0, 0)'; // create black background canvas
+    ctx.fillRect(0, 0, width, height);
+
     ctx.translate(width/2, height/2); // set canvas point in center
-    image.src = 'images/turtle-sprite.png'; // set image var
+
     image.onload = draw;
+
 
     function draw(){
         ctx.fillRect(-(width/2), -(height/2), width, height); // specify top left corner of rectangle to start
