@@ -117,10 +117,10 @@
             let turtleRight = this.x + (this.width);
             let turtleTop = this.y;
             let turtleBottom = this.y + (this.height);
-            let enemyLeft = otherobj.x + 14;
-            let enemyRight = otherobj.x + (otherobj.width) - 14;
-            let enemyTop = otherobj.y - 14;
-            let enemyBottom = otherobj.y + (otherobj.height) + 14;
+            let enemyLeft = otherobj.x + 23;
+            let enemyRight = otherobj.x + (otherobj.width) - 23;
+            let enemyTop = otherobj.y + 18;
+            let enemyBottom = otherobj.y + (otherobj.height) + 18;
             let crash = true;
             if ((turtleBottom < enemyTop) || (turtleTop > enemyBottom) || (turtleRight < enemyLeft) || (turtleLeft > enemyRight)) {
                 crash = false;
@@ -155,7 +155,7 @@
         oceanBackground.newPos();
         oceanBackground.update();
         if (gameCanvas.frameNo === 1 || everyInterval(350)) {
-            let enemyImages = ['./images/jellyfish.png', './images/pufferfish.png'];
+            let enemyImages = ['./images/newjelly.png', './images/pufferfish.png'];
             let enemy = enemyImages[Math.floor(Math.random() * (enemyImages.length ))];
             console.log(Math.floor(Math.random() * (enemyImages.length)));
             let x = gameCanvas.canvas.width;

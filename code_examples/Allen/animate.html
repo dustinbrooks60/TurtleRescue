@@ -22,6 +22,7 @@
     var height = canvas.height = window.innerHeight;
     var ctx = canvas.getContext('2d');
     var image = new Image();
+
     image.src = 'images/turtle-sprite.png'; // set image var
 
     var sprite = 0;
@@ -36,8 +37,7 @@
 
     function draw(){
         ctx.fillRect(-(width/2), -(height/2), width, height); // specify top left corner of rectangle to start
-
-        ctx.drawImage(image, (sprite*800), 0, 800, 450, 0+posX, -225, 800, 450); // draw image (9 param version)
+        ctx.drawImage(image, (sprite*800), 0, 800, 450, posX, -225, 800, 450); // draw image (9 param version)
 
         // determine frame rate
         if (posX % 13 === 0) {
@@ -49,11 +49,11 @@
         }
 
         if(posX > width/2) {
-            newStartPos = -((width/2) + 102);
+            let newStartPos = -((width/2) + 102);
             posX = Math.ceil(newStartPos / 13) * 13;
             console.log(posX);
         } else {
-            posX += 2;
+            posX += 50;
         }
 
         window.requestAnimationFrame(draw);
