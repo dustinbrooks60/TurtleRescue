@@ -21,54 +21,18 @@
     var width = canvas.width = window.innerWidth;
     var height = canvas.height = window.innerHeight;
     var ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'rgb(0, 0, 0)'; // create black background canvas
-    ctx.fillRect(0, 0, width, height);
-    // ctx.fillStyle = 'rgb(255, 0, 0)';
-    // ctx.beginPath();
-    // ctx.moveTo(50, 50);
-    // // draw your path
-    // ctx.fill();
-    // function degToRad(degrees) {
-    //     return degrees * Math.PI / 180;
-    // };
-    //
-    //
-    // ctx.lineTo(150, 50);
-    // var triHeight = 50 * Math.tan(degToRad(60));
-    // ctx.lineTo(100, 50+triHeight);
-    // ctx.lineTo(50, 50);
-    // ctx.fill();
-    //
-    // ctx.fillStyle = 'rgb(0, 0, 255)';
-    // ctx.beginPath();
-    // ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
-    // ctx.fill();
-    //
-    // ctx.fillStyle = 'yellow';
-    // ctx.beginPath();
-    // ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
-    // ctx.lineTo(200, 106);
-    // ctx.fill();
-
-    // var image = new Image();
-    //
-    // image.src = 'images/turtle.png';
-    //
-    // image.onload = function() {
-    //     ctx.drawImage(image, 20, 20, 185, 175, 50, 50, 185, 175);
-    // }
-
-    ctx.translate(width/2, height/2); // set canvas point in center
-
     var image = new Image();
     image.src = 'images/turtle-sprite.png'; // set image var
 
-    // ctx.drawImage(image, 50,50)
+    var sprite = 0;
+    var posX = 0;
+    ctx.fillStyle = 'rgb(0, 0, 0)'; // create black background canvas
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.translate(width/2, height/2); // set canvas point in center
 
     image.onload = draw;
 
-    var sprite = 0;
-    var posX = 0;
 
     function draw(){
         ctx.fillRect(-(width/2), -(height/2), width, height); // specify top left corner of rectangle to start
