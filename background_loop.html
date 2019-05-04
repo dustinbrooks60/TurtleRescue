@@ -20,6 +20,9 @@
     let turtle;
     let oceanBackground;
     let enemies = [];
+    let garbageArr = [];
+    let displayScore;
+    let score;
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
 
@@ -27,6 +30,8 @@
         turtle = new Element(100, 70, './images/turtle.png', 10, 120, "image");
         turtle.gravity = 0.08;
         oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background");
+        displayScore = new Element("30px", "Consolas", "black", 10, 40, "text");
+        score = 0;
         gameCanvas.start();
     }
 
@@ -64,6 +69,11 @@
         this.y = y;
         this.update = function() {
             let ctx = gameCanvas.context;
+            if (type === "text") {
+                ctx.font = this.width + " " + this.height;
+                ctx.fillStyle = color;
+                ctx.fillText(this.text, this.x, this.y);
+            }
             if (type === "image" || type === "background") {
                 ctx.drawImage(this.image,
                     this.x,
@@ -117,10 +127,10 @@
             let turtleRight = this.x + (this.width);
             let turtleTop = this.y;
             let turtleBottom = this.y + (this.height);
-            let enemyLeft = otherobj.x + 23;
-            let enemyRight = otherobj.x + (otherobj.width) - 23;
-            let enemyTop = otherobj.y + 18;
-            let enemyBottom = otherobj.y + (otherobj.height) + 18;
+            let enemyLeft = otherobj.x + 30;
+            let enemyRight = otherobj.x + (otherobj.width) - 30;
+            let enemyTop = otherobj.y + 30;
+            let enemyBottom = otherobj.y + (otherobj.height) - 30;
             let crash = true;
             if ((turtleBottom < enemyTop) || (turtleTop > enemyBottom) || (turtleRight < enemyLeft) || (turtleLeft > enemyRight)) {
                 crash = false;
@@ -144,9 +154,15 @@
     }
 
     function updateGameArea() {
-        for (i = 0; i < enemies.length; i += 1) {
+        for (i = 0; i < enemies.length; i++) {
             if (turtle.crashWith(enemies[i])) {
                 return;
+            }
+        }
+        for (i = 0; i < garbageArr.length; i++) {
+            if (turtle.crashWith(garbageArr[i])) {
+                garbageArr.splice(i, 1);
+                score ++;
             }
         }
         gameCanvas.clear();
@@ -157,15 +173,29 @@
         if (gameCanvas.frameNo === 1 || everyInterval(350)) {
             let enemyImages = ['./images/newjelly.png', './images/pufferfish.png'];
             let enemy = enemyImages[Math.floor(Math.random() * (enemyImages.length ))];
-            console.log(Math.floor(Math.random() * (enemyImages.length)));
             let x = gameCanvas.canvas.width;
-            let randomY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
-            enemies.push(new Element(90, 90, enemy, x, randomY, "image"));
+            let enemyY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
+            enemies.push(new Element(90, 90, enemy, x, enemyY, "image"));
         }
+
+        if (gameCanvas.frameNo === 10 || everyInterval(300)) {
+            let garbageImages = ['./images/paper_trans.png'];
+            let garbage = garbageImages[Math.floor(Math.random() * (garbageImages.length ))];
+            let x = gameCanvas.canvas.width;
+            let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
+            garbageArr.push(new Element(70, 70, garbage, x, garbageY, "image"));
+        }
+
         for (let i = 0; i < enemies.length; i++) {
             enemies[i].x += -1;
             enemies[i].update();
         }
+        for (let i = 0; i < garbageArr.length; i++) {
+            garbageArr[i].x += -1;
+            garbageArr[i].update();
+        }
+        displayScore.text = "Garbage Collected:" + score;
+        displayScore.update();
         turtle.newPos();
         turtle.update();
     }
