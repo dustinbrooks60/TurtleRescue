@@ -37,7 +37,7 @@
 
     function draw(){
         ctx.fillRect(-(width/2), -(height/2), width, height); // specify top left corner of rectangle to start
-        ctx.drawImage(image, (sprite*800), 0, 800, 450, posX, -225, 800, 450); // draw image (9 param version)
+        ctx.drawImage(image, (sprite*800), 0, 800, 600, posX, -300, 400, 225); // draw image (9 param version)
 
         // determine frame rate
         if (posX % 13 === 0) {
@@ -48,13 +48,13 @@
             }
         }
 
-        if(posX > width/2) {
-            let newStartPos = -((width/2) + 102);
-            posX = Math.ceil(newStartPos / 13) * 13;
-            console.log(posX);
-        } else {
-            posX += 50;
-        }
+        // if(posX > width/2) {
+        //     let newStartPos = -((width/2) + 102);
+        //     posX = Math.ceil(newStartPos / 13) * 13;
+        //     console.log(posX);
+        // } else {
+        //     posX += 50;
+        // }
 
         window.requestAnimationFrame(draw);
     }
