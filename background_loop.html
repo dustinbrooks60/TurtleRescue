@@ -23,6 +23,7 @@
     let garbageArr = [];
     let displayScore;
     let score;
+    let topHat;
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
 
@@ -186,6 +187,12 @@
             garbageArr.push(new Element(70, 70, garbage, x, garbageY, "image"));
         }
 
+        if (gameCanvas.frameNo === 10) {
+            let x = gameCanvas.canvas.width;
+            let y = gameCanvas.canvas.height - 135;
+            topHat = new Element(70, 50, './images/top_hat.png', x, y, "image")
+        }
+
         for (let i = 0; i < enemies.length; i++) {
             enemies[i].x += -1;
             enemies[i].update();
@@ -193,6 +200,10 @@
         for (let i = 0; i < garbageArr.length; i++) {
             garbageArr[i].x += -1;
             garbageArr[i].update();
+        }
+        if (topHat) {
+            topHat.x += -1;
+            topHat.update();
         }
         displayScore.text = "Garbage Collected:" + score;
         displayScore.update();
