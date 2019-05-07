@@ -97,6 +97,8 @@
     }
 
     function startGame() {
+        enemies = [];
+        garbageArr = [];
         document.getElementById("start").style.display = "none";
         document.getElementById("restart").style.display = "none";
         turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12);
@@ -258,8 +260,7 @@
                 // drawText('Score: ' + score, windowWidth/2- 70, windowHeight/2);
                 gameCanvas.clear();
                 gameCanvas.stop();
-                enemies = [];
-                garbageArr = [];
+
             }
         }
         for (let i = 0; i < garbageArr.length; i++) {
