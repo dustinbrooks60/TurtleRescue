@@ -10,12 +10,14 @@
             width: 100%;
             height: 100%;
             position: relative;
+            background-image: url("./images/ocean_2.png");
         }
         canvas {
             width:100%;
             height:100%;
             border:1px solid #d3d3d3;
-            background-image: url("./images/ocean_2.png");
+
+
         }
         button{
             font-size: 20px;
@@ -95,6 +97,8 @@
     }
 
     function startGame() {
+        document.getElementById("start").style.display = "none";
+        document.getElementById("restart").style.display = "none";
         turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12);
         turtle.gravity = 0.08;
         oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background");
@@ -105,11 +109,13 @@
 
     let gameCanvas = {
         canvas : document.createElement("canvas"),
+        div : document.getElementById('play'),
         start : function() {
             this.canvas.width = windowWidth;
             this.canvas.height = windowHeight;
             this.context = this.canvas.getContext("2d");
-            document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+            document.body.appendChild(this.canvas);
+            // document.body.insertBefore(this.canvas, document.body.childNodes[0]);
             this.frameNo = 0;
             this.interval = setInterval(updateGameArea, 15);
         },
@@ -245,10 +251,15 @@
     function updateGameArea() {
         for (let i = 0; i < enemies.length; i++) {
             if (turtle.crashWith(enemies[i])) {
+                document.getElementById('restart').style = "display: flex; z-index: 10";
+                document.getElementById("score").innerHTML = "Score: " + score;
                 // drawTint(0, 0, gameCanvas.width, gameCanvas.height);
-                drawText('Game Over', windowWidth/2 - 75, windowHeight/2 - 100);
-                drawText('Score: ' + score, windowWidth/2- 70, windowHeight/2);
-                return;
+                // drawText('Game Over', windowWidth/2 - 75, windowHeight/2 - 100);
+                // drawText('Score: ' + score, windowWidth/2- 70, windowHeight/2);
+                gameCanvas.clear();
+                gameCanvas.stop();
+                enemies = [];
+                garbageArr = [];
             }
         }
         for (let i = 0; i < garbageArr.length; i++) {
