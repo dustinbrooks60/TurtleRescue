@@ -150,9 +150,9 @@
             let turtleRight = this.x + (this.actual_width);
             let turtleTop = this.y;
             let turtleBottom = this.y + (this.actual_height);
-            let enemyLeft = otherobj.x + 75;
+            let enemyLeft = otherobj.x + 85;
             let enemyRight = otherobj.x + (otherobj.actual_width) - 75;
-            let enemyTop = otherobj.y + 75;
+            let enemyTop = otherobj.y + 85;
             let enemyBottom = otherobj.y + (otherobj.actual_height) - 75;
             let crash = true;
             if ((turtleBottom < enemyTop) || (turtleTop > enemyBottom) || (turtleRight < enemyLeft) || (turtleLeft > enemyRight)) {
