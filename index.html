@@ -4,17 +4,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Background Loop</title>
     <style>
-        body {
+        html, body {
             overflow: hidden ;
             margin: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-image: url("./images/ocean_2.png");
         }
         canvas {
+            width:100%;
+            height:100%;
             border:1px solid #d3d3d3;
-            background-color: #f1f1f1;
+
+
+        }
+        button{
+            font-size: 20px;
+        }
+        h1, h2, h3, h4, h5, h6, button {
+            border: 1px solid black;
+            background-color: white;
+            color: #3dae4b;
+            margin: 20px;
+            padding: 5px 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #restart {
+            display: none;
+        }
+
+        #start, #restart {
+            z-index: 10;
         }
     </style>
 </head>
-<body ontouchstart='clickManager(-99)' onload="startGame()">
+
+<body ontouchstart='clickManager(-99)'>
+<div id="start" class='container';>
+    <h1>Turtle Recall</h1>
+    <button onclick="startGame()">Start</button>
+    <button>Leaderboard</button>
+    <button>About Us</button>
+</div>
+
+<div id="restart" class="container">
+    <h1>Game Over</h1>
+    <h3 id="score">Score: 0</h3>
+    <button onclick="startGame()">Restart</button>
+
+</div>
+
+<div id="play" class="container">
+    <canvas id="canvas"></canvas>
+</div>
+
 <script>
 
     let ctx;
@@ -22,13 +76,32 @@
     let oceanBackground;
     let enemies = [];
     let garbageArr = [];
+    let garbageClump;
     let displayScore;
     let score;
     let topHat;
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
 
+    function drawText(text, x, y) {
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 32px consolas';
+        ctx.fillText(text, x, y);
+        ctx.strokeText(text, x, y);
+
+    }
+
+
+    function drawTint(x, y, w, h) {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.fillRect(x, y, w, h);
+    }
+
     function startGame() {
+        enemies = [];
+        garbageArr = [];
+        document.getElementById("start").style.display = "none";
+        document.getElementById("restart").style.display = "none";
         turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12);
         turtle.gravity = 0.08;
         oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background");
@@ -39,11 +112,13 @@
 
     let gameCanvas = {
         canvas : document.createElement("canvas"),
+        div : document.getElementById('play'),
         start : function() {
             this.canvas.width = windowWidth;
             this.canvas.height = windowHeight;
             this.context = this.canvas.getContext("2d");
-            document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+            document.body.appendChild(this.canvas);
+            // document.body.insertBefore(this.canvas, document.body.childNodes[0]);
             this.frameNo = 0;
             this.interval = setInterval(updateGameArea, 15);
         },
@@ -179,7 +254,14 @@
     function updateGameArea() {
         for (let i = 0; i < enemies.length; i++) {
             if (turtle.crashWith(enemies[i])) {
-                return;
+                document.getElementById('restart').style = "display: flex; z-index: 10";
+                document.getElementById("score").innerHTML = "Score: " + score;
+                // drawTint(0, 0, gameCanvas.width, gameCanvas.height);
+                // drawText('Game Over', windowWidth/2 - 75, windowHeight/2 - 100);
+                // drawText('Score: ' + score, windowWidth/2- 70, windowHeight/2);
+                gameCanvas.clear();
+                gameCanvas.stop();
+
             }
         }
         for (let i = 0; i < garbageArr.length; i++) {
@@ -191,6 +273,10 @@
         if (topHat && turtle.crashWith(topHat)) {
             topHat = false;
             turtle.image.src = './images/dapper-sprite2.png';
+        }
+        if (garbageClump && turtle.crashWith(garbageClump)) {
+            garbageClump = false;
+            score += 5;
         }
         gameCanvas.clear();
         gameCanvas.frameNo += 1;
@@ -223,6 +309,12 @@
             topHat = new Element(70, 45, './images/top_hat.png', x, y, "image")
         }
 
+        if (gameCanvas.frameNo === 50 || everyInterval(2500)) {
+            let x = gameCanvas.canvas.width;
+            let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
+            garbageClump = new Element(180, 180, './images/clump.png', x, garbageY, "image")
+        }
+
         for (let i = 0; i < enemies.length; i++) {
             enemies[i].x += -1;
             enemies[i].update();
@@ -234,6 +326,10 @@
         if (topHat) {
             topHat.x += -1;
             topHat.update();
+        }
+        if (garbageClump) {
+            garbageClump.x += -1;
+            garbageClump.update();
         }
         displayScore.text = "Garbage Collected:" + score;
         displayScore.update();
