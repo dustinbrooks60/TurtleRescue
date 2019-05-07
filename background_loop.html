@@ -17,6 +17,7 @@
 <body ontouchstart='clickManager(-99)' onload="startGame()">
 <script>
 
+    let ctx;
     let turtle;
     let oceanBackground;
     let enemies = [];
@@ -32,7 +33,7 @@
     let sprite = {'width': 9600, 'height': 600, 'step': 140};
 
     function startGame() {
-        turtle = new Element(100, 70, './images/turtle.png', 10, 120, "image");
+        turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12);
         turtle.gravity = 0.08;
         oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background");
         displayScore = new Element("30px", "Consolas", "black", 10, 40, "text");
@@ -58,12 +59,14 @@
         }
     };
 
-    function Element(width, height, color, x, y, type) {
+    function Element(width, height, color, x, y, type, num_frames) {
         this.type = type;
-        if (type === "image" || type === "background") {
+        if (type === "image" || type === "background" || type === "sprite") {
             this.image = new Image();
             this.image.src = color;
         }
+        this.actual_width = width;
+        this.actual_height = height;
         this.width = width;
         this.height = height;
         this.speedX = 0;
@@ -72,14 +75,16 @@
         this.gravitySpeed = 0;
         this.x = x;
         this.y = y;
+        this.num_frames = num_frames;
+        this.sprite_frame = 0;
         this.update = function() {
-            let ctx = gameCanvas.context;
+            ctx = gameCanvas.context;
             if (type === "text") {
                 ctx.font = this.width + " " + this.height;
                 ctx.fillStyle = color;
                 ctx.fillText(this.text, this.x, this.y);
             }
-            if (type === "image" || type === "background") {
+            else if (type === "image" || type === "background") {
                 ctx.drawImage(this.image,
                     this.x,
                     this.y,
@@ -90,7 +95,24 @@
                         this.y,
                         this.width, this.height);
                 }
-            } else {
+            }
+            else if (type === "sprite") {
+                this.actual_width = (this.width / this.num_frames)/4;
+                this.actual_height = this.height /4;
+                ctx.drawImage(this.image, (this.sprite_frame * (this.width / this.num_frames)), 0,
+                    this.width / this.num_frames, this.height, this.x, this.y, this.actual_width, this.actual_height);
+
+                // set frame rate
+                if (gameCanvas.frameNo % 6 === 0) {
+                    if (this.sprite_frame === this.num_frames - 1) {
+                        this.sprite_frame = 0;
+                    }
+                    else {
+                        this.sprite_frame++;
+                    }
+                }
+            }
+            else {
                 ctx.fillStyle = color;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
             }
@@ -98,7 +120,7 @@
         this.newPos = function() {
             this.x += this.speedX;
             this.y += this.speedY + this.gravitySpeed;
-            if (this.type === 'image') {
+            if (this.type === 'image' || this.type === "sprite") {
                 this.gravitySpeed += this.gravity;
                 if (this.gravitySpeed <-3) {
                     this.gravitySpeed = -3
@@ -113,7 +135,7 @@
             }
         };
         this.hitBottom = function() {
-            let oceanFloor = gameCanvas.canvas.height - this.height - 75;
+            let oceanFloor = gameCanvas.canvas.height - this.height + 425;
             if (this.y > oceanFloor) {
                 this.y = oceanFloor;
                 this.gravitySpeed = 0;
@@ -129,13 +151,13 @@
         };
         this.crashWith = function(otherobj) {
             let turtleLeft = this.x;
-            let turtleRight = this.x + (this.width);
+            let turtleRight = this.x + (this.actual_width);
             let turtleTop = this.y;
-            let turtleBottom = this.y + (this.height);
-            let enemyLeft = otherobj.x + 30;
-            let enemyRight = otherobj.x + (otherobj.width) - 30;
-            let enemyTop = otherobj.y + 30;
-            let enemyBottom = otherobj.y + (otherobj.height) - 30;
+            let turtleBottom = this.y + (this.actual_height);
+            let enemyLeft = otherobj.x + 75;
+            let enemyRight = otherobj.x + (otherobj.actual_width) - 75;
+            let enemyTop = otherobj.y + 75;
+            let enemyBottom = otherobj.y + (otherobj.actual_height) - 75;
             let crash = true;
             if ((turtleBottom < enemyTop) || (turtleTop > enemyBottom) || (turtleRight < enemyLeft) || (turtleLeft > enemyRight)) {
                 crash = false;
@@ -172,9 +194,9 @@
         }
         if (topHat && turtle.crashWith(topHat)) {
             topHat = false;
-            turtle.image.src = './images/dapper_turtle.png';
-            turtle.width = 110;
-            turtle.height = 80;
+            turtle.image.src = './images/dapper-sprite2.png';
+            // turtle.width = 110;
+            // turtle.height = 80;
         }
         gameCanvas.clear();
         gameCanvas.frameNo += 1;
@@ -182,11 +204,15 @@
         oceanBackground.newPos();
         oceanBackground.update();
         if (gameCanvas.frameNo === 1 || everyInterval(350)) {
-            let enemyImages = ['./images/newjelly.png', './images/pufferfish.png'];
+            let enemyImages = ['./images/jelly-sprite2.png', './images/puffer-sprite5.png'];
             let enemy = enemyImages[Math.floor(Math.random() * (enemyImages.length ))];
             let x = gameCanvas.canvas.width;
             let enemyY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
-            enemies.push(new Element(90, 90, enemy, x, enemyY, "image"));
+            if (enemy === './images/jelly-sprite2.png') {
+                enemies.push(new Element(2800, 400, enemy, x, enemyY, "sprite", 7));
+            } else {
+                enemies.push(new Element(4365, 485, enemy, x, enemyY, "sprite", 9));
+            }
         }
 
         if (gameCanvas.frameNo === 10 || everyInterval(300)) {
