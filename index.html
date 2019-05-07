@@ -193,6 +193,10 @@
             topHat = false;
             turtle.image.src = './images/dapper-sprite2.png';
         }
+        if (garbageClump && turtle.crashWith(garbageClump)) {
+            garbageClump = false;
+            score += 5;
+        }
         gameCanvas.clear();
         gameCanvas.frameNo += 1;
         oceanBackground.speedX = -1;
@@ -227,7 +231,7 @@
         if (gameCanvas.frameNo === 50 || everyInterval(2500)) {
             let x = gameCanvas.canvas.width;
             let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
-            garbageClump = new Element(320, 320, './images/clump.png', x, garbageY, "image")
+            garbageClump = new Element(180, 180, './images/clump.png', x, garbageY, "image")
         }
 
         for (let i = 0; i < enemies.length; i++) {
