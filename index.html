@@ -22,6 +22,7 @@
     let oceanBackground;
     let enemies = [];
     let garbageArr = [];
+    let garbageClump;
     let displayScore;
     let score;
     let topHat;
@@ -223,6 +224,12 @@
             topHat = new Element(70, 45, './images/top_hat.png', x, y, "image")
         }
 
+        if (gameCanvas.frameNo === 50 || everyInterval(2500)) {
+            let x = gameCanvas.canvas.width;
+            let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
+            garbageClump = new Element(320, 320, './images/clump.png', x, garbageY, "image")
+        }
+
         for (let i = 0; i < enemies.length; i++) {
             enemies[i].x += -1;
             enemies[i].update();
@@ -234,6 +241,10 @@
         if (topHat) {
             topHat.x += -1;
             topHat.update();
+        }
+        if (garbageClump) {
+            garbageClump.x += -1;
+            garbageClump.update();
         }
         displayScore.text = "Garbage Collected:" + score;
         displayScore.update();
