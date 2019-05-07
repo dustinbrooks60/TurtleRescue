@@ -26,6 +26,10 @@
     let topHat;
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
+    let turtle_sprite = new image();
+    turtle_sprite.src = 'images/turtle-sprite.png';
+    let time = {'then': 0, 'now': 0, 'passed': 0, 'step': 25};
+    let sprite = {'width': 9600, 'height': 600, 'step': 140};
 
     function startGame() {
         turtle = new Element(100, 70, './images/turtle.png', 10, 120, "image");
@@ -155,12 +159,12 @@
     }
 
     function updateGameArea() {
-        for (i = 0; i < enemies.length; i++) {
+        for (let i = 0; i < enemies.length; i++) {
             if (turtle.crashWith(enemies[i])) {
                 return;
             }
         }
-        for (i = 0; i < garbageArr.length; i++) {
+        for (let i = 0; i < garbageArr.length; i++) {
             if (turtle.crashWith(garbageArr[i])) {
                 garbageArr.splice(i, 1);
                 score ++;
