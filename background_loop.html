@@ -166,6 +166,12 @@
                 score ++;
             }
         }
+        if (topHat && turtle.crashWith(topHat)) {
+            topHat = false;
+            turtle.image.src = './images/dapper_turtle_resized.png';
+            turtle.width = 110;
+            turtle.height = 80;
+        }
         gameCanvas.clear();
         gameCanvas.frameNo += 1;
         oceanBackground.speedX = -1;
@@ -190,7 +196,7 @@
         if (gameCanvas.frameNo === 10) {
             let x = gameCanvas.canvas.width;
             let y = gameCanvas.canvas.height - 135;
-            topHat = new Element(70, 50, './images/top_hat.png', x, y, "image")
+            topHat = new Element(70, 45, './images/top_hat.png', x, y, "image")
         }
 
         for (let i = 0; i < enemies.length; i++) {
