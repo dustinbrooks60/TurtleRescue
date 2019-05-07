@@ -10,20 +10,6 @@ let topHat;
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 
-function drawText(text, x, y) {
-    ctx.fillStyle = 'white';
-    ctx.font = 'bold 32px consolas';
-    ctx.fillText(text, x, y);
-    ctx.strokeText(text, x, y);
-
-}
-
-
-function drawTint(x, y, w, h) {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-    ctx.fillRect(x, y, w, h);
-}
-
 function startGame() {
     enemies = [];
     garbageArr = [];
@@ -183,10 +169,6 @@ function updateGameArea() {
         if (turtle.crashWith(enemies[i])) {
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
-            // drawTint(0, 0, gameCanvas.width, gameCanvas.height);
-            // drawText('Game Over', windowWidth/2 - 75, windowHeight/2 - 100);
-            // drawText('Score: ' + score, windowWidth/2- 70, windowHeight/2);
-            gameCanvas.clear();
             gameCanvas.stop();
 
         }
