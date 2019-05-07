@@ -155,7 +155,7 @@
             let turtleTop = this.y;
             let turtleBottom = this.y + (this.actual_height);
             let enemyLeft = otherobj.x + 85;
-            let enemyRight = otherobj.x + (otherobj.actual_width) - 75;
+            let enemyRight = otherobj.x + (otherobj.actual_width) - 85;
             let enemyTop = otherobj.y + 85;
             let enemyBottom = otherobj.y + (otherobj.actual_height) - 75;
             let crash = true;
@@ -195,8 +195,6 @@
         if (topHat && turtle.crashWith(topHat)) {
             topHat = false;
             turtle.image.src = './images/dapper-sprite2.png';
-            // turtle.width = 110;
-            // turtle.height = 80;
         }
         gameCanvas.clear();
         gameCanvas.frameNo += 1;
@@ -216,7 +214,7 @@
         }
 
         if (gameCanvas.frameNo === 10 || everyInterval(300)) {
-            let garbageImages = ['./images/paper_trans.png'];
+            let garbageImages = ['./images/paper_trans.png', './images/plastic_rings.png'];
             let garbage = garbageImages[Math.floor(Math.random() * (garbageImages.length ))];
             let x = gameCanvas.canvas.width;
             let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
@@ -246,10 +244,6 @@
         turtle.newPos();
         turtle.update();
     }
-
-
-
 </script>
-
 </body>
 </html>
