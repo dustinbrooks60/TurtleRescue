@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Background Loop</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/border.css">
 </head>
 
 <body ontouchstart='clickManager(-99)'>
+
 <div id="start" class='container';>
     <h1>Turtle Recall</h1>
-    <button onclick="startGame()">Start</button>
-    <button>Leaderboard</button>
-    <button>About Us</button>
+    <a onclick="startGame()">Start</a>
+    <a>Leaderboard</a>
+    <a>About Us</a>
 </div>
 
 <div id="restart" class="container">
     <h1>Game Over</h1>
     <h3 id="score">Score: 0</h3>
-    <button onclick="startGame()">Restart</button>
-
+    <a onclick="startGame()">Restart</a>
 </div>
 
 <div id="play" class="container">

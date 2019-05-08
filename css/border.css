@@ -1,5 +1,18 @@
+html,
+body {
+    height: 100%;
+}
 
+body {
+    position: relative;
+    background-color: #0f222b;
+}
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 .bb {
     width: 200px;
     height: 200px;
@@ -45,19 +58,4 @@
     75% {
         clip: rect(0px, 220px, 220px, 218px);
     }
-}
-html,
-body {
-    height: 100%;
-}
-
-body {
-    position: relative;
-    background-color: #0f222b;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
 }

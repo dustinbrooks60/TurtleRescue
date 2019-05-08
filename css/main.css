@@ -5,25 +5,31 @@ html, body {
     height: 100%;
     position: relative;
     background-image: url("./images/ocean_2.png");
+    background-size: cover;
 }
 canvas {
     width:100%;
     height:100%;
     border:1px solid #d3d3d3;
-
-
 }
-button{
-    font-size: 20px;
+button, a{
+    font-size: 1em;
 }
-h1, h2, h3, h4, h5, h6, button {
+h1, h2, h3, h4, h5, h6, button, a {
     border: 1px solid black;
     background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.1em;
     color: #3dae4b;
     margin: 20px;
     padding: 5px 10px;
+    background:white;
+    border: 2px solid #2CD892;
+    color: #2CD892;
+    outline: 10px solid transparent !important;
 }
-
 .container {
     display: flex;
     flex-direction: column;
@@ -33,11 +39,31 @@ h1, h2, h3, h4, h5, h6, button {
     justify-content: center;
     align-items: center;
 }
-
 #restart {
     display: none;
 }
-
 #start, #restart {
     z-index: 10;
+}
+
+
+
+
+
+
+
+.out{
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+}
+.inner{
+    background-color: red;
+    height: 50%;
+    width: 50%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

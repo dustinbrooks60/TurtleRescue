@@ -152,17 +152,13 @@ function Element(width, height, color, x, y, type, num_frames) {
 
 function clickManager(n){
     accelerate(n);
-    console.log('clicked');
-}
+    console.log('clicked');}
 
 function accelerate(n){
-    turtle.gravity = n;
-}
+    turtle.gravity = n;}
 
 function everyInterval(n) {
-    return (gameCanvas.frameNo / n) % 1 === 0;
-
-}
+    return (gameCanvas.frameNo / n) % 1 === 0;}
 
 function updateGameArea() {
     for (let i = 0; i < enemies.length; i++) {
