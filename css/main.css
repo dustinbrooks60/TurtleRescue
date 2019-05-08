@@ -15,8 +15,9 @@ canvas {
 button, a{
     font-size: 1em;
     border-radius: 15px;
-
+    box-shadow: -1px 2px;
 }
+
 h1, h2, h3, h4, h5, h6, button, a {
     background-color: transparent;
     font-family: 'Montserrat', sans-serif;
@@ -30,11 +31,7 @@ h1, h2, h3, h4, h5, h6, button, a {
     border-bottom: 3px solid #062768;
     border-top: 3px solid #062768;
     color: #062768;
-    outline: 10px solid transparent !important;
-    
-}
-button:hover, a:hover {
-    background-color: #39C3E0;
+    outline: 10px solid transparent !important; 
 }
 
 .container {
@@ -53,12 +50,69 @@ button:hover, a:hover {
 #restart button,#restart a,#restart h1,#restart h2,#restart h3{
     background-color: rgba(255,255,255,0.6);
 }
+#restart h1,#restart h2,#restart h3{
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+}
 
 #start, #restart {
     z-index: 10;
 }
-
-
+.thing {
+    border: 2px solid black;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    border-radius: 2px;
+    background-image: url(https://i1.wp.com/www.thegamegal.com/wp-content/uploads/2018/08/ultimate-tic-tac-toe12-01.png?resize=340%2C340&ssl=1);
+    background-size: cover;
+}
+.front{
+    border: 2px solid black;
+    width: 10px;
+    height: 10px;
+    transform: translate(-10px,-30px);
+    border-radius: 2px;
+}
+.left-front {
+    width: 10px;
+    height: 10px;
+    border-left: 3px solid black;
+    border-top: 3px solid black;
+    transform: translate(10px, -10px);
+    border-radius: 40%; 
+}
+.right-front {
+    width: 10px;
+    height: 10px;
+    border-left: 3px solid black;
+    border-top: 3px solid black;
+    transform: translate(-10px, 0px);
+    border-radius: 40%; 
+}
+.left-back {
+    width: 10px;
+    height: 10px;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+    transform: translate(5px, -12px);
+    border-radius: 40%;
+}
+.right-back {
+    width: 10px;
+    height: 10px;
+    border-right: 3px solid black;
+    border-top: 3px solid black;
+    transform: translate(18px, -36px);
+    border-radius: 40%; 
+}
+.animate-top{position:relative;animation:animatetop 0.4s}@keyframes animatetop{from{top:-300px;opacity:0} to{top:0;opacity:1}}
+.animate-left{position:relative;animation:animateleft 0.4s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
+.animate-right{position:relative;animation:animateright 0.4s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
+.animate-bottom{position:relative;animation:animatebottom 0.4s}@keyframes animatebottom{from{bottom:-300px;opacity:0} to{bottom:0;opacity:1}}
+.animate-zoom {animation:animatezoom 0.6s}@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}
+.animate-bottom2{position:relative;animation:animatebottom 2s}@keyframes animatebottom{from{bottom:-8px;opacity:0} to{bottom:0;opacity:1}}
+.spin{animation:spin 4s infinite linear}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}
 
 
 

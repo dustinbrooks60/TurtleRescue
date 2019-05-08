@@ -10,17 +10,31 @@
 
 <body ontouchstart='clickManager(-99)'>
 
-<div id="start" class='container';>
-    <h1>Turtle Recall</h1>
-    <a onclick="startGame()">Start</a>
+<div id="start" class='container animate-zoom';>
+    <div class="thing animate-bottom2">
+        <div class="left-front"></div>
+        <div class="right-front"></div>
+        <div class="front"></div>
+        <div class="left-back"></div>
+        <div class="right-back"></div>
+    </div>
+    <h1>Shell Shock </h1>
+    <a class="" onclick="startGame()">Start</a>
     <a>Leaderboard</a>
     <a>About Us</a>
 </div>
 
 <div id="restart" class="container">
-    <h1>Game Over</h1>
-    <h2 id="score">Score: 0</h2>
-    <a onclick="startGame()">Restart</a>
+    <div class="thing animate-bottom2">
+        <div class="left-front"></div>
+        <div class="right-front"></div>
+        <div class="front"></div>
+        <div class="left-back"></div>
+        <div class="right-back"></div>
+    </div>
+    <h2 class="animate-top">Game Over</h2>
+    <h2 class="animate-zoom" id="score">Score: 0</h2>
+    <a class="animate-bottom" onclick="startGame()">Restart</a>
 </div>
 
 <div id="play" class="container">
