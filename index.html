@@ -4,6 +4,11 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Background Loop</title>
+    <!--Link bootstrap 3 and jquery    -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/border.css">
 </head>
@@ -37,6 +42,7 @@
     <a class="animate-bottom" onclick="startGame()">Restart</a>
 </div>
 
+
 <div id="trivia" class="container">
     <div class="thing animate-bottom2">
         <div class="left-front"></div>
@@ -46,7 +52,14 @@
         <div class="right-back"></div>
     </div>
     <h2 class="animate-top">Trivia Time!</h2>
-    <h2 class="animate-zoom" id="time">5 seconds left</h2>
+
+    <h2 class="animate-zoom">
+        <div class="progress animate-zoom">
+            <div id="time" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                5 seconds left
+            </div>
+        </div>
+    </h2>
     <h2 class="animate-zoom" id="question">question here?</h2>
     <a id="a1" class="animate-bottom">Answer 1</a>
     <a id="a2" class="animate-bottom">Answer 2</a>

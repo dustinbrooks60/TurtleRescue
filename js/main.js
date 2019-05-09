@@ -10,6 +10,7 @@ let topHat;
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 let seconds;
+let barValue;
 
 function trivia(){
     document.getElementById()
@@ -17,8 +18,11 @@ function trivia(){
 function countDown(){
     seconds = 5;
     let x = setInterval(function(){
+        barValue = (seconds-1)*20;
+        document.getElementById('time').style.width = String(barValue) + "%";
         document.getElementById('time').innerHTML = seconds-1 + "seconds left";
         if (seconds === 0){
+
             document.getElementById('time').innerHTML = 5 + "seconds left";
             clearInterval(x);
 
