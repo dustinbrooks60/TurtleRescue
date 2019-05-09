@@ -14,12 +14,12 @@ let seconds;
 function trivia(){
     document.getElementById()
 }
-function countDown(milliseconds){
+function countDown(){
     seconds = 5;
     let x = setInterval(function(){
         document.getElementById('time').innerHTML = seconds-1 + "seconds left";
         if (seconds === 0){
-            seconds = 5;
+            document.getElementById('time').innerHTML = 5 + "seconds left";
             clearInterval(x);
 
         }else {
@@ -28,9 +28,11 @@ function countDown(milliseconds){
     }, 1000)
 }
 function startGame() {
+    score = 0;
     enemies = [];
     garbageArr = [];
     topHat = false;
+    garbageClump = false;
     document.getElementById("start").style.display = "none";
     document.getElementById("restart").style.display = "none";
     document.getElementById("trivia").style.display = "none";
@@ -38,7 +40,6 @@ function startGame() {
     turtle.gravity = 0.08;
     oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background"); // game background
     displayScore = new Element("30px", "Consolas", "black", 10, 40, "text");
-    score = 0;
     gameCanvas.start(); // appends game canvas to the body
 }
 
@@ -211,9 +212,10 @@ function updateGameArea() {
     // Check if turtle has collided with enemy
     for (let i = 0; i < enemies.length; i++) {
         if (turtle.crashWith(enemies[i])) {
+            gameCanvas.stop();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
-            gameCanvas.stop();
+
         }
     }
     // Check if turtle has collided with garbage
@@ -235,12 +237,13 @@ function updateGameArea() {
         trivia.style = "display: flex; z-index: 10";
         countDown();
         setTimeout(function(){
+            seconds = 5;
             trivia.style.display = "none";
-
+            gameCanvas.continue();
         }, 6000);
         garbageClump = false;
         score += 5;
-        gameCanvas.continue()
+
 
     }
 
