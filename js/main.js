@@ -9,13 +9,31 @@ let score;
 let topHat;
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
+let seconds;
 
+function trivia(){
+    document.getElementById()
+}
+function countDown(milliseconds){
+    seconds = 5;
+    let x = setInterval(function(){
+        document.getElementById('time').innerHTML = seconds-1 + "seconds left";
+        if (seconds === 0){
+            seconds = 5;
+            clearInterval(x);
+
+        }else {
+            seconds -= 1;
+        }
+    }, 1000)
+}
 function startGame() {
     enemies = [];
     garbageArr = [];
     topHat = false;
     document.getElementById("start").style.display = "none";
     document.getElementById("restart").style.display = "none";
+    document.getElementById("trivia").style.display = "none";
     turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
     oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background"); // game background
@@ -27,7 +45,6 @@ function startGame() {
 // creates the game canvas object
 let gameCanvas = {
     canvas : document.createElement("canvas"),
-    div : document.getElementById('play'),
     // Sets game canvas dimensions and appends it to the body
     start : function() {
         this.canvas.width = windowWidth;
@@ -45,6 +62,10 @@ let gameCanvas = {
     // Stops updating the game canvas (when character collides with enemy)
     stop : function() {
         clearInterval(this.interval);
+    },
+    continue : function(){
+        this.interval = setInterval(updateGameArea, 15);
+
     }
 };
 
@@ -209,8 +230,18 @@ function updateGameArea() {
     }
     // Check if turtle has collided with large garbage clump
     if (garbageClump && turtle.crashWith(garbageClump)) {
+        let trivia = document.getElementById('trivia');
+        gameCanvas.stop();
+        trivia.style = "display: flex; z-index: 10";
+        countDown();
+        setTimeout(function(){
+            trivia.style.display = "none";
+
+        }, 6000);
         garbageClump = false;
         score += 5;
+        gameCanvas.continue()
+
     }
 
     gameCanvas.clear();
