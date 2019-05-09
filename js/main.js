@@ -13,6 +13,7 @@ let windowHeight = window.innerHeight;
 function startGame() {
     enemies = [];
     garbageArr = [];
+    topHat = false;
     document.getElementById("start").style.display = "none";
     document.getElementById("restart").style.display = "none";
     turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
@@ -192,7 +193,6 @@ function updateGameArea() {
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
             gameCanvas.stop();
-
         }
     }
     // Check if turtle has collided with garbage
