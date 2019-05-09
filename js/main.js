@@ -243,11 +243,12 @@ function updateGameArea() {
         setTimeout(function(){
             seconds = 5;
             trivia.style.display = "none";
-            gameCanvas.continue();
+            garbageClump = false;
         }, 6000);
-        garbageClump = false;
+        setTimeout(function() {
+            gameCanvas.continue();
+        }, 7000);
         score += 5;
-
 
     }
 
