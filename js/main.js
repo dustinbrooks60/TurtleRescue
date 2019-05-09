@@ -46,6 +46,9 @@ let gameCanvas = {
     // Stops updating the game canvas (when character collides with enemy)
     stop : function() {
         clearInterval(this.interval);
+    },
+    continue : function() {
+        this.interval = setInterval(updateGameArea, 15);
     }
 };
 
@@ -210,8 +213,15 @@ function updateGameArea() {
     }
     // Check if turtle has collided with large garbage clump
     if (garbageClump && turtle.crashWith(garbageClump)) {
-        garbageClump = false;
-        score += 5;
+        gameCanvas.stop();
+        document.getElementById('trivia').style = "display: flex; z-index: 10";
+        setTimeout(function () {
+            document.getElementById('trivia').style = "display: none;";
+        }, 4000);
+        setTimeout( function () {
+            garbageClump = false;
+            gameCanvas.continue();
+        }, 5000);
     }
 
     gameCanvas.clear();
