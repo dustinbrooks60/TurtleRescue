@@ -11,16 +11,17 @@ let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 
 function startGame() {
+    score = 0;
     enemies = [];
     garbageArr = [];
     topHat = false;
+    garbageClump = false;
     document.getElementById("start").style.display = "none";
     document.getElementById("restart").style.display = "none";
     turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
     oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background"); // game background
     displayScore = new Element("30px", "Consolas", "black", 10, 40, "text");
-    score = 0;
     gameCanvas.start(); // appends game canvas to the body
 }
 
@@ -190,9 +191,9 @@ function updateGameArea() {
     // Check if turtle has collided with enemy
     for (let i = 0; i < enemies.length; i++) {
         if (turtle.crashWith(enemies[i])) {
+            gameCanvas.stop();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
-            gameCanvas.stop();
         }
     }
     // Check if turtle has collided with garbage
