@@ -3,9 +3,13 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Background Loop</title>
+    <title>SS</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/border.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase.js"></script>
+    <script src="js/setup_firebase.js"></script>
+
 </head>
 
 <body ontouchstart='clickManager(-99)'>
@@ -18,10 +22,11 @@
         <div class="left-back"></div>
         <div class="right-back"></div>
     </div>
-    <h1>Shell Shock </h1>
+    <h1>Shell Shocked</h1>
     <a class="" onclick="startGame()">Start</a>
     <a>Leaderboard</a>
     <a>About Us</a>
+    <a href="login.html">Login</a>
 </div>
 
 <div id="restart" class="container">
@@ -42,5 +47,6 @@
 </div>
 
 <script type="text/javascript" src="js/main.js"></script>
+
 </body>
 </html>
