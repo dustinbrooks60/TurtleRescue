@@ -4,6 +4,31 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Shell Shocked</title>
+    <title>Background Loop</title>
+    <!--Link bootstrap 3 and jquery    -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAfyxJ1IN7AtVGyRCsQHzA-jxUtdILUPTs",
+            authDomain: "shellshocked2930.firebaseapp.com",
+            databaseURL: "https://shellshocked2930.firebaseio.com",
+            projectId: "shellshocked2930",
+            storageBucket: "shellshocked2930.appspot.com",
+            messagingSenderId: "24641943764",
+            appId: "1:24641943764:web:53176a886dc069ce"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/border.css">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -42,11 +67,30 @@
     <a class="animate-bottom" onclick="startGame()">Restart</a>
 </div>
 
-<div id="play" class="container">
-    <canvas id="canvas"></canvas>
+
+<div id="trivia" class="container">
+    <div class="thing animate-bottom2">
+        <div class="left-front"></div>
+        <div class="right-front"></div>
+        <div class="front"></div>
+        <div class="left-back"></div>
+        <div class="right-back"></div>
+    </div>
+    <h2 class="animate-top">Trivia Time!</h2>
+
+    <h2 class="animate-zoom">
+        <div class="progress animate-zoom">
+            <div id="time" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%; transition-duration:2500ms;">
+                5 seconds left
+            </div></div>
+    </h2>
+    <h2 class="animate-zoom" id="question">question here?</h2>
+    <a id="a1" class="animate-bottom">Answer 1</a>
+    <a id="a2" class="animate-bottom">Answer 2</a>
+    <a id="a3" class="animate-bottom">Answer 3</a>
+    <a id="a4" class="animate-bottom">Answer 4</a>
 </div>
 
 <script type="text/javascript" src="js/main.js"></script>
-
 </body>
 </html>

@@ -11,7 +11,114 @@ let multiplier = 1;
 let topHat;
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
+let seconds;
+let barValue;
+let userChoice;
+let dbQuestion;
 
+let question = document.getElementById('question');
+let answer1 = document.getElementById('a1');
+let answer2 = document.getElementById('a2');
+let answer3 = document.getElementById('a3');
+let answer4 = document.getElementById('a4');
+
+let questionKey;
+let answerObject;
+let answerArray;
+
+let copyAnswerArray;
+
+// Pull random question from database
+function getQuestion() {
+    let num = Math.ceil(Math.random() * 15);
+    let dbRef = firebase.database().ref('/questions/' + 'question' + num);
+    dbRef.once('value').then(function(snapshot){
+        dbQuestion = snapshot.val();
+    });
+    return dbQuestion
+}
+
+function generateQuestion(){
+    getQuestion();
+    questionKey = Object.keys(dbQuestion); // questionKey length 1 array of question type:string
+    answerObject = dbQuestion[questionKey];
+    answerArray = Object.keys(answerObject); // answerArray contain answers of type string
+}
+
+function getAnswer(answerObj, answerArray){
+    // gets the correct answer
+    for(let i = 0; i < answerArray.length; i++){
+        let find_answer = answerObj[answerArray[i]];
+        if (find_answer === true){
+            return answerArray[i]
+        }
+    }
+}
+function shuffle(array){
+    // randomly sort trivia answers
+    array.sort(() => Math.random() - 0.5);
+}
+function displayTrivia(){
+    // display trivia for user to answer
+    copyAnswerArray = answerArray.slice(0); // create a copy of the questions
+    shuffle(copyAnswerArray); // shuffle the answers
+    question.innerHTML = questionKey[0]; // index can be the length of how many questions to randomize
+    answer1.innerHTML = copyAnswerArray[0];
+    answer2.innerHTML = copyAnswerArray[1];
+    answer3.innerHTML = copyAnswerArray[2];
+    answer4.innerHTML = copyAnswerArray[3];
+
+    isCorrectAnswer();
+
+}
+
+function isCorrectAnswer(){
+    // should return boolean if user chooses a correct answer
+    checkUserChoice(); // check for correct user selection
+    setTimeout(function(){
+        if (userChoice === getAnswer(answerObject, copyAnswerArray)){
+            console.log("correct answer!") // do this if user choice is correct
+        } else{
+            console.log("wrong!")
+        }
+    },5000); // timeout determine by countDown interval
+
+
+}
+// get the innerHTML value and assign to userChoice to check if answer is correct
+function checkUserChoice(){
+    answer1.onclick = function(){userChoice = answer1.innerHTML};
+    answer2.onclick = function(){userChoice = answer2.innerHTML};
+    answer3.onclick = function(){userChoice = answer3.innerHTML};
+    answer4.onclick = function(){userChoice = answer4.innerHTML};
+
+    return userChoice
+}
+
+function resetTrivia(){
+    question.innerHTML = ""; // index can be the length of how many questions to randomize
+    answer1.innerHTML = "";
+    answer2.innerHTML = "";
+    answer3.innerHTML = "";
+    answer3.innerHTML = "";
+}
+function countDown(intervalSec){
+    // create a countdown for user with a progress bar.
+    seconds = intervalSec;
+    let x = setInterval(function(){
+        barValue = (seconds-1)*20;
+        document.getElementById('time').style.width = String(barValue) + "%";
+        document.getElementById('time').innerHTML = seconds-1 + "seconds left";
+        if (seconds === 0){
+            document.getElementById('time').style.width = String(100) + "%";
+            document.getElementById('time').innerHTML = 5 + "seconds left";
+            clearInterval(x);
+
+        }else {
+            seconds -= 1;
+        }
+    }, 1000)
+}
 function startGame() {
     score = 0;
     multiplier = 1;
@@ -21,6 +128,7 @@ function startGame() {
     garbageClump = false;
     document.getElementById("start").style.display = "none";
     document.getElementById("restart").style.display = "none";
+    document.getElementById("trivia").style.display = "none";
     turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
     oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background"); // game background
@@ -32,9 +140,9 @@ function startGame() {
 // creates the game canvas object
 let gameCanvas = {
     canvas : document.createElement("canvas"),
-    div : document.getElementById('play'),
     // Sets game canvas dimensions and appends it to the body
     start : function() {
+        getQuestion();
         this.canvas.width = windowWidth;
         this.canvas.height = windowHeight;
         this.context = this.canvas.getContext("2d");
@@ -50,6 +158,11 @@ let gameCanvas = {
     // Stops updating the game canvas (when character collides with enemy)
     stop : function() {
         clearInterval(this.interval);
+    },
+    continue : function(){
+        getQuestion();
+        this.interval = setInterval(updateGameArea, 15);
+
     }
 };
 
@@ -190,8 +303,24 @@ function everyInterval(n) {
     return (gameCanvas.frameNo / n) % 1 === 0;
 }
 
+// Clear nearby enemies after trivia
+function clearNearbyEnemies() {
+    let enemiesCopy = enemies.slice(0);
+    for (let i = enemiesCopy.length - 1; i > -1; i--) {
+        if (enemiesCopy[i].x < (gameCanvas.canvas.width * 0.35) && enemiesCopy[i].y > (turtle.y - 25)) {
+            enemies.splice(i, 1);
+        }
+    }
+}
+
 // Redraws the game canvas and all elements in it
 function updateGameArea() {
+    for (let i = 0; i < enemies.length; i++) {
+        if (enemies[i].x < -100) {
+            enemies.splice(i, 1);
+        }
+    }
+
     // Check if turtle has collided with enemy
     for (let i = 0; i < enemies.length; i++) {
         if (turtle.crashWith(enemies[i])) {
@@ -216,6 +345,25 @@ function updateGameArea() {
     if (garbageClump && turtle.crashWith(garbageClump)) {
         garbageClump = false;
         multiplier ++;
+        let trivia = document.getElementById('trivia');
+        generateQuestion();
+        gameCanvas.stop();
+        trivia.style = "display: flex; z-index: 10";
+        displayTrivia();
+        countDown(5);
+        setTimeout(function(){
+            seconds = 5;
+            trivia.style.display = "none";
+            resetTrivia();
+            garbageClump = false;
+            clearNearbyEnemies()
+        }, 6000);
+        setTimeout(function() {
+            gameCanvas.continue();
+        }, 6001);
+        score += 5;
+
+
     }
 
     gameCanvas.clear();
