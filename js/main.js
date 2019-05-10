@@ -6,9 +6,12 @@ let garbageArr = [];
 let garbageClump;
 let displayScore;
 let score;
+let multiplier = 1;
 let topHat;
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
+
+
 
 function startGame() {
     score = 0;
@@ -193,14 +196,16 @@ function updateGameArea() {
         if (turtle.crashWith(enemies[i])) {
             gameCanvas.stop();
             document.getElementById('restart').style = "display: flex; z-index: 10";
-            document.getElementById("score").innerHTML = "Score: " + score;
+            document.getElementById("scoredp").innerHTML = "Score: " + score;
         }
     }
     // Check if turtle has collided with garbage
     for (let i = 0; i < garbageArr.length; i++) {
         if (turtle.crashWith(garbageArr[i])) {
             garbageArr.splice(i, 1);
-            score ++;
+            score += multiplier;
+            // myScoreRoot.set(scoreJSONobj);
+            // myScore.innerHTML = scoreDB + ' (' + userid + ')';
         }
     }
     // Check if turtle has collided with top hat
@@ -211,7 +216,7 @@ function updateGameArea() {
     // Check if turtle has collided with large garbage clump
     if (garbageClump && turtle.crashWith(garbageClump)) {
         garbageClump = false;
-        score += 5;
+        multiplier ++;
     }
 
     gameCanvas.clear();

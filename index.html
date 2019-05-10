@@ -14,8 +14,8 @@
 
 <body onclick='clickManager(-99)'>
 
-<div id="start" class='container animate-zoom';>
-    <div class="thing animate-bottom2">
+<div id="start" class='container animate-zoom'>
+    <div class="logo animate-bottom2">
         <div class="left-front"></div>
         <div class="right-front"></div>
         <div class="front"></div>
@@ -24,13 +24,26 @@
     </div>
     <h1>Shell Shocked</h1>
     <a class="" onclick="startGame()">Start</a>
-    <a>Leaderboard</a>
+    <a onclick="leaderBoardbtn()">Leader board</a>
     <a>About Us</a>
     <a href="login.html">Login</a>
 </div>
 
+<div id="leaderBoard" class="container">
+    <div class="logo animate-bottom2">
+        <div class="left-front"></div>
+        <div class="right-front"></div>
+        <div class="front"></div>
+        <div class="left-back"></div>
+        <div class="right-back"></div>
+    </div>
+    <h1>Leader board</h1>
+    <p id="top-score">Highest score:</p>
+    <p id="my-score">Your score:</p>
+</div>
+
 <div id="restart" class="container">
-    <div class="thing animate-bottom2">
+    <div class="logo animate-bottom2">
         <div class="left-front"></div>
         <div class="right-front"></div>
         <div class="front"></div>
@@ -38,7 +51,7 @@
         <div class="right-back"></div>
     </div>
     <h2 class="animate-top">Game Over</h2>
-    <h2 class="animate-zoom" id="score">Score: 0</h2>
+    <h2 class="animate-zoom" id="scoredp">Score: 0</h2>
     <a class="animate-bottom" onclick="startGame()">Restart</a>
 </div>
 
@@ -47,6 +60,15 @@
 </div>
 
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/firebase_highscore.js"></script>
+<script>
+    function leaderBoardbtn (){
+        console.log('ldb clicked');
+        document.getElementById("start").style.display = "none";
+        document.getElementById("restart").style.display = "none";
+        document.getElementById('leaderBoard').style.display = 'display: flex; z-index: 100'
+    }
+</script>
 
 </body>
 </html>
