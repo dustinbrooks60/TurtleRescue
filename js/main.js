@@ -27,6 +27,7 @@ let questionObj = {
         "recycled": false,
         "landfills": false,
     }
+}
 // Pull random question from database
 function getQuestion() {
     let num = Math.ceil(Math.random() * 15);
@@ -45,7 +46,7 @@ function getQuestion() {
 //     answer3.innerHTML = "";
 //     answer4.innerHTML = "";
 // }
-};
+// };
 
 let questionKey;
 let answerObject;
