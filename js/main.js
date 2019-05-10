@@ -16,7 +16,9 @@ let answer1;
 let answer2;
 let answer3;
 let answer4;
+let userChoice;
 
+//create a mock database to test trivia q&a
 let questionObj = {
     "Where does majority of plastic waste end up?": {
         "burned for energy": false,
@@ -27,10 +29,17 @@ let questionObj = {
 
 };
 
-let questionKey = Object.keys(questionObj);
-let answerObject = questionObj[questionKey];
-let answerArray = Object.keys(answerObject);
+let questionKey;
+let answerObject;
+let answerArray;
+
 let copyAnswerArray;
+
+function generateRandomTrivia(){
+    questionKey = Object.keys(questionObj);
+    answerObject = questionObj[questionKey];
+    answerArray = Object.keys(answerObject);
+}
 
 function getAnswer(answerObj, answerArray){
     // gets the correct answer
@@ -57,6 +66,30 @@ function displayTrivia(){
     answer2.innerHTML = copyAnswerArray[1];
     answer3.innerHTML = copyAnswerArray[2];
     answer4.innerHTML = copyAnswerArray[3];
+
+    isCorrectAnswer();
+}
+
+function isCorrectAnswer(){
+    checkUserChoice(); // check for correct user selection
+    setTimeout(function(){
+        if (userChoice === getAnswer(answerObject, copyAnswerArray)){
+            console.log("correct answer!") // do this if user choice is correct
+        } else{
+            console.log("wrong!")
+        }
+    },5000);
+
+
+}
+// get the innerHTML value and assign to userChoice to check if answer is correct
+function checkUserChoice(){
+    answer1.onclick = function(){userChoice = answer1.innerHTML};
+    answer2.onclick = function(){userChoice = answer2.innerHTML};
+    answer3.onclick = function(){userChoice = answer3.innerHTML};
+    answer4.onclick = function(){userChoice = answer4.innerHTML};
+
+    return userChoice
 }
 
 function resetTrivia(){
@@ -95,6 +128,7 @@ function startGame() {
     turtle.gravity = 0.08;
     oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background"); // game background
     displayScore = new Element("30px", "Consolas", "black", 10, 40, "text");
+    generateRandomTrivia()
     gameCanvas.start(); // appends game canvas to the body
 }
 
@@ -120,6 +154,7 @@ let gameCanvas = {
         clearInterval(this.interval);
     },
     continue : function(){
+        generateRandomTrivia()
         this.interval = setInterval(updateGameArea, 15);
 
     }
