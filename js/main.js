@@ -5,13 +5,16 @@ let enemies = [];
 let garbageArr = [];
 let garbageClump;
 let displayScore;
+let displayMultiplier;
 let score;
+let multiplier = 1;
 let topHat;
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 
 function startGame() {
     score = 0;
+    multiplier = 1;
     enemies = [];
     garbageArr = [];
     topHat = false;
@@ -21,7 +24,8 @@ function startGame() {
     turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
     oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background"); // game background
-    displayScore = new Element("30px", "Consolas", "black", 10, 40, "text");
+    displayScore = new Element("20px", "Consolas", "black", 10, 30, "text");
+    displayMultiplier = new Element("20px", "Consolas", "black", 10, 60, "text");
     gameCanvas.start(); // appends game canvas to the body
 }
 
@@ -200,7 +204,7 @@ function updateGameArea() {
     for (let i = 0; i < garbageArr.length; i++) {
         if (turtle.crashWith(garbageArr[i])) {
             garbageArr.splice(i, 1);
-            score ++;
+            score += multiplier;
         }
     }
     // Check if turtle has collided with top hat
@@ -211,7 +215,7 @@ function updateGameArea() {
     // Check if turtle has collided with large garbage clump
     if (garbageClump && turtle.crashWith(garbageClump)) {
         garbageClump = false;
-        score += 5;
+        multiplier ++;
     }
 
     gameCanvas.clear();
@@ -280,7 +284,9 @@ function updateGameArea() {
         garbageClump.update();
     }
     displayScore.text = "Garbage Collected:" + score;
+    displayMultiplier.text = "Multiplier: x" + multiplier;
     displayScore.update();
+    displayMultiplier.update();
     turtle.newPos();
     turtle.update();
 }
