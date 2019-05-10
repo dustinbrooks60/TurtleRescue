@@ -301,8 +301,6 @@ function everyInterval(n) {
 function clearNearbyEnemies() {
     let enemiesCopy = enemies.slice(0);
     for (let i = enemiesCopy.length - 1; i > -1; i--) {
-        console.log(enemies);
-        console.log(enemiesCopy);
         if (enemiesCopy[i].x < (gameCanvas.canvas.width * 0.35) && enemiesCopy[i].y > (turtle.y - 25)) {
             enemies.splice(i, 1);
         }
