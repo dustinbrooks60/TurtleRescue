@@ -12,6 +12,7 @@ let windowHeight = window.innerHeight;
 let seconds;
 let barValue;
 let userChoice;
+let dbQuestion;
 
 let question = document.getElementById('question');
 let answer1 = document.getElementById('a1');
@@ -19,44 +20,26 @@ let answer2 = document.getElementById('a2');
 let answer3 = document.getElementById('a3');
 let answer4 = document.getElementById('a4');
 
-//create a mock database to test trivia q&a
-let questionObj = {
-    "Where does majority of plastic waste end up?": {
-        "burned for energy": false,
-        "oceans": true,
-        "recycled": false,
-        "landfills": false,
-    }
-}
-// Pull random question from database
-function getQuestion() {
-    let num = Math.ceil(Math.random() * 15);
-    let dbRef = firebase.database().ref('/questions/' + 'question' + num);
-    dbRef.once('value').then(function(snapshot){
-        let question = snapshot.val();
-        console.log(question);
-    });
-}
-
-// function resetTrivia(){
-//     question.innerHTML = ""; // index can be the length of how many questions to randomize
-//     answer1.innerHTML = "";
-//     answer2.innerHTML = "";
-//     answer3.innerHTML = "";
-//     answer3.innerHTML = "";
-//     answer4.innerHTML = "";
-// }
-// };
-
 let questionKey;
 let answerObject;
 let answerArray;
 
 let copyAnswerArray;
 
+// Pull random question from database
+function getQuestion() {
+    let num = Math.ceil(Math.random() * 15);
+    let dbRef = firebase.database().ref('/questions/' + 'question' + num);
+    dbRef.once('value').then(function(snapshot){
+        dbQuestion = snapshot.val();
+    });
+    return dbQuestion
+}
+
 function generateQuestion(){
-    questionKey = Object.keys(questionObj); // questionKey length 1 array of question type:string
-    answerObject = questionObj[questionKey];
+    getQuestion();
+    questionKey = Object.keys(dbQuestion); // questionKey length 1 array of question type:string
+    answerObject = dbQuestion[questionKey];
     answerArray = Object.keys(answerObject); // answerArray contain answers of type string
 }
 
@@ -84,6 +67,7 @@ function displayTrivia(){
     answer4.innerHTML = copyAnswerArray[3];
 
     isCorrectAnswer();
+
 }
 
 function isCorrectAnswer(){
@@ -146,7 +130,6 @@ function startGame() {
     turtle.gravity = 0.08;
     oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background"); // game background
     displayScore = new Element("30px", "Consolas", "black", 10, 40, "text");
-    generateQuestion();
     gameCanvas.start(); // appends game canvas to the body
 }
 
@@ -155,6 +138,7 @@ let gameCanvas = {
     canvas : document.createElement("canvas"),
     // Sets game canvas dimensions and appends it to the body
     start : function() {
+        getQuestion();
         this.canvas.width = windowWidth;
         this.canvas.height = windowHeight;
         this.context = this.canvas.getContext("2d");
@@ -172,7 +156,7 @@ let gameCanvas = {
         clearInterval(this.interval);
     },
     continue : function(){
-        generateQuestion()
+        getQuestion();
         this.interval = setInterval(updateGameArea, 15);
 
     }
@@ -357,6 +341,7 @@ function updateGameArea() {
     // Check if turtle has collided with large garbage clump
     if (garbageClump && turtle.crashWith(garbageClump)) {
         let trivia = document.getElementById('trivia');
+        generateQuestion();
         gameCanvas.stop();
         trivia.style = "display: flex; z-index: 10";
         displayTrivia();
@@ -370,7 +355,7 @@ function updateGameArea() {
         }, 6000);
         setTimeout(function() {
             gameCanvas.continue();
-        }, 7000);
+        }, 6001);
         score += 5;
 
 
