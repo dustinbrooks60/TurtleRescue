@@ -11,18 +11,69 @@ let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 let seconds;
 let barValue;
+let question;
+let answer1;
+let answer2;
+let answer3;
+let answer4;
 
-function trivia(){
-    document.getElementById()
+let questionObj = {
+    "Where does majority of plastic waste end up?": {
+        "burned for energy": false,
+        "oceans": true,
+        "recycled": false,
+        "landfills": false,
+    }
+
+};
+
+let questionKey = Object.keys(questionObj);
+let answerObject = questionObj[questionKey];
+let answerArray = Object.keys(answerObject);
+let copyAnswerArray;
+
+function getAnswer(answerObj, answerArray){
+    // gets the correct answer
+    for(let i = 0; i < answerArray.length; i++){
+        let find_answer = answerObj[answerArray[i]];
+        if (find_answer === true){
+            return answerArray[i]
+        }
+    }
 }
-function countDown(){
-    seconds = 5;
+function shuffle(array){
+    array.sort(() => Math.random() - 0.5);
+}
+function displayTrivia(){
+    question = document.getElementById('question');
+    answer1 = document.getElementById('a1');
+    answer2 = document.getElementById('a2');
+    answer3 = document.getElementById('a3');
+    answer4 = document.getElementById('a4');
+    copyAnswerArray = answerArray.slice(0); // create a copy of the questions
+    shuffle(copyAnswerArray); // shuffle the answers
+    question.innerHTML = questionKey[0]; // index can be the length of how many questions to randomize
+    answer1.innerHTML = copyAnswerArray[0];
+    answer2.innerHTML = copyAnswerArray[1];
+    answer3.innerHTML = copyAnswerArray[2];
+    answer4.innerHTML = copyAnswerArray[3];
+}
+
+function resetTrivia(){
+    question.innerHTML = ""; // index can be the length of how many questions to randomize
+    answer1.innerHTML = "";
+    answer2.innerHTML = "";
+    answer3.innerHTML = "";
+    answer3.innerHTML = "";
+}
+function countDown(intervalSec){
+    seconds = intervalSec;
     let x = setInterval(function(){
         barValue = (seconds-1)*20;
         document.getElementById('time').style.width = String(barValue) + "%";
         document.getElementById('time').innerHTML = seconds-1 + "seconds left";
         if (seconds === 0){
-
+            document.getElementById('time').style.width = String(100) + "%";
             document.getElementById('time').innerHTML = 5 + "seconds left";
             clearInterval(x);
 
@@ -239,10 +290,13 @@ function updateGameArea() {
         let trivia = document.getElementById('trivia');
         gameCanvas.stop();
         trivia.style = "display: flex; z-index: 10";
-        countDown();
+        displayTrivia();
+        countDown(5);
         setTimeout(function(){
             seconds = 5;
             trivia.style.display = "none";
+            console.log(getAnswer(answerObject, copyAnswerArray));
+            resetTrivia();
             gameCanvas.continue();
         }, 6000);
         garbageClump = false;
