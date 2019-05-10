@@ -297,8 +297,26 @@ function everyInterval(n) {
     return (gameCanvas.frameNo / n) % 1 === 0;
 }
 
+// Clear nearby enemies after trivia
+function clearNearbyEnemies() {
+    let enemiesCopy = enemies.slice(0);
+    for (let i = enemiesCopy.length - 1; i > -1; i--) {
+        console.log(enemies);
+        console.log(enemiesCopy);
+        if (enemiesCopy[i].x < (gameCanvas.canvas.width * 0.35) && enemiesCopy[i].y > (turtle.y - 25)) {
+            enemies.splice(i, 1);
+        }
+    }
+}
+
 // Redraws the game canvas and all elements in it
 function updateGameArea() {
+    for (let i = 0; i < enemies.length; i++) {
+        if (enemies[i].x < -100) {
+            enemies.splice(i, 1);
+        }
+    }
+
     // Check if turtle has collided with enemy
     for (let i = 0; i < enemies.length; i++) {
         if (turtle.crashWith(enemies[i])) {
@@ -332,6 +350,7 @@ function updateGameArea() {
             trivia.style.display = "none";
             resetTrivia();
             garbageClump = false;
+            clearNearbyEnemies()
         }, 6000);
         setTimeout(function() {
             gameCanvas.continue();
