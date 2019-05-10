@@ -295,11 +295,12 @@ function updateGameArea() {
         setTimeout(function(){
             seconds = 5;
             trivia.style.display = "none";
-            console.log(getAnswer(answerObject, copyAnswerArray));
             resetTrivia();
-            gameCanvas.continue();
+            garbageClump = false;
         }, 6000);
-        garbageClump = false;
+        setTimeout(function() {
+            gameCanvas.continue();
+        }, 7000);
         score += 5;
 
 
