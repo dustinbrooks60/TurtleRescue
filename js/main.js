@@ -344,7 +344,6 @@ function updateGameArea() {
     // Check if turtle has collided with large garbage clump
     if (garbageClump && turtle.crashWith(garbageClump)) {
         garbageClump = false;
-        multiplier ++;
         let trivia = document.getElementById('trivia');
         generateQuestion();
         gameCanvas.stop();
@@ -361,7 +360,7 @@ function updateGameArea() {
         setTimeout(function() {
             gameCanvas.continue();
         }, 6001);
-        score += 5;
+        multiplier ++;
 
 
     }
