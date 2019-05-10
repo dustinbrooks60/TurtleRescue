@@ -11,12 +11,13 @@ let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 let seconds;
 let barValue;
-let question;
-let answer1;
-let answer2;
-let answer3;
-let answer4;
 let userChoice;
+
+let question = document.getElementById('question');
+let answer1 = document.getElementById('a1');
+let answer2 = document.getElementById('a2');
+let answer3 = document.getElementById('a3');
+let answer4 = document.getElementById('a4');
 
 //create a mock database to test trivia q&a
 let questionObj = {
@@ -35,10 +36,10 @@ let answerArray;
 
 let copyAnswerArray;
 
-function generateRandomTrivia(){
-    questionKey = Object.keys(questionObj);
+function generateQuestion(){
+    questionKey = Object.keys(questionObj); // questionKey length 1 array of question type:string
     answerObject = questionObj[questionKey];
-    answerArray = Object.keys(answerObject);
+    answerArray = Object.keys(answerObject); // answerArray contain answers of type string
 }
 
 function getAnswer(answerObj, answerArray){
@@ -51,14 +52,11 @@ function getAnswer(answerObj, answerArray){
     }
 }
 function shuffle(array){
+    // randomly sort trivia answers
     array.sort(() => Math.random() - 0.5);
 }
 function displayTrivia(){
-    question = document.getElementById('question');
-    answer1 = document.getElementById('a1');
-    answer2 = document.getElementById('a2');
-    answer3 = document.getElementById('a3');
-    answer4 = document.getElementById('a4');
+    // display trivia for user to answer
     copyAnswerArray = answerArray.slice(0); // create a copy of the questions
     shuffle(copyAnswerArray); // shuffle the answers
     question.innerHTML = questionKey[0]; // index can be the length of how many questions to randomize
@@ -71,6 +69,7 @@ function displayTrivia(){
 }
 
 function isCorrectAnswer(){
+    // should return boolean if user chooses a correct answer
     checkUserChoice(); // check for correct user selection
     setTimeout(function(){
         if (userChoice === getAnswer(answerObject, copyAnswerArray)){
@@ -78,7 +77,7 @@ function isCorrectAnswer(){
         } else{
             console.log("wrong!")
         }
-    },5000);
+    },5000); // timeout determine by countDown interval
 
 
 }
@@ -100,6 +99,7 @@ function resetTrivia(){
     answer3.innerHTML = "";
 }
 function countDown(intervalSec){
+    // create a countdown for user with a progress bar.
     seconds = intervalSec;
     let x = setInterval(function(){
         barValue = (seconds-1)*20;
@@ -128,7 +128,7 @@ function startGame() {
     turtle.gravity = 0.08;
     oceanBackground = new Element(1800, windowHeight, './images/ocean_2.png', 0, 0, "background"); // game background
     displayScore = new Element("30px", "Consolas", "black", 10, 40, "text");
-    generateRandomTrivia()
+    generateQuestion();
     gameCanvas.start(); // appends game canvas to the body
 }
 
@@ -154,7 +154,7 @@ let gameCanvas = {
         clearInterval(this.interval);
     },
     continue : function(){
-        generateRandomTrivia()
+        generateQuestion()
         this.interval = setInterval(updateGameArea, 15);
 
     }
