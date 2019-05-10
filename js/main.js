@@ -27,7 +27,24 @@ let questionObj = {
         "recycled": false,
         "landfills": false,
     }
+// Pull random question from database
+function getQuestion() {
+    let num = Math.ceil(Math.random() * 15);
+    let dbRef = firebase.database().ref('/questions/' + 'question' + num);
+    dbRef.once('value').then(function(snapshot){
+        let question = snapshot.val();
+        console.log(question);
+    });
+}
 
+// function resetTrivia(){
+//     question.innerHTML = ""; // index can be the length of how many questions to randomize
+//     answer1.innerHTML = "";
+//     answer2.innerHTML = "";
+//     answer3.innerHTML = "";
+//     answer3.innerHTML = "";
+//     answer4.innerHTML = "";
+// }
 };
 
 let questionKey;
