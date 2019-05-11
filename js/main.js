@@ -108,10 +108,10 @@ function countDown(intervalSec){
     let x = setInterval(function(){
         barValue = (seconds-1)*20;
         document.getElementById('time').style.width = String(barValue) + "%";
-        document.getElementById('time').innerHTML = seconds-1 + "seconds left";
+        // document.getElementById('time').innerHTML = seconds-1 + "seconds left";
         if (seconds === 0){
             document.getElementById('time').style.width = String(100) + "%";
-            document.getElementById('time').innerHTML = 5 + "seconds left";
+            // document.getElementById('time').innerHTML = 5 + "seconds left";
             clearInterval(x);
 
         }else {
