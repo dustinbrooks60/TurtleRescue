@@ -12,7 +12,7 @@ let multiplier = 1;
 let topHat;
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
-let seconds;
+let milliseconds;
 let timeLeft;
 let userChoice;
 let randomQuestion;
@@ -29,8 +29,8 @@ let answerObject;
 let answerArray;
 let copyAnswerArray;
 
-// Pull random questionDisplay from database
-function getQuestion() {
+// Pull random question from database
+function pullQuestion() {
     let num = Math.ceil(Math.random() * 15);
     let dbRef = firebase.database().ref('/questions/' + 'question' + num);
     dbRef.once('value').then(function(snapshot){
@@ -39,28 +39,31 @@ function getQuestion() {
     return randomQuestion
 }
 
+// Identifies elements of question object pulled from database
 function generateQuestion(){
-    getQuestion();
-    question = Object.keys(randomQuestion); // question length 1 array of questionDisplay type:string
+    pullQuestion();
+    question = Object.keys(randomQuestion); // question length 1 array of question type:string
     answerObject = randomQuestion[question];
     answerArray = Object.keys(answerObject); // answerArray contain answers of type string
 }
 
+// Return the correct answer
 function getAnswer(answerObj, answerArray){
-    // gets the correct answer
     for(let i = 0; i < answerArray.length; i++){
-        let find_answer = answerObj[answerArray[i]];
-        if (find_answer === true){
+        let answer = answerObj[answerArray[i]];
+        if (answer === true){
             return answerArray[i]
         }
     }
 }
+
+// Shuffle trivia answers for display
 function shuffle(array){
-    // randomly sort trivia answers
     array.sort(() => Math.random() - 0.5);
 }
+
+// Display trivia question and shuffled answers
 function displayTrivia(){
-    // display trivia for user to answer
     copyAnswerArray = answerArray.slice(0); // create a copy of the questions
     shuffle(copyAnswerArray); // shuffle the answers
     questionDisplay.innerHTML = question[0]; // index can be the length of how many questions to randomize
@@ -68,14 +71,12 @@ function displayTrivia(){
     answer2.innerHTML = copyAnswerArray[1];
     answer3.innerHTML = copyAnswerArray[2];
     answer4.innerHTML = copyAnswerArray[3];
-
     isCorrectAnswer();
-
 }
 
+// Return true if user's choice is correct
 function isCorrectAnswer(){
-    // should return boolean if user chooses a correct answer
-    checkUserChoice(); // check for correct user selection
+    getUserChoice(); // check for correct user selection
     setTimeout(function(){
         if (userChoice === getAnswer(answerObject, copyAnswerArray)){
             console.log("correct answer!") // do this if user choice is correct
@@ -86,39 +87,37 @@ function isCorrectAnswer(){
 
 
 }
-// get the innerHTML value and assign to userChoice to check if answer is correct
-function checkUserChoice(){
+// Get the innerHTML value of button clicked and assign to userChoice
+function getUserChoice(){
     answer1.onclick = function(){userChoice = answer1.innerHTML};
     answer2.onclick = function(){userChoice = answer2.innerHTML};
     answer3.onclick = function(){userChoice = answer3.innerHTML};
     answer4.onclick = function(){userChoice = answer4.innerHTML};
-
-    return userChoice
+    return userChoice;
 }
 
-function resetTrivia(){
+// Clear trivia question and answers
+function clearTrivia(){
+    document.getElementById('time').style.width = String(100) + "%";
     questionDisplay.innerHTML = ""; // index can be the length of how many questions to randomize
     answer1.innerHTML = "";
     answer2.innerHTML = "";
     answer3.innerHTML = "";
     answer3.innerHTML = "";
 }
-function countDown(intervalSec){
-    // create a countdown for user with a progress bar.
-    seconds = intervalSec;
-    let x = setInterval(function(){
-        timeLeft = (seconds-1)*20;
-        document.getElementById('time').style.width = String(timeLeft) + "%";
-        // document.getElementById('time').innerHTML = seconds-1 + "seconds left";
-        if (seconds === 0){
-            document.getElementById('time').style.width = String(100) + "%";
-            // document.getElementById('time').innerHTML = 5 + "seconds left";
-            clearInterval(x);
 
+// Create a countdown for user with a progress bar.
+function countDown(intervalSec){
+    let eachInterval = intervalSec * 10;
+    let percentage = 100;
+    let timeBarInterval = setInterval(function(){
+        document.getElementById('time').style.width = String(percentage) + "%";
+        if (percentage === 0){
+            clearInterval(timeBarInterval);
         }else {
-            seconds -= 1;
+            percentage -= 1;
         }
-    }, 1000)
+    }, eachInterval)
 }
 function startGame() {
     score = 0;
@@ -143,7 +142,7 @@ let gameCanvas = {
     canvas : document.createElement("canvas"),
     // Sets game canvas dimensions and appends it to the body
     start : function() {
-        getQuestion();
+        pullQuestion();
         this.canvas.width = windowWidth;
         this.canvas.height = windowHeight;
         this.context = this.canvas.getContext("2d");
@@ -161,7 +160,7 @@ let gameCanvas = {
         clearInterval(this.interval);
     },
     continue : function(){
-        getQuestion();
+        pullQuestion();
         this.interval = setInterval(updateGameArea, 15);
 
     }
@@ -350,17 +349,17 @@ function updateGameArea() {
         gameCanvas.stop();
         trivia.style = "display: flex; z-index: 10";
         displayTrivia();
-        countDown(5);
+        countDown(10);
         setTimeout(function(){
-            seconds = 5;
+            milliseconds = 5;
             trivia.style.display = "none";
-            resetTrivia();
+            clearTrivia();
             garbageClump = false;
             clearNearbyEnemies()
-        }, 6000);
+        }, 11000);
         setTimeout(function() {
             gameCanvas.continue();
-        }, 6001);
+        }, 11001);
         multiplier ++;
 
 
