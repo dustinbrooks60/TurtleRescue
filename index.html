@@ -4,41 +4,28 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Shell Shocked</title>
-    <!--Link bootstrap 3 and jquery    -->
+
+    <!-- Link to external JS files    -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- Firebase  -->
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyAfyxJ1IN7AtVGyRCsQHzA-jxUtdILUPTs",
-            authDomain: "shellshocked2930.firebaseapp.com",
-            databaseURL: "https://shellshocked2930.firebaseio.com",
-            projectId: "shellshocked2930",
-            storageBucket: "shellshocked2930.appspot.com",
-            messagingSenderId: "24641943764",
-            appId: "1:24641943764:web:53176a886dc069ce"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
+    <script src="js/firebase_api.js"></script>
 
 
+    <!-- CSS files    -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/border.css">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase.js"></script>
-    <script src="js/setup_firebase.js"></script>
 
 </head>
 
 <body ontouchstart='clickManager(-99)'>
 
+<!-- Turtle Logo -->
 <div id="start" class='container animate-zoom'>
     <div class="thing animate-bottom2">
         <div class="left-front"></div>
@@ -49,11 +36,12 @@
     </div>
     <h1>Shell Shocked</h1>
     <a class="" onclick="startGame()">Start</a>
-    <a>Leaderboard</a>
+    <a>Leader Board</a>
     <a>About Us</a>
     <a href="login.html">Login</a>
 </div>
 
+<!-- Turtle Logo -->
 <div id="restart" class="container">
     <div class="thing animate-bottom2">
         <div class="left-front"></div>
@@ -69,13 +57,6 @@
 
 
 <div id="trivia" class="container">
-    <div class="thing animate-bottom2">
-        <div class="left-front"></div>
-        <div class="right-front"></div>
-        <div class="front"></div>
-        <div class="left-back"></div>
-        <div class="right-back"></div>
-    </div>
     <h2 class="animate-top">Trivia Time!</h2>
     <h4 class="animate-zoom" id="question">question here?</h4>
     <a id="a1" class="animate-bottom">Answer 1</a>
