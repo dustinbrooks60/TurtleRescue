@@ -1,3 +1,4 @@
+// Initialize variables
 let ctx;
 let turtle;
 let oceanBackground;
@@ -12,36 +13,36 @@ let topHat;
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 let seconds;
-let barValue;
+let timeLeft;
 let userChoice;
-let dbQuestion;
+let randomQuestion;
 
-let question = document.getElementById('question');
+// Trivia display
+let questionDisplay = document.getElementById('question');
 let answer1 = document.getElementById('a1');
 let answer2 = document.getElementById('a2');
 let answer3 = document.getElementById('a3');
 let answer4 = document.getElementById('a4');
 
-let questionKey;
+let question;
 let answerObject;
 let answerArray;
-
 let copyAnswerArray;
 
-// Pull random question from database
+// Pull random questionDisplay from database
 function getQuestion() {
     let num = Math.ceil(Math.random() * 15);
     let dbRef = firebase.database().ref('/questions/' + 'question' + num);
     dbRef.once('value').then(function(snapshot){
-        dbQuestion = snapshot.val();
+        randomQuestion = snapshot.val();
     });
-    return dbQuestion
+    return randomQuestion
 }
 
 function generateQuestion(){
     getQuestion();
-    questionKey = Object.keys(dbQuestion); // questionKey length 1 array of question type:string
-    answerObject = dbQuestion[questionKey];
+    question = Object.keys(randomQuestion); // question length 1 array of questionDisplay type:string
+    answerObject = randomQuestion[question];
     answerArray = Object.keys(answerObject); // answerArray contain answers of type string
 }
 
@@ -62,7 +63,7 @@ function displayTrivia(){
     // display trivia for user to answer
     copyAnswerArray = answerArray.slice(0); // create a copy of the questions
     shuffle(copyAnswerArray); // shuffle the answers
-    question.innerHTML = questionKey[0]; // index can be the length of how many questions to randomize
+    questionDisplay.innerHTML = question[0]; // index can be the length of how many questions to randomize
     answer1.innerHTML = copyAnswerArray[0];
     answer2.innerHTML = copyAnswerArray[1];
     answer3.innerHTML = copyAnswerArray[2];
@@ -96,7 +97,7 @@ function checkUserChoice(){
 }
 
 function resetTrivia(){
-    question.innerHTML = ""; // index can be the length of how many questions to randomize
+    questionDisplay.innerHTML = ""; // index can be the length of how many questions to randomize
     answer1.innerHTML = "";
     answer2.innerHTML = "";
     answer3.innerHTML = "";
@@ -106,8 +107,8 @@ function countDown(intervalSec){
     // create a countdown for user with a progress bar.
     seconds = intervalSec;
     let x = setInterval(function(){
-        barValue = (seconds-1)*20;
-        document.getElementById('time').style.width = String(barValue) + "%";
+        timeLeft = (seconds-1)*20;
+        document.getElementById('time').style.width = String(timeLeft) + "%";
         // document.getElementById('time').innerHTML = seconds-1 + "seconds left";
         if (seconds === 0){
             document.getElementById('time').style.width = String(100) + "%";
