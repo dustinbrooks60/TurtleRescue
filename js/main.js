@@ -15,6 +15,7 @@ let windowHeight = window.innerHeight;
 
 function startGame() {
     score = 0;
+    multiplier = 1;
     enemies = [];
     garbageArr = [];
     topHat = false;
@@ -195,6 +196,7 @@ function updateGameArea() {
     for (let i = 0; i < enemies.length; i++) {
         if (turtle.crashWith(enemies[i])) {
             gameCanvas.stop();
+            scoreToDB();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("scoredp").innerHTML = "Score: " + score;
         }
@@ -204,8 +206,6 @@ function updateGameArea() {
         if (turtle.crashWith(garbageArr[i])) {
             garbageArr.splice(i, 1);
             score += multiplier;
-            // myScoreRoot.set(scoreJSONobj);
-            // myScore.innerHTML = scoreDB + ' (' + userid + ')';
         }
     }
     // Check if turtle has collided with top hat
