@@ -10,8 +10,6 @@ let displayMultiplier;
 let score;
 let multiplier;
 let topHat;
-let soundID_Music = "Music";
-let soundID_Bubble = "Bubble";
 
 // Create main elements for game
 function startGame() {
@@ -23,7 +21,6 @@ function startGame() {
     displayMultiplier = new Element("20px", "Consolas", "black", 10, 60, "text");
     pullQuestion();
     gameCanvas.start(); // appends game canvas to the body
-    playSound_Music();
 }
 
 // Reset game elements for a new round of game play
@@ -65,20 +62,6 @@ let gameCanvas = {
 
     }
 };
-
-
-function loadSound () {
-    createjs.Sound.registerSound("sounds/aqualounge.mp3", soundID_Music);
-    createjs.Sound.registerSound("sounds/bubble.mp3", soundID_Bubble);
-}
-
-function playSound_Music () {
-    createjs.Sound.play(soundID_Music);
-}
-
-function playSound_Bubble () {
-    createjs.Sound.play(soundID_Bubble);
-}
 
 
 // Accelerates turtle upon screen touch
@@ -151,6 +134,7 @@ function checkCollision() {
     for (let i = 0; i < enemies.length; i++) {
         // Check if turtle has collided with enemy
         if (turtle.collidesWith(enemies[i])) {
+            playSound_Oof();
             gameCanvas.stop();
             scoreToDB();
             document.getElementById('restart').style = "display: flex; z-index: 10";
