@@ -46,7 +46,7 @@ let gameCanvas = {
         this.context = this.canvas.getContext("2d");
         document.body.appendChild(this.canvas);
         this.frameNo = 0;
-        this.interval = setInterval(updateGameArea, 15); // clears and redraws game canvas every 15ms
+        this.interval = setInterval(updateGameCanvas, 15); // clears and redraws game canvas every 15ms
     },
     // Clears the contents of the game canvas
     clear : function() {
@@ -58,7 +58,7 @@ let gameCanvas = {
     },
     continue : function(){
         pullQuestion(); // pull new question after round of trivia
-        this.interval = setInterval(updateGameArea, 15);
+        this.interval = setInterval(updateGameCanvas, 15);
 
     }
 };
@@ -189,7 +189,7 @@ function clearNearbyEnemies() {
 }
 
 // Redraws the game canvas and all elements in it
-function updateGameArea() {
+function updateGameCanvas() {
     checkCollision();
     gameCanvas.clear();
     gameCanvas.frameNo += 1;
@@ -197,7 +197,14 @@ function updateGameArea() {
     oceanBackground.updatePosition();
     oceanBackground.draw();
     addObjects();
+    drawElements();
+    displayScore.text = "Garbage Collected:" + score;
+    displayMultiplier.text = "Multiplier: x" + multiplier;
+    displayScore.draw();
+    displayMultiplier.draw();
+}
 
+function drawElements() {
     // Updates enemy positions and draws them on the game canvas
     for (let i = 0; i < enemies.length; i++) {
         enemies[i].x += -1;
@@ -218,10 +225,6 @@ function updateGameArea() {
         garbageClump.x += -1;
         garbageClump.draw();
     }
-    displayScore.text = "Garbage Collected:" + score;
-    displayMultiplier.text = "Multiplier: x" + multiplier;
-    displayScore.draw();
-    displayMultiplier.draw();
     turtle.updatePosition();
     turtle.draw();
 }
