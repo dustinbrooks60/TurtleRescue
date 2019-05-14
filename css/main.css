@@ -6,6 +6,7 @@ html, body {
     position: relative;
     background-image: url("./images/ocean_2.png");
     background-size: cover;
+
 }
 canvas {
     width:100%;
@@ -37,7 +38,7 @@ h1, h2, h3, h4, h5, h6, button, a {
     outline: 10px solid transparent !important; 
 }
 
-.container {
+.containers {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -73,82 +74,6 @@ h1, h2, h3, h4, h5, h6, button, a {
     /*font-size: 1em ;*/
     transition-property: width;
     transition-duration: 5s;
-}
-
-.animate-top{position:relative;animation:animatetop 0.4s}@keyframes animatetop{from{top:-300px;opacity:0} to{top:0;opacity:1}}
-.animate-left{position:relative;animation:animateleft 0.4s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
-.animate-right{position:relative;animation:animateright 0.4s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
-.animate-bottom{position:relative;animation:animatebottom 0.4s}@keyframes animatebottom{from{bottom:-300px;opacity:0} to{bottom:0;opacity:1}}
-.animate-zoom {animation:animatezoom 0.6s}@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}
-.animate-bottom2{position:relative;animation:animatebottom 2s}@keyframes animatebottom{from{bottom:-8px;opacity:0} to{bottom:0;opacity:1}}
-.spin{animation:spin 4s infinite linear}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}
-.thing {
-    border: 2px solid black;
-    width: 20px;
-    height: 20px;
-    transform: rotate(45deg);
-    border-radius: 2px;
-    background-image: url(https://i1.wp.com/www.thegamegal.com/wp-content/uploads/2018/08/ultimate-tic-tac-toe12-01.png?resize=340%2C340&ssl=1);
-    background-size: cover;
-}
-.front{
-    border: 2px solid black;
-    width: 10px;
-    height: 10px;
-    transform: translate(-10px,-30px);
-    border-radius: 2px;
-}
-.left-front {
-    width: 10px;
-    height: 10px;
-    border-left: 3px solid black;
-    border-top: 3px solid black;
-    transform: translate(10px, -10px);
-    border-radius: 40%;
-}
-.right-front {
-    width: 10px;
-    height: 10px;
-    border-left: 3px solid black;
-    border-top: 3px solid black;
-    transform: translate(-10px, 0px);
-    border-radius: 40%;
-}
-.left-back {
-    width: 10px;
-    height: 10px;
-    border-left: 3px solid black;
-    border-bottom: 3px solid black;
-    transform: translate(5px, -12px);
-    border-radius: 40%;
-}
-.right-back {
-    width: 10px;
-    height: 10px;
-    border-right: 3px solid black;
-    border-top: 3px solid black;
-    transform: translate(18px, -36px);
-    border-radius: 40%;
-}
-
-
-
-
-
-.out{
-    background-color: transparent;
-    height: 100%;
-    width: 100%;
-    position:absolute;
-}
-.inner{
-    background-color: red;
-    height: 50%;
-    width: 50%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 #question {
