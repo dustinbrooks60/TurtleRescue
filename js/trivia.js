@@ -100,6 +100,7 @@ function clearTrivia(){
         let answers = $(".answers");
         answers.css({"background-color": "initial", "opacity": 1}); // reset background color for answers
         answers.html("")
+        answers.css({"visibility": "visible"})
     })
 }
 
@@ -125,16 +126,15 @@ function countDown(intervalSec){
         }
     }, eachInterval)
 }
-
 function displayAnswer(){
     let answerArray = document.getElementsByClassName("answers");
     for (let i = 0; i < answerArray.length; i++){
-        let answers = answerArray[i].innerHTML;
-        if (answers === getAnswer(answerObject, copyAnswerArray)) {
-            answerArray[i].style.backgroundColor = "green";
+        let answer = answerArray[i].innerHTML;
+        if (answer === getAnswer(answerObject, copyAnswerArray)) {
+            answerArray[i].style.backgroundColor = "#2EB518";
         }
-        if (answers === userChoice && answers !== getAnswer(answerObject, copyAnswerArray)) {
-            answerArray[i].style.backgroundColor = "#119EDC"
+        if (answer !== userChoice && answer !== getAnswer(answerObject, copyAnswerArray)) {
+            answerArray[i].style.visibility = "hidden";
         }
     }
 }
