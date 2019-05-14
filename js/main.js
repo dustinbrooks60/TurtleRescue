@@ -57,7 +57,7 @@ let gameCanvas = {
         clearInterval(this.interval);
     },
     continue : function(){
-        pullQuestion(); // pull new question after round of Trivia
+        pullQuestion(); // pull new question after round of trivia
         this.interval = setInterval(updateGameArea, 15);
 
     }
@@ -81,7 +81,7 @@ function Element(width, height, src, x, y, type, num_frames) {
     this.num_frames = num_frames; // number of frames in the sprite image
     this.sprite_frame = 0; // the particular frame number of the sprite image
     // redraws element on game canvas
-    this.update = function() {
+    this.draw = function() {
         ctx = gameCanvas.context;
         if (type === "text") {
             ctx.font = this.width + " " + this.height;
@@ -112,7 +112,7 @@ function Element(width, height, src, x, y, type, num_frames) {
         }
     };
     // Update the position of element
-    this.newPos = function() {
+    this.updatePosition = function() {
         this.x += this.speedX;
         this.y += this.speedY + this.gravitySpeed;
         if (type === 'image' || type === "sprite") {
@@ -178,7 +178,7 @@ function everyInterval(n) {
     return (gameCanvas.frameNo / n) % 1 === 0;
 }
 
-// Clear nearby enemies after Trivia
+// Clear nearby enemies after trivia
 function clearNearbyEnemies() {
     let enemiesCopy = enemies.slice(0);
     for (let i = enemiesCopy.length - 1; i > -1; i--) {
@@ -190,6 +190,43 @@ function clearNearbyEnemies() {
 
 // Redraws the game canvas and all elements in it
 function updateGameArea() {
+    checkCollision();
+    gameCanvas.clear();
+    gameCanvas.frameNo += 1;
+    oceanBackground.speedX = -1;
+    oceanBackground.updatePosition();
+    oceanBackground.draw();
+    addObjects();
+
+    // Updates enemy positions and draws them on the game canvas
+    for (let i = 0; i < enemies.length; i++) {
+        enemies[i].x += -1;
+        enemies[i].draw();
+    }
+    // Updates garbage positions and draws them on the game canvas
+    for (let i = 0; i < garbageArr.length; i++) {
+        garbageArr[i].x += -1;
+        garbageArr[i].draw();
+    }
+    // Updates hat position and draws it on the game canvas
+    if (topHat) {
+        topHat.x += -1;
+        topHat.draw();
+    }
+    // Updates garbage clump position and draws it on the game canvas
+    if (garbageClump) {
+        garbageClump.x += -1;
+        garbageClump.draw();
+    }
+    displayScore.text = "Garbage Collected:" + score;
+    displayMultiplier.text = "Multiplier: x" + multiplier;
+    displayScore.draw();
+    displayMultiplier.draw();
+    turtle.updatePosition();
+    turtle.draw();
+}
+
+function checkCollision() {
     for (let i = 0; i < enemies.length; i++) {
         // Check if turtle has collided with enemy
         if (turtle.collidesWith(enemies[i])) {
@@ -220,13 +257,9 @@ function updateGameArea() {
         startTrivia();
 
     }
+}
 
-    gameCanvas.clear();
-    gameCanvas.frameNo += 1;
-    oceanBackground.speedX = -1;
-    oceanBackground.newPos();
-    oceanBackground.update();
-
+function addObjects() {
     // adds enemy sprite to the game canvas
     if (gameCanvas.frameNo === 1 || everyInterval(350)) {
         let enemyImages = ['./images/jelly-sprite2.png', './images/puffer-sprite5.png']; // enemy sprites
@@ -265,31 +298,4 @@ function updateGameArea() {
         let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
         garbageClump = new Element(180, 180, './images/clump.png', x, garbageY, "image")
     }
-
-    // Updates enemy positions and draws them on the game canvas
-    for (let i = 0; i < enemies.length; i++) {
-        enemies[i].x += -1;
-        enemies[i].update();
-    }
-    // Updates garbage positions and draws them on the game canvas
-    for (let i = 0; i < garbageArr.length; i++) {
-        garbageArr[i].x += -1;
-        garbageArr[i].update();
-    }
-    // Updates hat position and draws it on the game canvas
-    if (topHat) {
-        topHat.x += -1;
-        topHat.update();
-    }
-    // Updates garbage clump position and draws it on the game canvas
-    if (garbageClump) {
-        garbageClump.x += -1;
-        garbageClump.update();
-    }
-    displayScore.text = "Garbage Collected:" + score;
-    displayMultiplier.text = "Multiplier: x" + multiplier;
-    displayScore.update();
-    displayMultiplier.update();
-    turtle.newPos();
-    turtle.update();
 }

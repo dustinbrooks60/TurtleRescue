@@ -68,7 +68,7 @@
         this.sprite = 0;
 
         // this.image.onload = this.update;
-        this.update = function() {
+        this.draw = function() {
             let ctx = gameCanvas.context;
             console.log(turtle.x, turtle.y);
 
@@ -105,7 +105,7 @@
             }
 
         };
-        this.newPos = function() {
+        this.updatePosition = function() {
             if (this.type === 'image' || this.type === 'sprite') {
                 this.gravitySpeed += this.gravity;
                 console.log('grav'+ this.gravity);
@@ -188,15 +188,15 @@
             if (turtle.collidesWith(garbage[i])) {
                 score += 1;
                 console.log('score is' + score);
-                garbage[i].update();
+                garbage[i].draw();
                 garbage.splice(i);
             }
         }
         gameCanvas.clear();
         gameCanvas.frameNo += 1;
         oceanBackground.speedX = -1;
-        oceanBackground.newPos();
-        oceanBackground.update();
+        oceanBackground.updatePosition();
+        oceanBackground.draw();
 
         if (gameCanvas.frameNo === 1 || everyInterval(350)) {
             let enemyImages = ['images/jelly-sprite.png'];
@@ -214,16 +214,16 @@
         }
         for (let i = 0; i < garbage.length; i++){
             garbage[i].x += -1;
-            garbage[i].update()
+            garbage[i].draw()
         }
         for (let i = 0; i < enemies.length; i++) {
             enemies[i].x += -1;
             // enemies[i].onload = updateGameArea;
-            enemies[i].update();
+            enemies[i].draw();
         }
 
-        turtle.newPos();
-        turtle.update();
+        turtle.updatePosition();
+        turtle.draw();
 
     }
 
