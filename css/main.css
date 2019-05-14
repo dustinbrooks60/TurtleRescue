@@ -38,7 +38,7 @@ canvas {
     border-bottom: 3px solid #062768;
     border-top: 3px solid #062768;
     color: #062768;
-    outline: 10px solid transparent !important;
+    outline: 10px solid transparent !important; 
 }
 
 .containers {
