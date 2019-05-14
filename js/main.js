@@ -218,14 +218,14 @@ function Element(width, height, src, x, y, type, num_frames) {
             }
         }
     };
-    // Update the position of all the objects in the canvas
+    // Update the position of element
     this.newPos = function() {
         this.x += this.speedX;
         this.y += this.speedY + this.gravitySpeed;
         if (type === 'image' || type === "sprite") {
             this.gravitySpeed += this.gravity;
             if (this.gravitySpeed <-3) { // caps gravity at -3
-                this.gravitySpeed = -3
+                this.gravitySpeed = -3;
             }
             this.hitBottom();
             this.hitTop();
@@ -236,7 +236,7 @@ function Element(width, height, src, x, y, type, num_frames) {
             }
         }
     };
-    // Detects if turtle hits the ocean floor
+    // Prevents element from falling past ocean floor
     this.hitBottom = function() {
         let oceanFloor = gameCanvas.canvas.height - this.height + 425;
         if (this.y > oceanFloor) {
@@ -245,7 +245,7 @@ function Element(width, height, src, x, y, type, num_frames) {
         }
         accelerate(0.1);
     };
-    // Detects if the turtle hits the ocean surface
+    // Prevents element from surpassing ocean surface
     this.hitTop = function() {
         let oceanSurface = 80;
         if (this.y < oceanSurface){
@@ -254,27 +254,26 @@ function Element(width, height, src, x, y, type, num_frames) {
         }
     };
     // Sets the hit boxes of turtle, enemies, and garbage and detects if they collide
-    this.crashWith = function(otherobj) {
-        let turtleLeft = this.x;
-        let turtleRight = this.x + (this.hitbox_width);
-        let turtleTop = this.y;
-        let turtleBottom = this.y + (this.hitbox_height);
-        let enemyLeft = otherobj.x + 85;
-        let enemyRight = otherobj.x + (otherobj.hitbox_width) - 85;
-        let enemyTop = otherobj.y + 85;
-        let enemyBottom = otherobj.y + (otherobj.hitbox_height) - 75;
-        let crash = true;
-        if ((turtleBottom < enemyTop) || (turtleTop > enemyBottom) || (turtleRight < enemyLeft) || (turtleLeft > enemyRight)) {
-            crash = false;
+    this.collidesWith = function(otherObject) {
+        let myLeft = this.x;
+        let myRight = this.x + this.hitbox_width;
+        let myTop = this.y;
+        let myBottom = this.y + this.hitbox_height;
+        let objectLeft = otherObject.x + 85;
+        let objectRight = otherObject.x + (otherObject.hitbox_width) - 85;
+        let objectTop = otherObject.y + 85;
+        let objectBottom = otherObject.y + (otherObject.hitbox_height) - 75;
+        let collision = true;
+        if ((myBottom < objectTop) || (myTop > objectBottom) || (myRight < objectLeft) || (myLeft > objectRight)) {
+            collision = false;
         }
-        return crash; // Returns boolean status of a collision between a turtle and other object
+        return collision; // Returns boolean status of a collision between a turtle and other object
     };
 }
 
 // Accelerates turtle upon screen touch
 function clickManager(n){
     accelerate(n);
-    console.log('clicked');
 }
 
 function accelerate(n){
@@ -306,7 +305,7 @@ function updateGameArea() {
 
     // Check if turtle has collided with enemy
     for (let i = 0; i < enemies.length; i++) {
-        if (turtle.crashWith(enemies[i])) {
+        if (turtle.collidesWith(enemies[i])) {
             gameCanvas.stop();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
@@ -314,18 +313,18 @@ function updateGameArea() {
     }
     // Check if turtle has collided with garbage
     for (let i = 0; i < garbageArr.length; i++) {
-        if (turtle.crashWith(garbageArr[i])) {
+        if (turtle.collidesWith(garbageArr[i])) {
             garbageArr.splice(i, 1);
             score += multiplier;
         }
     }
     // Check if turtle has collided with top hat
-    if (topHat && turtle.crashWith(topHat)) {
+    if (topHat && turtle.collidesWith(topHat)) {
         topHat = false;
         turtle.image.src = './images/dapper-sprite2.png';
     }
     // Check if turtle has collided with large garbage clump
-    if (garbageClump && turtle.crashWith(garbageClump)) {
+    if (garbageClump && turtle.collidesWith(garbageClump)) {
         garbageClump = false;
         let trivia = document.getElementById('trivia');
         generateQuestion();

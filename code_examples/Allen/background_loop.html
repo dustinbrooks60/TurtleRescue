@@ -147,7 +147,7 @@
                 console.log('hi top')
             }
         };
-        this.crashWith = function(otherobj) {
+        this.collidesWith = function(otherobj) {
             let turtleLeft = this.x;
             let turtleRight = this.x + (this.width);
             let turtleTop = this.y;
@@ -180,12 +180,12 @@
 
     function updateGameArea() {
         for (i = 0; i < enemies.length; i += 1) {
-            if (turtle.crashWith(enemies[i])) {
+            if (turtle.collidesWith(enemies[i])) {
             }
         }
 
         for (i = 0; i < garbage.length; i += 1){
-            if (turtle.crashWith(garbage[i])) {
+            if (turtle.collidesWith(garbage[i])) {
                 score += 1;
                 console.log('score is' + score);
                 garbage[i].update();
