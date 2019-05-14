@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
 
     <!-- Firebase  -->
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
@@ -24,10 +25,12 @@
 
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-
 </head>
 
-<body ontouchstart='clickManager(-99)'>
+<!--<audio src="sounds/aqualounge.mp3" controls autoplay loop hidden>-->
+<!--</audio>-->
+
+<body onclick='clickManager(-99)' onload="loadSound();">
 
 <!-- Turtle Logo -->
 <div id="start" class='containers animate-zoom'>
