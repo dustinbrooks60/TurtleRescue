@@ -170,58 +170,42 @@ let gameCanvas = {
     }
 };
 
-function Element(width, height, color, x, y, type, num_frames) {
-    this.type = type;
+function Element(width, height, src, x, y, type, num_frames) {
     if (type === "image" || type === "background" || type === "sprite") {
         this.image = new Image();
-        this.image.src = color;
+        this.image.src = src;
     }
-    this.actual_width = width;
-    this.actual_height = height;
+    this.hitbox_width = width;
+    this.hitbox_height = height;
     this.width = width;
     this.height = height;
     this.speedX = 0;
     this.speedY = 0;
     this.gravity = 0;
     this.gravitySpeed = 0;
-    this.x = x;
-    this.y = y;
+    this.x = x; // x-axis position on canvas
+    this.y = y; // y-axis position on canvas
     this.num_frames = num_frames; // number of frames in the sprite image
     this.sprite_frame = 0; // the particular frame number of the sprite image
-    // redraws the all the game canvas, as well as all the elements in it
+    // redraws element on game canvas
     this.update = function() {
         ctx = gameCanvas.context;
         if (type === "text") {
             ctx.font = this.width + " " + this.height;
-            ctx.fillStyle = color;
+            ctx.fillStyle = src;
             ctx.fillText(this.text, this.x, this.y);
         }
         else if (type === "image" || type === "background") {
-            ctx.drawImage(this.image,
-                this.x,
-                this.y,
-                this.width,
-                this.height);
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
             if (type === "background") {
-                ctx.drawImage(this.image,
-                    this.x + this.width,
-                    this.y,
-                    this.width,
-                    this.height);
+                ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
             }
         }
         else if (type === "sprite") {
-            this.actual_width = (this.width / this.num_frames)/4;
-            this.actual_height = this.height /4;
-            ctx.drawImage(this.image,
-                (this.sprite_frame * (this.width / this.num_frames)),
-                0,
-                this.width / this.num_frames,
-                this.height,
-                this.x,
-                this.y,
-                this.actual_width,
-                this.actual_height);
+            this.hitbox_width = (this.width / this.num_frames)/4;
+            this.hitbox_height = this.height /4;
+            ctx.drawImage(this.image, (this.sprite_frame * (this.width / this.num_frames)), 0,
+                this.width / this.num_frames, this.height, this.x, this.y, this.hitbox_width, this.hitbox_height);
 
             // set frame rate of sprite animations
             if (gameCanvas.frameNo % 6 === 0) {
@@ -233,17 +217,12 @@ function Element(width, height, color, x, y, type, num_frames) {
                 }
             }
         }
-        else {
-            // draws a rectangle if sprite image is unavailable
-            ctx.fillStyle = color;
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-        }
     };
     // Update the position of all the objects in the canvas
     this.newPos = function() {
         this.x += this.speedX;
         this.y += this.speedY + this.gravitySpeed;
-        if (this.type === 'image' || this.type === "sprite") {
+        if (type === 'image' || type === "sprite") {
             this.gravitySpeed += this.gravity;
             if (this.gravitySpeed <-3) { // caps gravity at -3
                 this.gravitySpeed = -3
@@ -251,7 +230,7 @@ function Element(width, height, color, x, y, type, num_frames) {
             this.hitBottom();
             this.hitTop();
         }
-        if (this.type === "background") {
+        if (type === "background") {
             if (this.x === -(this.width)) {
                 this.x = 0;
             }
@@ -277,13 +256,13 @@ function Element(width, height, color, x, y, type, num_frames) {
     // Sets the hit boxes of turtle, enemies, and garbage and detects if they collide
     this.crashWith = function(otherobj) {
         let turtleLeft = this.x;
-        let turtleRight = this.x + (this.actual_width);
+        let turtleRight = this.x + (this.hitbox_width);
         let turtleTop = this.y;
-        let turtleBottom = this.y + (this.actual_height);
+        let turtleBottom = this.y + (this.hitbox_height);
         let enemyLeft = otherobj.x + 85;
-        let enemyRight = otherobj.x + (otherobj.actual_width) - 85;
+        let enemyRight = otherobj.x + (otherobj.hitbox_width) - 85;
         let enemyTop = otherobj.y + 85;
-        let enemyBottom = otherobj.y + (otherobj.actual_height) - 75;
+        let enemyBottom = otherobj.y + (otherobj.hitbox_height) - 75;
         let crash = true;
         if ((turtleBottom < enemyTop) || (turtleTop > enemyBottom) || (turtleRight < enemyLeft) || (turtleLeft > enemyRight)) {
             crash = false;
