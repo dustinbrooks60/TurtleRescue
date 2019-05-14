@@ -10,113 +10,6 @@ let displayMultiplier;
 let score;
 let multiplier;
 let topHat;
-let milliseconds;
-let timeLeft;
-let userChoice;
-let randomQuestion;
-
-// Trivia display
-let questionDisplay = document.getElementById('question');
-let answer1 = document.getElementById('a1');
-let answer2 = document.getElementById('a2');
-let answer3 = document.getElementById('a3');
-let answer4 = document.getElementById('a4');
-
-let question;
-let answerObject;
-let answerArray;
-let copyAnswerArray;
-
-// Pull random question from database
-function pullQuestion() {
-    let num = Math.ceil(Math.random() * 15);
-    let dbRef = firebase.database().ref('/questions/' + 'question' + num);
-    dbRef.once('value').then(function(snapshot){
-        randomQuestion = snapshot.val();
-    });
-    return randomQuestion
-}
-
-// Identifies elements of question object pulled from database
-function generateQuestion(){
-    pullQuestion();
-    question = Object.keys(randomQuestion); // question length 1 array of question type:string
-    answerObject = randomQuestion[question];
-    answerArray = Object.keys(answerObject); // answerArray contain answers of type string
-}
-
-// Return the correct answer
-function getAnswer(answerObj, answerArray){
-    for(let i = 0; i < answerArray.length; i++){
-        let answer = answerObj[answerArray[i]];
-        if (answer === true){
-            return answerArray[i]
-        }
-    }
-}
-
-// Shuffle trivia answers for display
-function shuffle(array){
-    array.sort(() => Math.random() - 0.5);
-}
-
-// Display trivia question and shuffled answers
-function displayTrivia(){
-    copyAnswerArray = answerArray.slice(0); // create a copy of the questions
-    shuffle(copyAnswerArray); // shuffle the answers
-    questionDisplay.innerHTML = question[0]; // index can be the length of how many questions to randomize
-    answer1.innerHTML = copyAnswerArray[0];
-    answer2.innerHTML = copyAnswerArray[1];
-    answer3.innerHTML = copyAnswerArray[2];
-    answer4.innerHTML = copyAnswerArray[3];
-    isCorrectAnswer();
-}
-
-// Return true if user's choice is correct
-function isCorrectAnswer(){
-    getUserChoice(); // check for correct user selection
-    setTimeout(function(){
-        if (userChoice === getAnswer(answerObject, copyAnswerArray)){
-            console.log("correct answer!") // do this if user choice is correct
-        } else{
-            console.log("wrong!")
-        }
-    },5000); // timeout determine by countDown interval
-
-
-}
-// Get the innerHTML value of button clicked and assign to userChoice
-function getUserChoice(){
-    answer1.onclick = function(){userChoice = answer1.innerHTML};
-    answer2.onclick = function(){userChoice = answer2.innerHTML};
-    answer3.onclick = function(){userChoice = answer3.innerHTML};
-    answer4.onclick = function(){userChoice = answer4.innerHTML};
-    return userChoice;
-}
-
-// Clear trivia question, answers, and progress bar
-function clearTrivia(){
-    document.getElementById('time').style.width = String(100) + "%";
-    questionDisplay.innerHTML = ""; // index can be the length of how many questions to randomize
-    answer1.innerHTML = "";
-    answer2.innerHTML = "";
-    answer3.innerHTML = "";
-    answer3.innerHTML = "";
-}
-
-// Create a countdown for user with a progress bar.
-function countDown(intervalSec){
-    let eachInterval = intervalSec * 10;
-    let percentage = 100;
-    let timeBarInterval = setInterval(function(){
-        document.getElementById('time').style.width = String(percentage) + "%";
-        if (percentage === 0){
-            clearInterval(timeBarInterval);
-        }else {
-            percentage -= 1;
-        }
-    }, eachInterval)
-}
 
 // Create main elements for game
 function startGame() {
@@ -164,7 +57,7 @@ let gameCanvas = {
         clearInterval(this.interval);
     },
     continue : function(){
-        pullQuestion(); // pull new question after round of trivia
+        pullQuestion(); // pull new question after round of Trivia
         this.interval = setInterval(updateGameArea, 15);
 
     }
@@ -285,7 +178,7 @@ function everyInterval(n) {
     return (gameCanvas.frameNo / n) % 1 === 0;
 }
 
-// Clear nearby enemies after trivia
+// Clear nearby enemies after Trivia
 function clearNearbyEnemies() {
     let enemiesCopy = enemies.slice(0);
     for (let i = enemiesCopy.length - 1; i > -1; i--) {
@@ -298,17 +191,15 @@ function clearNearbyEnemies() {
 // Redraws the game canvas and all elements in it
 function updateGameArea() {
     for (let i = 0; i < enemies.length; i++) {
-        if (enemies[i].x < -100) {
-            enemies.splice(i, 1);
-        }
-    }
-
-    // Check if turtle has collided with enemy
-    for (let i = 0; i < enemies.length; i++) {
+        // Check if turtle has collided with enemy
         if (turtle.collidesWith(enemies[i])) {
             gameCanvas.stop();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
+        }
+        // remove enemy from array once it has gone off the screen
+        if (enemies[i].x < -100) {
+            enemies.splice(i, 1);
         }
     }
     // Check if turtle has collided with garbage
@@ -325,25 +216,8 @@ function updateGameArea() {
     }
     // Check if turtle has collided with large garbage clump
     if (garbageClump && turtle.collidesWith(garbageClump)) {
-        garbageClump = false;
-        let trivia = document.getElementById('trivia');
-        generateQuestion();
         gameCanvas.stop();
-        trivia.style = "display: flex; z-index: 10";
-        displayTrivia();
-        countDown(10);
-        setTimeout(function(){
-            milliseconds = 5;
-            trivia.style.display = "none";
-            clearTrivia();
-            garbageClump = false;
-            clearNearbyEnemies()
-        }, 11000);
-        setTimeout(function() {
-            gameCanvas.continue();
-        }, 11001);
-        multiplier ++;
-
+        startTrivia();
 
     }
 
