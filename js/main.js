@@ -118,6 +118,7 @@ function countDown(intervalSec){
     }, eachInterval)
 }
 
+// Create main elements for game
 function startGame() {
     resetGame();
     turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
@@ -125,9 +126,11 @@ function startGame() {
     oceanBackground = new Element(1800, window.innerHeight, './images/ocean_2.png', 0, 0, "background"); // game background
     displayScore = new Element("20px", "Consolas", "black", 10, 30, "text");
     displayMultiplier = new Element("20px", "Consolas", "black", 10, 60, "text");
+    pullQuestion();
     gameCanvas.start(); // appends game canvas to the body
 }
 
+// Reset game elements for a new round of game play
 function resetGame() {
     score = 0;
     multiplier = 1;
@@ -140,17 +143,15 @@ function resetGame() {
     document.getElementById("trivia").style.display = "none";
 }
 
-// creates the game canvas object
+// Creates the game canvas object
 let gameCanvas = {
     canvas : document.createElement("canvas"),
     // Sets game canvas dimensions and appends it to the body
     start : function() {
-        pullQuestion();
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext("2d");
         document.body.appendChild(this.canvas);
-        // document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 15); // clears and redraws game canvas every 15ms
     },
@@ -158,12 +159,12 @@ let gameCanvas = {
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
-    // Stops updating the game canvas (when character collides with enemy)
+    // Stops updating the game canvas
     stop : function() {
         clearInterval(this.interval);
     },
     continue : function(){
-        pullQuestion();
+        pullQuestion(); // pull new question after round of trivia
         this.interval = setInterval(updateGameArea, 15);
 
     }
