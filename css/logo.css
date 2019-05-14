@@ -1,0 +1,49 @@
+.logo {
+    border: 2px solid black;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    border-radius: 2px;
+    background-image: url(https://i1.wp.com/www.thegamegal.com/wp-content/uploads/2018/08/ultimate-tic-tac-toe12-01.png?resize=340%2C340&ssl=1);
+    background-size: cover;
+}
+.front{
+    border: 2px solid black;
+    width: 10px;
+    height: 10px;
+    transform: translate(-10px,-30px);
+    border-radius: 2px;
+}
+.left-front {
+    width: 10px;
+    height: 10px;
+    border-left: 3px solid black;
+    border-top: 3px solid black;
+    transform: translate(10px, -10px);
+    border-radius: 40%;
+}
+.right-front {
+    width: 10px;
+    height: 10px;
+    border-left: 3px solid black;
+    border-top: 3px solid black;
+    transform: translate(-10px, 0px);
+    border-radius: 40%;
+}
+.left-back {
+    width: 10px;
+    height: 10px;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+    transform: translate(5px, -12px);
+    border-radius: 40%;
+}
+.right-back {
+    width: 10px;
+    height: 10px;
+    border-right: 3px solid black;
+    border-top: 3px solid black;
+    transform: translate(18px, -36px);
+    border-radius: 40%;
+}
+

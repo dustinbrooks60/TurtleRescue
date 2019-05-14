@@ -49,7 +49,7 @@
         this.xCoord = x;
         this.yCoord = y;
 
-        this.update = function(){
+        this.draw = function(){
             let ctx = gameCanvas.context;
             if (this.type === 'image'){
                 ctx.drawImage(this.img, this.xCoord, this.yCoord, this.width, this.height);

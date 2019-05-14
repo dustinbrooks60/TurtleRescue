@@ -62,7 +62,7 @@
         this.gravitySpeed = 0;
         this.x = x;
         this.y = y;
-        this.update = function() {
+        this.draw = function() {
             let ctx = gameCanvas.context;
             if (type === "image" || type === "background") {
                 ctx.drawImage(this.image,
@@ -80,7 +80,7 @@
                 ctx.fillRect(this.x, this.y, this.width, this.height);
             }
         };
-        this.newPos = function() {
+        this.updatePosition = function() {
             this.x += this.speedX;
             this.y += this.speedY + this.gravitySpeed;
             if (this.type === 'image') {
@@ -112,7 +112,7 @@
                 this.gravitySpeed = 0;
             }
         };
-        this.crashWith = function(otherobj) {
+        this.collidesWith = function(otherobj) {
             let turtleLeft = this.x;
             let turtleRight = this.x + (this.width);
             let turtleTop = this.y;
@@ -145,15 +145,15 @@
 
     function updateGameArea() {
         for (i = 0; i < enemies.length; i += 1) {
-            if (turtle.crashWith(enemies[i])) {
+            if (turtle.collidesWith(enemies[i])) {
                 return;
             }
         }
         gameCanvas.clear();
         gameCanvas.frameNo += 1;
         oceanBackground.speedX = -1;
-        oceanBackground.newPos();
-        oceanBackground.update();
+        oceanBackground.updatePosition();
+        oceanBackground.draw();
         if (gameCanvas.frameNo === 1 || everyInterval(350)) {
             let enemyImages = ['./images/newjelly.png', './images/pufferfish.png'];
             let enemy = enemyImages[Math.floor(Math.random() * (enemyImages.length ))];
@@ -164,10 +164,10 @@
         }
         for (let i = 0; i < enemies.length; i++) {
             enemies[i].x += -1;
-            enemies[i].update();
+            enemies[i].draw();
         }
-        turtle.newPos();
-        turtle.update();
+        turtle.updatePosition();
+        turtle.draw();
     }
 
 
