@@ -71,22 +71,21 @@ function displayTrivia(){
     answer2.innerHTML = copyAnswerArray[1];
     answer3.innerHTML = copyAnswerArray[2];
     answer4.innerHTML = copyAnswerArray[3];
-    isCorrectAnswer();
 }
 
 // Return true if user's choice is correct
-function isCorrectAnswer(){
-    getUserChoice(); // check for correct user selection
-    setTimeout(function(){
-        if (userChoice === getAnswer(answerObject, copyAnswerArray)){
-            console.log("correct answer!") // do this if user choice is correct
-        } else{
-            console.log("wrong!")
-        }
-    },5000); // timeout determine by countDown interval
+// function isCorrectAnswer(){
+//     getUserChoice(); // check for correct user selection
+//     setTimeout(function(){
+//         if (userChoice === getAnswer(answerObject, copyAnswerArray)){
+//             console.log("correct answer!") // do this if user choice is correct
+//         } else{
+//             console.log("wrong!")
+//         }
+//     },5000); // timeout determine by countDown interval
+//
+// }
 
-
-}
 // Get the innerHTML value of button clicked and assign to userChoice
 function getUserChoice(){
     answer1.onclick = function(){userChoice = answer1.innerHTML};
@@ -104,7 +103,7 @@ function clearTrivia(){
     $(document).ready(function(){
         let answers = $(".answers");
         answers.css({"background-color": "initial", "opacity": 1}); // reset background color for answers
-        answers.html("")
+        answers.html("");
         answers.css({"visibility": "visible"})
     })
 }
