@@ -59,7 +59,13 @@ function shuffle(array){
 // Display Trivia question and shuffled answers
 function displayTrivia(){
     copyAnswerArray = answerArray.slice(0); // create a copy of the questions
-    shuffle(copyAnswerArray); // shuffle the answers
+    shuffle(copyAnswerArray);// shuffle the answers
+    if (question[0].length > 50){ // Changes font size of question if too big
+        questionDisplay.style.fontSize = 1.25 + 'em';
+    }
+    else {
+        questionDisplay.style.fontSize = 1.5 + 'em';
+    }
     questionDisplay.innerHTML = question[0]; // index can be the length of how many questions to randomize
     answer1.innerHTML = copyAnswerArray[0];
     answer2.innerHTML = copyAnswerArray[1];
@@ -109,11 +115,11 @@ function countDown(intervalSec){
         document.getElementById('time').style.width = String(percentage) + "%";
         if (percentage === 0 || userChoice !== undefined){
             clearInterval(timeBarInterval);
-            trivia.style.display = "none";
-            clearTrivia();
             garbageClump = false;
             clearNearbyEnemies();
             setTimeout( function() {
+                    trivia.style.display = "none";
+                    clearTrivia();
                     gameCanvas.continue();
                 }
             ,5000)
