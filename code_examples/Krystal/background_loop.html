@@ -112,7 +112,7 @@
                 this.gravitySpeed = 0;
             }
         };
-        this.crashWith = function(otherobj) {
+        this.collidesWith = function(otherobj) {
             let turtleLeft = this.x;
             let turtleRight = this.x + (this.width);
             let turtleTop = this.y;
@@ -145,7 +145,7 @@
 
     function updateGameArea() {
         for (i = 0; i < enemies.length; i += 1) {
-            if (turtle.crashWith(enemies[i])) {
+            if (turtle.collidesWith(enemies[i])) {
                 return;
             }
         }
