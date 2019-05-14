@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="css/animation.css">
     <link rel="stylesheet" type="text/css" href="css/logo.css">
     <link rel="stylesheet" type="text/css" href="css/trivia.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Play">
 
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -59,17 +60,17 @@
     <a class="animate-bottom" onclick="startGame()">Restart</a>
 </div>
 
+<div id="trivia" class="containers animate-zoom">
+    <p id='trivia-title'>Trivia Time!</p>
+    <h4 id="question">question here?</h4>
+    <a id="a1">Answer 1</a>
+    <a id="a2">Answer 2</a>
+    <a id="a3">Answer 3</a>
+    <a id="a4">Answer 4</a>
 
-<div id="trivia" class="containers">
-    <h2 class="animate-top">Trivia Time!</h2>
-    <h4 class="animate-zoom" id="question">question here?</h4>
-    <a id="a1" class="animate-bottom answers">Answer 1</a>
-    <a id="a2" class="animate-bottom answers">Answer 2</a>
-    <a id="a3" class="animate-bottom answers">Answer 3</a>
-    <a id="a4" class="animate-bottom answers">Answer 4</a>
-
-    <div class="progress animate-zoom">
-        <div id="time" class="progress-bar progress-bar-striped active" style="width:100%;height:20px;"></div>
+<!--    animate-zoom-->
+    <div class="progress">
+        <div id="time" class="progress-bar active"></div>
     </div>
 </div>
 
