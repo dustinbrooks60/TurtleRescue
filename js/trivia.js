@@ -103,7 +103,7 @@ function clearTrivia(){
     userChoice = undefined;
     $(document).ready(function(){
         let answers = $(".answers");
-        answers.css({"background-color": "initial", "opacity": 1}); // reset background color for answers
+        answers.css({"background-color": "#119EDC"}); // reset background color for answers
         answers.html("");
         answers.css({"visibility": "visible"})
     })
