@@ -325,6 +325,7 @@ function updateGameArea() {
     for (let i = 0; i < enemies.length; i++) {
         if (turtle.crashWith(enemies[i])) {
             gameCanvas.stop();
+            scoreToDB();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
         }
