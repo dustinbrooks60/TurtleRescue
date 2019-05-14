@@ -71,6 +71,7 @@ function displayTrivia(){
     answer2.innerHTML = copyAnswerArray[1];
     answer3.innerHTML = copyAnswerArray[2];
     answer4.innerHTML = copyAnswerArray[3];
+    getUserChoice(); // check for correct user selection
 }
 
 // Return true if user's choice is correct
