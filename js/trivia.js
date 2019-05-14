@@ -77,6 +77,7 @@ function isCorrectAnswer(){
         } else{
             console.log("wrong!")
         }
+
     },5000); // timeout determine by countDown interval
 
 
@@ -94,11 +95,12 @@ function getUserChoice(){
 function clearTrivia(){
     document.getElementById('time').style.width = String(100) + "%";
     questionDisplay.innerHTML = ""; // index can be the length of how many questions to randomize
-    answer1.innerHTML = "";
-    answer2.innerHTML = "";
-    answer3.innerHTML = "";
-    answer3.innerHTML = "";
     userChoice = undefined;
+    $(document).ready(function(){
+        let answers = $(".answers");
+        answers.css({"background-color": "initial", "opacity": 1}); // reset background color for answers
+        answers.html("")
+    })
 }
 
 // Create a countdown for user with a progress bar.
@@ -108,12 +110,13 @@ function countDown(intervalSec){
     let timeBarInterval = setInterval(function(){
         document.getElementById('time').style.width = String(percentage) + "%";
         if (percentage === 0 || userChoice !== undefined){
+            displayAnswer();
             clearInterval(timeBarInterval);
-            trivia.style.display = "none";
-            clearTrivia();
             garbageClump = false;
             clearNearbyEnemies();
             setTimeout( function() {
+                    clearTrivia();
+                    trivia.style.display = "none";
                     gameCanvas.continue();
                 }
             ,5000)
@@ -121,4 +124,17 @@ function countDown(intervalSec){
             percentage -= 1;
         }
     }, eachInterval)
+}
+
+function displayAnswer(){
+    let answerArray = document.getElementsByClassName("answers");
+    for (let i = 0; i < answerArray.length; i++){
+        let answers = answerArray[i].innerHTML;
+        if (answers === getAnswer(answerObject, copyAnswerArray)) {
+            answerArray[i].style.backgroundColor = "green";
+        }
+        if (answers === userChoice && answers !== getAnswer(answerObject, copyAnswerArray)) {
+            answerArray[i].style.backgroundColor = "#119EDC"
+        }
+    }
 }
