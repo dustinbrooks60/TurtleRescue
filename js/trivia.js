@@ -105,6 +105,8 @@ function clearTrivia(){
         answers.css({"background-color": "#119EDC"}); // reset background color for answers
         answers.html("");
         answers.css({"visibility": "visible"});
+        $("#trivia-title").html("Trivia Time!");
+        $("#trivia-title").css({"color": "white"});
     })
 }
 
