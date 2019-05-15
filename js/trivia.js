@@ -8,7 +8,6 @@ function startTrivia() {
     trivia.style = "display: flex; z-index: 10";
     displayTrivia();
     countDown(10);
-    multiplier ++;
 }
 
 // Trivia display
@@ -115,6 +114,9 @@ function countDown(intervalSec){
     let percentage = 100;
     let timeBarInterval = setInterval(function(){
         document.getElementById('time').style.width = String(percentage) + "%";
+        if (userChoice === getAnswer(answerObject, answerArray)) {
+            multiplier ++;
+        }
         if (percentage === 0 || userChoice !== undefined){
             displayAnswer();
             clearInterval(timeBarInterval);
