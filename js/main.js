@@ -6,6 +6,7 @@ let enemies;
 let garbageArr;
 let garbageClump;
 let displayScore;
+let multiplierIcon;
 let displayMultiplier;
 let score;
 let multiplier;
@@ -17,8 +18,9 @@ function startGame() {
     turtle = new GameElement(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
     oceanBackground = new GameElement(1800, window.innerHeight, './images/ocean_2.png', 0, 0, "background"); // game background
-    displayScore = new GameElement("20px", "Consolas", "black", 10, 30, "text");
-    displayMultiplier = new GameElement("20px", "Consolas", "black", 10, 60, "text");
+    displayScore = new GameElement("20px", "Play", "black", 10, 30, "text");
+    multiplierIcon = new GameElement(30, 20, './images/saved_turtle.png', 10, 42, "image");
+    displayMultiplier = new GameElement("20px", "Play", "black", 45, 60, "text");
     pullQuestion();
     gameCanvas.start(); // appends game canvas to the body
 }
@@ -97,8 +99,9 @@ function updateGameCanvas() {
     oceanBackground.draw();
     addObjects();
     drawElements();
-    displayScore.text = "Garbage Collected:" + score;
-    displayMultiplier.text = "Multiplier: x" + multiplier;
+    displayScore.text = "Score : " + score;
+    displayMultiplier.text = "x " + multiplier;
+    multiplierIcon.draw();
     displayScore.draw();
     displayMultiplier.draw();
 }
