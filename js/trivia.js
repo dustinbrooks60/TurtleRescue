@@ -7,7 +7,7 @@ function startTrivia() {
     generateQuestion();
     trivia.style = "display: flex; z-index: 10";
     displayTrivia();
-    countDown(10);
+    triviaHandler(10);
 }
 
 // Trivia display
@@ -108,9 +108,12 @@ function clearTrivia(){
     })
 }
 
+const sleep = (milliseconds)=> {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+};
 // Create a countdown for user with a progress bar.
-function countDown(intervalSec){
-    let eachInterval = intervalSec * 10;
+function triviaHandler(seconds){
+    let eachInterval = seconds * 10;
     let percentage = 100;
     let timeBarInterval = setInterval(function(){
         document.getElementById('time').style.width = String(percentage) + "%";
@@ -122,17 +125,46 @@ function countDown(intervalSec){
             clearInterval(timeBarInterval);
             garbageClump = false;
             clearNearbyEnemies();
-            setTimeout( function() {
+             sleep(3000).then(() => {
                     clearTrivia();
                     trivia.style.display = "none";
-                    gameCanvas.continue();
-                }
-                ,5000)
+                    countDown();
+                })
+
         }else {
             percentage -= 1;
         }
     }, eachInterval)
 }
+
+function countDown() {
+    var i = 4;
+    let count = setInterval(function (){
+        document.getElementById("count" + String(i)).style= "display: none;";
+        i--;
+        document.getElementById("count" + String(i)).style = "display: inline; z-index: 50;";
+
+        console.log(i);
+        if (i === 0){
+            clearInterval(count);
+        }
+    },  1000);
+
+
+
+    // for (let i = 3; i > 0; i--) {
+    //     setTimeout (function() {
+    //         document.getElementById("count" + String(i + 1)).style= "display: none;";
+    //         document.getElementById("count" + String(i)).style = "display: inline; z-index: 50;";
+    //     }, 1000);
+    // }
+    setTimeout(function() {
+        document.getElementById("count0").style= "display: none;";
+        gameCanvas.continue();
+    }, 5000);
+
+}
+
 function displayAnswer(){
     let answerArray = document.getElementsByClassName("answers");
     for (let i = 0; i < answerArray.length; i++){
