@@ -145,7 +145,7 @@ function countDown() {
         if (i === 0){
             clearInterval(count);
         }
-    },  1000);
+    },  750);
 
 
 
@@ -158,7 +158,7 @@ function countDown() {
     setTimeout(function() {
         document.getElementById("count0").style= "display: none;";
         gameCanvas.continue();
-    }, 5000);
+    }, 4000);
 
 }
 
