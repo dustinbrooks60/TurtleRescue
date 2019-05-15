@@ -23,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="css/animation.css">
     <link rel="stylesheet" type="text/css" href="css/logo.css">
     <link rel="stylesheet" type="text/css" href="css/trivia.css">
+    <link rel="stylesheet" type="text/css" href="css/about_us.css">
+
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Play">
 
 
@@ -46,8 +48,8 @@
     <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>
 
     <div class="bottom-btns">
-        <a href=""><img class="smollbtn" src="images/leaderboard1.png" alt=""><p class="labels"></p>Leader board</a>
-        <a href=""><img class="smollbtn" src="images/logoabout.png" alt=""><p class="labels"></p>About</a>
+        <a href="#"><img class="smollbtn" src="images/leaderboard1.png" alt=""><p class="labels"></p>Leader board</a>
+        <a href="#" data-toggle="modal" data-target="#aboutUs" id="aboutUsBtn"><img class="smollbtn" src="images/logoabout.png" alt=""><p class="labels"></p>About</a>
         <a href="#" data-toggle="modal" data-target="#myModal"><img class="smollbtn" src="images/logIn1.png" alt=""><p class="labels"></p>Login</a>
         <a href="#"><img class="smollbtn" src="images/logIn1.png" alt=""><p class="labels"></p>How To</a>
     </div>
@@ -80,6 +82,58 @@
     </div>
 </div>
 
+<div class="modal animate-zoom" id="aboutUs">
+    <div class="modal-dialog" style="top:30%">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body" >
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <br>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'Krystal')">Krystal</button>
+                    <button class="tablinks" onclick="openCity(event, 'Allen')">Allen</button>
+                    <button class="tablinks" onclick="openCity(event, 'Trung')">Trung</button>
+                    <button class="tablinks" onclick="openCity(event, 'Theoren')">Theoren</button>
+                    <button class="tablinks" onclick="openCity(event, 'Dustin')">Dustin</button>
+                    <button class="tablinks" onclick="openCity(event, 'Story')">Our story</button>
+
+                </div>
+
+                <div id="Krystal" class="tabcontent">
+                    <h3>Krystal Wong</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, aperiam blanditiis dolores eius eos eum fuga laudantium odio officiis omnis perspiciatis porro quam quidem quod quos rerum saepe sit sunt.</p>
+                </div>
+
+                <div id="Allen" class="tabcontent">
+                    <h3>Allen Wong</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut deserunt ducimus eos fuga, labore magni, modi molestiae porro quas, sit tempora temporibus veniam vitae. Corporis cupiditate deleniti eaque incidunt laboriosam.</p>
+                </div>
+
+                <div id="Trung" class="tabcontent">
+                    <h3>Trung Bui</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque dolor esse, maxime molestiae nemo vero. Ab accusamus cum delectus dicta earum modi nesciunt perferendis porro possimus quasi! Ab, illo!</p>
+                </div>
+
+                <div id="Theoren" class="tabcontent">
+                    <h3>Theoren Leveille</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda, ducimus esse explicabo fugit inventore ipsum itaque, laudantium necessitatibus odio porro quas, quia ratione repudiandae similique sint sit? Facilis, reprehenderit.</p>
+                </div>
+
+                <div id="Dustin" class="tabcontent">
+                    <h3>Dustin Brooks</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
+                </div>
+
+                <div id="Story" class="tabcontent">
+                    <h3>Shell Shocked</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="modal animate-zoom" id="myModal">
     <div class="modal-dialog" style="top:30%">
         <div class="modal-content">
@@ -94,11 +148,11 @@
     </div>
 </div>
 
-
 <script type="text/javascript" src="js/firebaseauthentication.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/trivia.js"></script>
 <script type="text/javascript" src="js/gameElement.js"></script>
+<script type="text/javascript" src="js/about_us.js"></script>
 <script type="text/javascript" src="js/firebase_highscore.js"></script>
 </body>
 </html>
