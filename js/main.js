@@ -19,7 +19,7 @@ function startGame() {
     turtle.gravity = 0.08;
     oceanBackground = new GameElement(1800, window.innerHeight, './images/ocean_2.png', 0, 0, "background"); // game background
     displayScore = new GameElement("20px", "Play", "black", 10, 30, "text");
-    multiplierIcon = new GameElement(30, 20, './images/saved_turtle.png', 10, 42, "image");
+    multiplierIcon = new GameElement(30, 20, './images/saved_turtle2.png', 10, 42, "image");
     displayMultiplier = new GameElement("20px", "Play", "black", 45, 60, "text");
     pullQuestion();
     gameCanvas.start(); // appends game canvas to the body
@@ -83,7 +83,7 @@ function everyInterval(n) {
 function clearNearbyEnemies() {
     let enemiesCopy = enemies.slice(0);
     for (let i = enemiesCopy.length - 1; i > -1; i--) {
-        if (enemiesCopy[i].x < (gameCanvas.canvas.width * 0.35) && enemiesCopy[i].y > (turtle.y - 25)) {
+        if (enemiesCopy[i].x < (gameCanvas.canvas.width * 0.35) && enemiesCopy[i].y > (turtle.y - 100)) {
             enemies.splice(i, 1);
         }
     }
