@@ -13,6 +13,7 @@ let topHat;
 
 // Create main elements for game
 function startGame() {
+    playSound_Music();
     resetGame();
     turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
@@ -134,8 +135,8 @@ function checkCollision() {
     for (let i = 0; i < enemies.length; i++) {
         // Check if turtle has collided with enemy
         if (turtle.collidesWith(enemies[i])) {
-            playSound_Oof();
             gameCanvas.stop();
+            playSound_Oof();
             scoreToDB();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
