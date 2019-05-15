@@ -18,7 +18,7 @@ function startGame() {
     turtle = new GameElement(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
     oceanBackground = new GameElement(1800, window.innerHeight, './images/ocean_2.png', 0, 0, "background"); // game background
-    displayScore = new GameElement("20px", "Play", "black", 10, 30, "text");
+    displayScore = new GameElement("20px", "Play", "black bold", 10, 30, "text");
     multiplierIcon = new GameElement(30, 20, './images/saved_turtle2.png', 10, 42, "image");
     displayMultiplier = new GameElement("20px", "Play", "black", 45, 60, "text");
     pullQuestion();
