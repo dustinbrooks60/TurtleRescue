@@ -61,6 +61,7 @@
 }
 .progress{
     position: absolute !important;
+    background-color: transparent;
     bottom: 0;
     transform: translateY(-50%);
     height: 20px;
@@ -73,9 +74,10 @@
 .progress-bar {
     background-color: #47C034 !important;
     border: 1px solid white !important;
-    border-radius: 5px !important;
+    border-radius: 25px !important;
     width:100%;
     height:20px;
+    align
 }
 
 #count-down{
