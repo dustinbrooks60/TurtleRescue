@@ -1,4 +1,4 @@
-function Element(width, height, src, x, y, type, num_frames) {
+function GameElement(width, height, src, x, y, type, num_frames) {
     if (type === "image" || type === "background" || type === "sprite") {
         this.image = new Image();
         this.image.src = src;

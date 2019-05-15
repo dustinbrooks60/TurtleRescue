@@ -7,8 +7,7 @@ function startTrivia() {
     generateQuestion();
     trivia.style = "display: flex; z-index: 10";
     displayTrivia();
-    countDown(10);
-    multiplier ++;
+    triviaHandler(10);
 }
 
 // Trivia display
@@ -59,28 +58,21 @@ function shuffle(array){
 // Display Trivia question and shuffled answers
 function displayTrivia(){
     copyAnswerArray = answerArray.slice(0); // create a copy of the questions
-    shuffle(copyAnswerArray); // shuffle the answers
+    shuffle(copyAnswerArray);// shuffle the answers
+    if (question[0].length > 50){ // Changes font size of question if too big
+        questionDisplay.style.fontSize = 1.25 + 'em';
+    }
+    else {
+        questionDisplay.style.fontSize = 1.5 + 'em';
+    }
     questionDisplay.innerHTML = question[0]; // index can be the length of how many questions to randomize
     answer1.innerHTML = copyAnswerArray[0];
     answer2.innerHTML = copyAnswerArray[1];
     answer3.innerHTML = copyAnswerArray[2];
     answer4.innerHTML = copyAnswerArray[3];
-    isCorrectAnswer();
+    getUserChoice();
 }
 
-// Return true if user's choice is correct
-function isCorrectAnswer(){
-    getUserChoice(); // check for correct user selection
-    setTimeout(function(){
-        if (userChoice === getAnswer(answerObject, copyAnswerArray)){
-            console.log("correct answer!") // do this if user choice is correct
-        } else{
-            console.log("wrong!")
-        }
-    },5000); // timeout determine by countDown interval
-
-
-}
 // Get the innerHTML value of button clicked and assign to userChoice
 function getUserChoice(){
     answer1.onclick = function(){userChoice = answer1.innerHTML};
@@ -94,31 +86,86 @@ function getUserChoice(){
 function clearTrivia(){
     document.getElementById('time').style.width = String(100) + "%";
     questionDisplay.innerHTML = ""; // index can be the length of how many questions to randomize
-    answer1.innerHTML = "";
-    answer2.innerHTML = "";
-    answer3.innerHTML = "";
-    answer3.innerHTML = "";
     userChoice = undefined;
+    $(document).ready(function(){
+        let answers = $(".answers");
+        answers.css({"background-color": "#119EDC"}); // reset background color for answers
+        answers.html("");
+        answers.css({"visibility": "visible"});
+        $("#trivia-title").html("Trivia Time!");
+        $("#trivia-title").css({"color": "white"});
+    })
 }
 
+const sleep = (milliseconds)=> {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+};
 // Create a countdown for user with a progress bar.
-function countDown(intervalSec){
-    let eachInterval = intervalSec * 10;
+function triviaHandler(seconds){
+    let eachInterval = seconds * 10;
     let percentage = 100;
     let timeBarInterval = setInterval(function(){
         document.getElementById('time').style.width = String(percentage) + "%";
-        if (percentage === 0 || userChoice !== undefined){
+        if (percentage === -5 || userChoice !== undefined){
+            displayAnswer();
             clearInterval(timeBarInterval);
-            trivia.style.display = "none";
-            clearTrivia();
             garbageClump = false;
             clearNearbyEnemies();
-            setTimeout( function() {
-                    gameCanvas.continue();
-                }
-            ,5000)
+             sleep(3000).then(() => {
+                    clearTrivia();
+                    trivia.style.display = "none";
+                    countDown();
+                })
+
         }else {
             percentage -= 1;
         }
     }, eachInterval)
+}
+
+function countDown() {
+    var i = 4;
+    let count = setInterval(function (){
+        document.getElementById("count" + String(i)).style= "display: none;";
+        i--;
+        document.getElementById("count" + String(i)).style = "display: inline; z-index: 50;";
+        if (i === 0){
+            clearInterval(count);
+        }
+    },  700);
+
+
+
+    // for (let i = 3; i > 0; i--) {
+    //     setTimeout (function() {
+    //         document.getElementById("count" + String(i + 1)).style= "display: none;";
+    //         document.getElementById("count" + String(i)).style = "display: inline; z-index: 50;";
+    //     }, 1000);
+    // }
+    setTimeout(function() {
+        document.getElementById("count0").style= "display: none;";
+        gameCanvas.continue();
+    }, 3500);
+
+}
+
+function displayAnswer(){
+    let answerArray = document.getElementsByClassName("answers");
+    for (let i = 0; i < answerArray.length; i++){
+        let answer = answerArray[i].innerHTML;
+        if (answer === getAnswer(answerObject, copyAnswerArray)) {
+            answerArray[i].style.backgroundColor = "#2EB518";
+        }
+        if (answer !== userChoice && answer !== getAnswer(answerObject, copyAnswerArray)) {
+            answerArray[i].style.visibility = "hidden";
+        }
+    }
+    if (userChoice === getAnswer(answerObject, copyAnswerArray)) {
+        multiplier ++;
+        document.getElementById("trivia-title").innerHTML = "Correct!";
+        document.getElementById("trivia-title").style.color = "#47C034";
+    } else {
+        document.getElementById("trivia-title").innerHTML = "Incorrect!";
+        document.getElementById("trivia-title").style.color = "red";
+    }
 }
