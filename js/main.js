@@ -14,11 +14,11 @@ let topHat;
 // Create main elements for game
 function startGame() {
     resetGame();
-    turtle = new Element(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
+    turtle = new GameElement(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
-    oceanBackground = new Element(1800, window.innerHeight, './images/ocean_2.png', 0, 0, "background"); // game background
-    displayScore = new Element("20px", "Consolas", "black", 10, 30, "text");
-    displayMultiplier = new Element("20px", "Consolas", "black", 10, 60, "text");
+    oceanBackground = new GameElement(1800, window.innerHeight, './images/ocean_2.png', 0, 0, "background"); // game background
+    displayScore = new GameElement("20px", "Consolas", "black", 10, 30, "text");
+    displayMultiplier = new GameElement("20px", "Consolas", "black", 10, 60, "text");
     pullQuestion();
     gameCanvas.start(); // appends game canvas to the body
 }
@@ -171,9 +171,9 @@ function addObjects() {
         // Determines y-axis position of enemy spawn
         let enemyY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
         if (enemy === './images/jelly-sprite2.png') {
-            enemies.push(new Element(2800, 400, enemy, x, enemyY, "sprite", 7)); // Jellyfish
+            enemies.push(new GameElement(2800, 400, enemy, x, enemyY, "sprite", 7)); // Jellyfish
         } else {
-            enemies.push(new Element(4365, 485, enemy, x, enemyY, "sprite", 9)); // Puffer fish
+            enemies.push(new GameElement(4365, 485, enemy, x, enemyY, "sprite", 9)); // Puffer fish
         }
     }
 
@@ -184,14 +184,14 @@ function addObjects() {
         let x = gameCanvas.canvas.width;
         // Determines y-axis position of garbage spawn
         let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
-        garbageArr.push(new Element(70, 70, garbage, x, garbageY, "image"));
+        garbageArr.push(new GameElement(70, 70, garbage, x, garbageY, "image"));
     }
 
     // Adds top hat easter egg to the game canvas
     if (gameCanvas.frameNo === 1500) {
         let x = gameCanvas.canvas.width;
         let y = gameCanvas.canvas.height - 135;
-        topHat = new Element(70, 45, './images/top_hat.png', x, y, "image")
+        topHat = new GameElement(70, 45, './images/top_hat.png', x, y, "image")
     }
 
     // Adds large garbage clump w/ trapped turtle in it to game canvas
@@ -199,6 +199,6 @@ function addObjects() {
         let x = gameCanvas.canvas.width;
         // Determines y-axis position of garbage clump spawn
         let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
-        garbageClump = new Element(180, 180, './images/clump.png', x, garbageY, "image")
+        garbageClump = new GameElement(180, 180, './images/clump.png', x, garbageY, "image")
     }
 }
