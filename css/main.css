@@ -112,7 +112,7 @@ canvas {
     margin: 5px 5px !important;
     height: 60px;
     width: 60px;
-    border: 2px solid #062768;
+    border: 4px solid #062768;
     /*box-shadow: -1px 4px black;*/
     -webkit-border-radius: 30%;
     -moz-border-radius: 30%;
@@ -159,25 +159,25 @@ canvas {
 @media screen and (max-width: 1800px) {
     /* start of large tablet styles */
     #gameName {
-        width: 35%;
+        width: 38%;
     }
 }
 @media screen and (max-width: 1300px) {
     /* start of large tablet styles */
     #gameName {
-        width: 40%;
+        width: 43%;
     }
 }
 @media screen and (max-width: 767px) {
     /* start of medium tablet styles */
     #gameName {
-        width: 60%;
+        width: 63%;
     }
 }
 @media screen and (max-width: 479px) {
     /* start of phone styles */
     #gameName {
-        width: 70%;
+        width: 73%;
     }
 }
 #gameName {

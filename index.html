@@ -35,43 +35,37 @@
 <body ontouchstart='clickManager(-99)'>
 
 <div id="start" class='containers animate-zoom'>
-    <!-- Turtle Logo -->
-<!--    <div class="logo animate-bottom2">-->
-<!--        <div class="left-front"></div>-->
-<!--        <div class="right-front"></div>-->
-<!--        <div class="front"></div>-->
-<!--        <div class="left-back"></div>-->
-<!--        <div class="right-back"></div>-->
-<!--    </div>-->
+
     <img id="gameName" src="images/logo_pink.PNG" alt="Turtle Rescue">
 
     <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>
 
     <div class="bottom-btns">
         <a href="#">
-            <img class="smollbtn" src="images/leaderboard1.png" alt="">
+            <img class="smollbtn" src="images/leaderboard_green.png" alt="">
         </a>
         <a href="#" data-toggle="modal" data-target="#aboutUs" id="aboutUsBtn">
-            <img class="smollbtn" src="images/logoabout.png" alt="">
+<!--            <img class="smollbtn" src="images/logoabout.png" alt="">-->
+            <div class="smollbtn">
+                <div class="logo">
+                    <div class="left-front"></div>
+                    <div class="right-front"></div>
+                    <div class="front"></div>
+                    <div class="left-back"></div>
+                    <div class="right-back"></div>
+                </div>
+            </div>
         </a>
         <a href="#" data-toggle="modal" data-target="#myModal">
-            <img class="smollbtn" src="images/logIn1.png" alt="">
+            <img class="smollbtn" src="images/logIn_green.png" alt="">
         </a>
         <a href="#">
-            <img class="smollbtn" src="images/logIn1.png" alt="">
+            <img class="smollbtn" src="images/question_mark_pink.png" alt="">
         </a>
     </div>
 </div>
 
 <div id="restart" class="containers">
-    <!-- Turtle Logo -->
-    <div class="logo animate-bottom2">
-        <div class="left-front"></div>
-        <div class="right-front"></div>
-        <div class="front"></div>
-        <div class="left-back"></div>
-        <div class="right-back"></div>
-    </div>
     <h2 class="animate-top">Game Over</h2>
     <h2 class="animate-zoom" id="score">Score: 0</h2>
     <a class="animate-bottom" onclick="startGame()">Restart</a>
