@@ -11,10 +11,12 @@ let displayMultiplier;
 let score;
 let multiplier;
 let topHat;
+let audio = new Audio('./sounds/aqualounge.mp3');
+let audio2 = new Audio('./sounds/allegro.mp3');
 
 // Create main elements for game
 function startGame() {
-    playSound_Music();
+    // playSound_Music();
     resetGame();
     turtle = new GameElement(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
@@ -160,6 +162,7 @@ function checkCollision() {
     if (topHat && turtle.collidesWith(topHat)) {
         topHat = false;
         turtle.image.src = './images/dapper-sprite2.png';
+        playSound_Classical();
     }
     // Check if turtle has collided with large garbage clump
     if (garbageClump && turtle.collidesWith(garbageClump)) {
