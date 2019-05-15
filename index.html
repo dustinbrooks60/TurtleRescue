@@ -14,6 +14,8 @@
     <!-- Firebase  -->
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
     <script src="js/firebase_api.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
 
     <!-- CSS files    -->
@@ -46,8 +48,8 @@
     <div class="bottom-btns">
         <a href=""><img class="smollbtn" src="images/leaderboard1.png" alt=""><p class="labels"></p>Leader board</a>
         <a href=""><img class="smollbtn" src="images/logoabout.png" alt=""><p class="labels"></p>About</a>
-        <a href="login.html"><img class="smollbtn" src="images/logIn1.png" alt=""><p class="labels"></p>Login</a>
-        <a href="login.html"><img class="smollbtn" src="images/logIn1.png" alt=""><p class="labels"></p>How To</a>
+        <a href="#" data-toggle="modal" data-target="#myModal"><img class="smollbtn" src="images/logIn1.png" alt=""><p class="labels"></p>Login</a>
+        <a href="#"><img class="smollbtn" src="images/logIn1.png" alt=""><p class="labels"></p>How To</a>
     </div>
 </div>
 
@@ -78,6 +80,22 @@
     </div>
 </div>
 
+<div class="modal animate-zoom" id="myModal">
+    <div class="modal-dialog" style="top:30%">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body" >
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <br>
+                <div id="firebaseui-auth-container" ></div>
+                <div id="loader">Loading...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/firebaseauthentication.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/trivia.js"></script>
 <script type="text/javascript" src="js/gameElement.js"></script>
