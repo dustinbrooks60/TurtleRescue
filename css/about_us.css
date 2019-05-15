@@ -37,3 +37,9 @@
     border: 1px solid #ccc;
     border-top: none;
 }
+
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
