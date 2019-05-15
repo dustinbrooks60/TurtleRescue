@@ -8,8 +8,8 @@ let soundID_Classical = "Classical";
 function loadSound () {
     createjs.Sound.registerSound("./sounds/aqualounge.mp3", soundID_Music);
     createjs.Sound.registerSound("./sounds/bubble.mp3", soundID_Bubble);
-    createjs.Sound.registerSound("./sounds/oof.mp3", soundID_Oof)
-    createjs.Sound.registerSound("./sounds/allegro.mp3", soundID_Oof)
+    createjs.Sound.registerSound("./sounds/oof.mp3", soundID_Oof);
+    createjs.Sound.registerSound("./sounds/allegro.mp3", soundID_Classical);
 
 }
 
@@ -29,6 +29,7 @@ function playSound_Oof () {
     createjs.Sound.play(soundID_Oof);
 }
 
+// Play classical music
 function playSound_Classical () {
     createjs.Sound.play(soundID_Classical);
 }
