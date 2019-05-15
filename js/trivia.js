@@ -104,7 +104,9 @@ function clearTrivia(){
         let answers = $(".answers");
         answers.css({"background-color": "#119EDC"}); // reset background color for answers
         answers.html("");
-        answers.css({"visibility": "visible"})
+        answers.css({"visibility": "visible"});
+        $("#trivia-title").html("Trivia Time!");
+        $("#trivia-title").css({"color": "white"});
     })
 }
 
@@ -117,9 +119,6 @@ function triviaHandler(seconds){
     let percentage = 100;
     let timeBarInterval = setInterval(function(){
         document.getElementById('time').style.width = String(percentage) + "%";
-        if (userChoice === getAnswer(answerObject, answerArray)) {
-            multiplier ++;
-        }
         if (percentage === 0 || userChoice !== undefined){
             displayAnswer();
             clearInterval(timeBarInterval);
@@ -173,5 +172,13 @@ function displayAnswer(){
         if (answer !== userChoice && answer !== getAnswer(answerObject, copyAnswerArray)) {
             answerArray[i].style.visibility = "hidden";
         }
+    }
+    if (userChoice === getAnswer(answerObject, copyAnswerArray)) {
+        multiplier ++;
+        document.getElementById("trivia-title").innerHTML = "Correct!";
+        document.getElementById("trivia-title").style.color = "#47C034";
+    } else {
+        document.getElementById("trivia-title").innerHTML = "Incorrect!";
+        document.getElementById("trivia-title").style.color = "red";
     }
 }
