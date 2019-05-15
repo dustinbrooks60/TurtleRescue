@@ -60,15 +60,15 @@ canvas {
 
 .play-btn {
     border-radius: 100%;
-    border: 6px solid #50fc6a;
+    border: 8px solid #062768;
     height:100px;
     width:100px;
-    background-color: #50fc6a;
-    box-shadow: -2px 5px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(to bottom, whitesmoke 50%, #EEEEEE 50%);
+    /*box-shadow: -2px 5px rgba(0, 0, 0, 0.6);*/
     margin: 30px;
     position: absolute;
     left: 50%;
-    top: 40%;
+    top: 47%;
     transform: translateX(-83%);
 }
 .play-btn:hover {
@@ -86,17 +86,18 @@ canvas {
     width: 0;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 25px solid dodgerblue;
+    border-left: 25px solid #062768;
     border-right: 15px solid transparent;
 
 }
 .bottom-btns {
-    /*background-color: rgba(0, 0, 255, 0.4);*/
+    font-family: Play;
+    font-weight: bold;
     border-radius: 20px;
     padding: 20px 20px;
     display: flex;
     position: absolute;
-    bottom: 10%;
+    bottom: -0.5%;
     overflow: hidden;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -108,32 +109,33 @@ canvas {
 .smollbtn {
     float: left;
     text-align: center;
-    margin: 10px 10px !important;
-    height: 50px;
-    width: 50px;
-    border: 3px solid #50fc6a;
-    box-shadow: -1px 4px black;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    background-color: #50fc6a;
+    margin: 5px 5px !important;
+    height: 60px;
+    width: 60px;
+    border: 2px solid #062768;
+    /*box-shadow: -1px 4px black;*/
+    -webkit-border-radius: 30%;
+    -moz-border-radius: 30%;
+    border-radius: 30%;
+    background: linear-gradient(to bottom, whitesmoke 50%, #EEEEEE 50%);
+
 }
 .smollbtn:hover {
     box-shadow: 0 0;
     transform: translateX(-1px) translateY(4px);
 }
-.labels {
-    background-color: #50fc6a;
-    border-radius: 10%;
-    border: 1px solid black;
-    box-shadow:-1px 2px;
-    height: 14px;
-    position:relative;
-    top: 72px;
-    z-index: -1;
-    text-decoration: none;
+/*.labels {*/
+/*    background-color: whitesmoke;*/
+/*    border-radius: 10%;*/
+/*    !*border: 1px solid black;*!*/
+/*    box-shadow:-1px 2px;*/
+/*    height: 14px;*/
+/*    position:relative;*/
+/*    top: 72px;*/
+/*    z-index: -1;*/
+/*    text-decoration: none;*/
 
-}
+/*}*/
 .bottom-btns a {
     /*border: 3px solid black;*/
     border-radius: 10px;
@@ -142,7 +144,7 @@ canvas {
     /*background-color: rgba(0,0,255,1);*/
     font-size: 11px;
     text-align: center;
-    color: black;
+    color: #062768;
     text-decoration: none;
 }
 .bottom-btns a:hover {
@@ -181,6 +183,6 @@ canvas {
 #gameName {
     position: absolute;
     left: 50%;
-    top: 29%;
+    top: 20%;
     transform: translateX(-50%);
 }
