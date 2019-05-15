@@ -127,7 +127,7 @@ function countDown(intervalSec){
                     trivia.style.display = "none";
                     gameCanvas.continue();
                 }
-            ,5000)
+                ,5000)
         }else {
             percentage -= 1;
         }

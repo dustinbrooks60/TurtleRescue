@@ -39,11 +39,16 @@
         <div class="left-back"></div>
         <div class="right-back"></div>
     </div>
-    <h1>Shell Shocked</h1>
-    <a class="" onclick="startGame()">Start</a>
-    <a>Leader Board</a>
-    <a>About Us</a>
-    <a href="login.html">Login</a>
+    <img id="gameName" src="images/logo_cropped.png" alt="Shell Shocked">
+
+    <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>
+
+    <div class="bottom-btns">
+        <a href=""><img class="smollbtn" src="images/leaderboard1.png" alt=""><p class="labels"></p>Leader board</a>
+        <a href=""><img class="smollbtn" src="images/logoabout.png" alt=""><p class="labels"></p>About</a>
+        <a href="login.html"><img class="smollbtn" src="images/logIn1.png" alt=""><p class="labels"></p>Login</a>
+        <a href="login.html"><img class="smollbtn" src="images/logIn1.png" alt=""><p class="labels"></p>How To</a>
+    </div>
 </div>
 
 <!-- Turtle Logo -->
@@ -68,7 +73,6 @@
     <a class="answers" id="a3">Answer 3</a>
     <a class="answers" id="a4">Answer 4</a>
 
-<!--    animate-zoom-->
     <div class="progress">
         <div id="time" class="progress-bar active"></div>
     </div>
@@ -76,7 +80,7 @@
 
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/trivia.js"></script>
-<script type="text/javascript" src="js/element.js"></script>
+<script type="text/javascript" src="js/gameElement.js"></script>
 <script type="text/javascript" src="js/firebase_highscore.js"></script>
 </body>
 </html>
