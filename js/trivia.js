@@ -73,19 +73,6 @@ function displayTrivia(){
     getUserChoice();
 }
 
-// Return true if user's choice is correct
-// function isCorrectAnswer(){
-//     getUserChoice(); // check for correct user selection
-//     setTimeout(function(){
-//         if (userChoice === getAnswer(answerObject, copyAnswerArray)){
-//             console.log("correct answer!") // do this if user choice is correct
-//         } else{
-//             console.log("wrong!")
-//         }
-//     },5000); // timeout determine by countDown interval
-//
-// }
-
 // Get the innerHTML value of button clicked and assign to userChoice
 function getUserChoice(){
     answer1.onclick = function(){userChoice = answer1.innerHTML};
@@ -119,7 +106,7 @@ function triviaHandler(seconds){
     let percentage = 100;
     let timeBarInterval = setInterval(function(){
         document.getElementById('time').style.width = String(percentage) + "%";
-        if (percentage === 0 || userChoice !== undefined){
+        if (percentage === -5 || userChoice !== undefined){
             displayAnswer();
             clearInterval(timeBarInterval);
             garbageClump = false;
@@ -145,7 +132,7 @@ function countDown() {
         if (i === 0){
             clearInterval(count);
         }
-    },  750);
+    },  700);
 
 
 
@@ -158,7 +145,7 @@ function countDown() {
     setTimeout(function() {
         document.getElementById("count0").style= "display: none;";
         gameCanvas.continue();
-    }, 4000);
+    }, 3500);
 
 }
 
