@@ -8,7 +8,6 @@ function startTrivia() {
     trivia.style = "display: flex; z-index: 10";
     displayTrivia();
     countDown(10);
-    multiplier ++;
 }
 
 // Trivia display
@@ -71,6 +70,7 @@ function displayTrivia(){
     answer2.innerHTML = copyAnswerArray[1];
     answer3.innerHTML = copyAnswerArray[2];
     answer4.innerHTML = copyAnswerArray[3];
+    getUserChoice();
 }
 
 // Return true if user's choice is correct
@@ -102,7 +102,7 @@ function clearTrivia(){
     userChoice = undefined;
     $(document).ready(function(){
         let answers = $(".answers");
-        answers.css({"background-color": "initial", "opacity": 1}); // reset background color for answers
+        answers.css({"background-color": "#119EDC"}); // reset background color for answers
         answers.html("");
         answers.css({"visibility": "visible"})
     })
@@ -114,6 +114,9 @@ function countDown(intervalSec){
     let percentage = 100;
     let timeBarInterval = setInterval(function(){
         document.getElementById('time').style.width = String(percentage) + "%";
+        if (userChoice === getAnswer(answerObject, answerArray)) {
+            multiplier ++;
+        }
         if (percentage === 0 || userChoice !== undefined){
             displayAnswer();
             clearInterval(timeBarInterval);
