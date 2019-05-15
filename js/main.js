@@ -136,8 +136,8 @@ function checkCollision() {
         // Check if turtle has collided with enemy
         if (turtle.collidesWith(enemies[i])) {
             gameCanvas.stop();
-            playSound_Oof();
             scoreToDB();
+            playSound_Oof();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
         }
