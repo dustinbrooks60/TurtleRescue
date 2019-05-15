@@ -44,9 +44,15 @@ scoresRoot.on('value', (snapshot) => {
 
 function scoreToDB(){
     if (infoJSONobj.bestScore < score) {
-        infoJSONobj.bestScore = score;
-        infoJSONobj.userName = userName;
-        firebase.database().ref().child('scores').child(userId).set(infoJSONobj);
+        try {
+            infoJSONobj.bestScore = score;
+            infoJSONobj.userName = userName;
+            firebase.database().ref().child('scores').child(userId).set(infoJSONobj);
+        }
+        catch(err) {
+            console.log(err.message);
+        }
+
     }
     console.log('You got ' + infoJSONobj.bestScore);
 }
