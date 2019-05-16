@@ -225,6 +225,10 @@ function addObjects() {
 }
 
 function backHome(){
+    audio_music.pause();
+    audio_music.currentTime = 0;
+    audio_classical.pause();
+    audio_classical.currentTime = 0;
     document.getElementById('restart').style.display = "none";
     document.getElementById('start').style.display = "flex";
     gameCanvas.clear()
