@@ -124,18 +124,7 @@ canvas {
     box-shadow: 0 0;
     transform: translateX(-1px) translateY(4px);
 }
-/*.labels {*/
-/*    background-color: whitesmoke;*/
-/*    border-radius: 10%;*/
-/*    !*border: 1px solid black;*!*/
-/*    box-shadow:-1px 2px;*/
-/*    height: 14px;*/
-/*    position:relative;*/
-/*    top: 72px;*/
-/*    z-index: -1;*/
-/*    text-decoration: none;*/
 
-/*}*/
 .bottom-btns a {
     /*border: 3px solid black;*/
     border-radius: 10px;
