@@ -190,7 +190,7 @@ function addObjects() {
         let enemy = enemyImages[Math.floor(Math.random() * (enemyImages.length ))]; // Randomly selects enemy
         let x = gameCanvas.canvas.width;
         // Determines y-axis position of enemy spawn
-        let enemyY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
+        let enemyY = Math.floor(Math.random() * (gameCanvas.canvas.height - 425) + 150);
         if (enemy === './images/jelly-sprite2.png') {
             enemies.push(new GameElement(2800, 400, enemy, x, enemyY, "sprite", 7)); // Jellyfish
         } else {

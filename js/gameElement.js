@@ -57,6 +57,7 @@ function GameElement(width, height, src, x, y, type, num_frames) {
             }
             this.hitBottom();
             this.hitTop();
+            accelerate(0.1);
         }
         if (type === "background") {
             if (this.x === -(this.width)) {
@@ -69,9 +70,8 @@ function GameElement(width, height, src, x, y, type, num_frames) {
         let oceanFloor = gameCanvas.canvas.height - this.height + 425;
         if (this.y > oceanFloor) {
             this.y = oceanFloor;
-            this.gravitySpeed = 0;
+            this.gravitySpeed = -2.8;
         }
-        accelerate(0.1);
     };
     // Prevents element from surpassing ocean surface
     this.hitTop = function() {
