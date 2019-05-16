@@ -6,90 +6,22 @@ html, body {
     position: relative;
     background-image: url("./images/ocean_2.png");
     background-size: cover;
-
 }
 canvas {
     width:100%;
     height:100%;
     border:1px solid #d3d3d3;
 }
-/*#start {*/
-/*    display: none;*/
-/*}*/
-/*#restart a,#start  a{*/
-/*    font-size: 1em;*/
-/*    border-radius: 15px;*/
-/*    box-shadow: -1px 2px;*/
-/*}*/
-/*#start h1 {*/
-/*    font-size: 1em;*/
-/*}*/
-
-/*#start h1,#start  h2,#start  a, #restart h1,#restart  h2,#restart  a {*/
-/*    background-color: transparent;*/
-/*    font-family: 'Montserrat', sans-serif;*/
-/*    font-weight: 700;*/
-/*    text-decoration: none;*/
-/*    letter-spacing: 0.1em;*/
-/*    margin: 20px;*/
-/*    padding: 5px 10px;*/
-/*    !*border-left: 3px solid black;*!*/
-/*    !*border-right: 3px solid black;*!*/
-/*    border-bottom: 3px solid #062768;*/
-/*    border-top: 3px solid #062768;*/
-/*    color: #062768;*/
-/*    outline: 10px solid transparent !important; */
-/*}*/
-
 
 #restart{
     display: none;
     background-color: rgba(255,255,255,0.3);
 }
-/*#restart button,#restart a,#restart h1,#restart h2,#restart h3{*/
-/*    background-color: rgba(255,255,255,0.6);*/
-/*}*/
-/*#restart h1,#restart h2,#restart h3{*/
-/*    border-left: 3px solid black;*/
-/*    border-right: 3px solid black;*/
-/*}*/
 
 #start, #restart {
     z-index: 10;
 }
 
-.play-btn {
-    border-radius: 100%;
-    border: 8px solid #062768;
-    height:100px;
-    width:100px;
-    background: linear-gradient(to bottom, whitesmoke 50%, #EEEEEE 50%);
-    /*box-shadow: -2px 5px rgba(0, 0, 0, 0.6);*/
-    margin: 30px;
-    position: absolute;
-    left: 50%;
-    top: 47%;
-    transform: translateX(-83%);
-}
-.play-btn:hover {
-    box-shadow: 0 0;
-    transform: translateX(-83%) translateY(5px) translateX(-2px);
-
-}
-.play-tri {
-    /*Positioning*/
-    position: relative;
-    left: 50%;
-    transform: translateX(-25%);
-    /*Shaping*/
-    height: 0;
-    width: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 25px solid #062768;
-    border-right: 15px solid transparent;
-
-}
 .bottom-btns {
     font-family: Play;
     font-weight: bold;
@@ -118,13 +50,11 @@ canvas {
     -moz-border-radius: 30%;
     border-radius: 30%;
     background: linear-gradient(to bottom, whitesmoke 50%, #EEEEEE 50%);
-
+    outline: none;
 }
-.smollbtn:hover {
-    box-shadow: 0 0;
-    transform: translateX(-1px) translateY(4px);
+.bottom-btns a:focus {
+    outline:none;
 }
-
 .bottom-btns a {
     /*border: 3px solid black;*/
     border-radius: 10px;
@@ -136,14 +66,6 @@ canvas {
     color: #062768;
     text-decoration: none;
 }
-.bottom-btns a:hover {
-    text-decoration: none;
-    color: black;
-}
-
-
-
-
 
 @media screen and (max-width: 1800px) {
     /* start of large tablet styles */
@@ -175,3 +97,36 @@ canvas {
     top: 20%;
     transform: translateX(-50%);
 }
+
+/*.play-btn {*/
+/*    border-radius: 100%;*/
+/*    border: 8px solid #062768;*/
+/*    height:100px;*/
+/*    width:100px;*/
+/*    background: linear-gradient(to bottom, whitesmoke 50%, #EEEEEE 50%);*/
+/*    !*box-shadow: -2px 5px rgba(0, 0, 0, 0.6);*!*/
+/*    margin: 30px;*/
+/*    position: absolute;*/
+/*    left: 50%;*/
+/*    top: 47%;*/
+/*    transform: translateX(-83%);*/
+/*}*/
+/*.play-btn:hover {*/
+/*    box-shadow: 0 0;*/
+/*    transform: translateX(-83%) translateY(5px) translateX(-2px);*/
+
+/*}*/
+/*.play-tri {*/
+/*    !*Positioning*!*/
+/*    position: relative;*/
+/*    left: 50%;*/
+/*    transform: translateX(-25%);*/
+/*    !*Shaping*!*/
+/*    height: 0;*/
+/*    width: 0;*/
+/*    border-top: 15px solid transparent;*/
+/*    border-bottom: 15px solid transparent;*/
+/*    border-left: 25px solid #062768;*/
+/*    border-right: 15px solid transparent;*/
+
+/*}*/

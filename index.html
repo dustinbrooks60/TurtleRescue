@@ -17,13 +17,13 @@
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-
     <!-- CSS files    -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/animation.css">
     <link rel="stylesheet" type="text/css" href="css/logo.css">
     <link rel="stylesheet" type="text/css" href="css/trivia.css">
     <link rel="stylesheet" type="text/css" href="css/about_us.css">
+        <link rel="stylesheet" href="css/play_btn.css">
     <script src="js/modernizr.custom.js"></script>
 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Play">
@@ -38,7 +38,10 @@
 
     <img id="gameName" src="images/logo_pink.PNG" alt="Turtle Rescue">
 
-    <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>
+<!--    <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>-->
+    <div class='bubble' onclick="startGame()">
+        <div class="play-tri"></div>
+    </div>
 
     <div class="bottom-btns">
         <a href="#">
