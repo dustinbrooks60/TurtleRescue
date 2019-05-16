@@ -11,9 +11,15 @@ let displayMultiplier;
 let score;
 let multiplier;
 let topHat;
+let audio_music = new Audio('./sounds/aqualounge.mp3');
+let audio_classical = new Audio('./sounds/allegro.mp3');
+
 
 // Create main elements for game
 function startGame() {
+    audio_classical.pause();
+    audio_classical.currentTime = 0;
+    audio_music.play();
     resetGame();
     turtle = new GameElement(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
@@ -27,6 +33,9 @@ function startGame() {
 
 // Reset game elements for a new round of game play
 function resetGame() {
+    audio_music.pause();
+    audio_music.currentTime = 0;
+    audio_music.play();
     score = 0;
     multiplier = 1;
     enemies = [];
@@ -65,9 +74,11 @@ let gameCanvas = {
     }
 };
 
+
 // Accelerates turtle upon screen touch
 function clickManager(n){
     accelerate(n);
+    playSound_Bubble();
 }
 
 function accelerate(n){
@@ -137,6 +148,7 @@ function checkCollision() {
         if (turtle.collidesWith(enemies[i])) {
             gameCanvas.stop();
             scoreToDB();
+            playSound_Oof();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
         }
@@ -156,11 +168,17 @@ function checkCollision() {
     if (topHat && turtle.collidesWith(topHat)) {
         topHat = false;
         turtle.image.src = './images/dapper-sprite2.png';
+        audio_music.pause();
+        audio_classical.currentTime = 0;
+        audio_classical.play();
     }
+
+
     // Check if turtle has collided with large garbage clump
     if (garbageClump && turtle.collidesWith(garbageClump)) {
         gameCanvas.stop();
         startTrivia();
+
 
     }
 }
@@ -207,6 +225,10 @@ function addObjects() {
 }
 
 function backHome(){
+    audio_music.pause();
+    audio_music.currentTime = 0;
+    audio_classical.pause();
+    audio_classical.currentTime = 0;
     document.getElementById('restart').style.display = "none";
     document.getElementById('start').style.display = "flex";
     gameCanvas.clear()
