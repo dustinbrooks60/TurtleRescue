@@ -1,5 +1,7 @@
 var userName;
 var userId;
+let leaderboardArr = [];
+let topFiveArr;
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -35,11 +37,17 @@ scoresRoot.on('value', (snapshot) => {
     var highestScore = -10000;
     var highestUser = "";
     Object.keys(playerData).forEach(function(k){
+        leaderboardArr.push(playerData[k]); // create an array of the objects
         if (playerData[k].bestScore > highestScore){
+
             highestScore = playerData[k].bestScore; highestUser = playerData[k].userName;
         }
     });
+    sortScore();
+    topFiveArr = leaderboardArr.slice(leaderboardArr.length - 5); // get the top five users
+    populateLeaderBoard();
     console.log("Top score is " + highestScore+" by "+highestUser);
+
 });
 
 function scoreToDB(){
@@ -56,3 +64,22 @@ function scoreToDB(){
     }
     console.log('You got ' + infoJSONobj.bestScore);
 }
+
+function sortScore(){
+    leaderboardArr.sort(function(a,b){
+        return a.bestScore - b.bestScore
+    });
+}
+
+function populateLeaderBoard(){
+    $(document).ready(function(){
+        $("#top1Name").html(topFiveArr[4].userName); $("#top1Score").html(topFiveArr[4].bestScore);
+        $("#top2Name").html(topFiveArr[3].userName); $("#top2Score").html(topFiveArr[3].bestScore);
+        $("#top3Name").html(topFiveArr[2].userName); $("#top3Score").html(topFiveArr[2].bestScore);
+        $("#top4Name").html(topFiveArr[1].userName); $("#top4Score").html(topFiveArr[1].bestScore);
+        $("#top5Name").html(topFiveArr[0].userName); $("#top5Score").html(topFiveArr[0].bestScore);
+    })
+}
+
+
+

@@ -44,7 +44,7 @@
     </div>
 
     <div class="bottom-btns">
-        <a href="#">
+        <a href="#" data-toggle="modal" data-target="#leaderBoard" id="leaderBtn">
             <img class="smollbtn" src="images/leaderboard_green.png" alt="">
         </a>
         <a href="#" data-toggle="modal" data-target="#aboutUs" id="aboutUsBtn">
@@ -192,8 +192,52 @@
     </div>
 </div>
 
+<div class="modal animate-zoom " id="leaderBoard">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" >
+                <div class="container">
+                    <h2>Leaderboard</h2>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td id="top1Name">Loading..</td>
+                            <td id="top1Score">Loading..</td>
+                        </tr>
+                        <tr>
+                            <td id="top2Name">Loading..</td>
+                            <td id="top2Score">Loading..</td>
+                        </tr>
+                        <tr>
+                            <td id="top3Name">Loading..</td>
+                            <td id="top3Score">Loading..</td>
+                        </tr>
+                        <tr>
+                            <td id="top4Name">Loading..</td>
+                            <td id="top4Score">Loading..</td>
+                        </tr>
+                        <tr>
+                            <td id="top5Name">Loading..</td>
+                            <td id="top5Score">Loading..</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 <div id="count-down">
-    <div class="animate-zoom" id="count4">4</div>
+    <div class="anfleadimate-zoom" id="count4">4</div>
     <div class="animate-zoom" id="count3">3</div>
     <div class="animate-zoom" id="count2">2</div>
     <div class="animate-zoom" id="count1">1</div>
