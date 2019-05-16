@@ -164,6 +164,7 @@ function displayAnswer(){
         multiplier ++;
         document.getElementById("trivia-title").innerHTML = "Correct!";
         document.getElementById("trivia-title").style.color = "#47C034";
+        playSound_Correct();
     } else {
         document.getElementById("trivia-title").innerHTML = "Incorrect!";
         document.getElementById("trivia-title").style.color = "red";

@@ -160,6 +160,7 @@ function checkCollision() {
     // Check if turtle has collided with garbage
     for (let i = 0; i < garbageArr.length; i++) {
         if (turtle.collidesWith(garbageArr[i])) {
+            playSound_Point();
             garbageArr.splice(i, 1);
             score += multiplier;
         }
