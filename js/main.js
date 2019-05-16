@@ -205,3 +205,9 @@ function addObjects() {
         garbageClump = new GameElement(180, 180, './images/clump.png', x, garbageY, "image")
     }
 }
+
+function backHome(){
+    document.getElementById('restart').style.display = "none";
+    document.getElementById('start').style.display = "flex";
+    gameCanvas.clear()
+}
