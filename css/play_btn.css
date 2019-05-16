@@ -1,0 +1,87 @@
+
+.bubble {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background: whitesmoke;
+    overflow: hidden;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 4px solid rgb(6,39,104);
+    box-shadow: inset 0 0 30px rgba(88,197,238, 0.2);
+}
+.bubble:before {
+    content: '';
+    position: absolute;
+    background: #58C5EE;
+    width: 80px;
+    height: 30px;
+    bottom: 0;
+    display: block;
+    border-top-right-radius: 50%;
+    border-top: 2px solid rgba(88,197,238, 0.5);
+    -webkit-animation: curve 4s infinite ease-in-out;
+    animation: curve 4s infinite ease-in-out;
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+    background-clip: border-box;
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+    box-shadow: inset 0 20px 40px rgba(88,197,238, 0.2), inset 0 -10px 20px rgba(48, 97, 138, 0.4);
+}
+.bubble:after {
+    content: '';
+    position: absolute;
+    background: rgba(88,197,238, 0.1);
+    width: 50px;
+    height: 24px;
+    top: -15px;
+    right: 0;
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    display: block;
+    border-top-left-radius: 50%;
+}
+
+@-webkit-keyframes curve {
+    25%, 75% {
+        border-top: 2px solid rgba(88,197,238, 0.1);
+    }
+    50% {
+        border-top-left-radius: 50%;
+        border-top-right-radius: 0;
+        border-top: 2px solid rgba(88,197,238, 0.5);
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+}
+@keyframes curve {
+    25%, 75% {
+        border-top: 2px solid rgba(88,197,238, 0.1);
+    }
+    50% {
+        border-top-left-radius: 50%;
+        border-top-right-radius: 0;
+        border-top: 2px solid rgba(88,197,238, 0.5);
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+}
+.play-tri {
+    /*Positioning*/
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-25%) translateY(-45%);
+    /*Shaping*/
+    height: 0;
+    width: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid rgba(6,39,104, 0.8);
+    border-right: 15px solid transparent;

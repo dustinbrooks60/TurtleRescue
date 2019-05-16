@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Turtle Rescue</title>
@@ -18,13 +18,13 @@
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-
     <!-- CSS files    -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/animation.css">
     <link rel="stylesheet" type="text/css" href="css/logo.css">
     <link rel="stylesheet" type="text/css" href="css/trivia.css">
     <link rel="stylesheet" type="text/css" href="css/about_us.css">
+        <link rel="stylesheet" href="css/play_btn.css">
     <script src="js/modernizr.custom.js"></script>
 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Play">
@@ -38,7 +38,10 @@
 
     <img id="gameName" src="images/logo_pink.PNG" alt="Turtle Rescue">
 
-    <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>
+<!--    <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>-->
+    <div class='bubble' onclick="startGame()">
+        <div class="play-tri"></div>
+    </div>
 
     <div class="bottom-btns">
         <a href="#">
@@ -131,7 +134,7 @@
                     <h3>Shell Shocked</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
                 </div></div>
-                <button style="margin: 6px; padding: 4px; background-color: red; color: white;" type="button" class="close" data-dismiss="modal">Close</button>
+                <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
 
             </div>
         </div>
@@ -169,7 +172,7 @@
                         <span class="carousel-control-next-icon"></span>
                     </a>
                 </div>
-                <button style="margin: 6px; padding: 4px; background-color: red; color: white;" type="button" class="close" data-dismiss="modal">Close</button>
+                <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
             </div>
         </div>
     </div>
@@ -179,10 +182,12 @@
     <div class="modal-dialog" style="top:30%">
         <div class="modal-content">
             <div class="modal-body" >
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <br><div id="firebaseui-auth-container" ></div>
                 <div id="loader">Loading...</div>
+                <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
+
             </div>
+
         </div>
     </div>
 </div>
