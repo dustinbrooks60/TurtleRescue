@@ -24,7 +24,7 @@ let copyAnswerArray;
 
 // Pull random question from database
 function pullQuestion() {
-    let num = Math.ceil(Math.random() * 15);
+    let num = Math.ceil(Math.random() * 14);
     let dbRef = firebase.database().ref('/questions/' + 'question' + num);
     dbRef.once('value').then(function(snapshot){
         randomQuestion = snapshot.val();
