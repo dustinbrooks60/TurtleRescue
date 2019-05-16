@@ -41,8 +41,14 @@ firebase.auth().onAuthStateChanged(function(user) {
         var uid = user.uid;
         var providerData = user.providerData;
         // ...
+        document.getElementById('firebaseui-auth-container').style.display = 'none';
     } else {
-        // User is signed out.
-        // ...
+        document.getElementById('logout').style.display = 'none';
+        document.getElementById('firebaseui-auth-container').style.display = 'inline-block';
+
     }
 });
+function signOut() {
+    firebase.auth().signOut();
+    console.log('shit')
+}

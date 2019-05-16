@@ -41,7 +41,7 @@ canvas {
 .smollbtn {
     float: left;
     text-align: center;
-    margin: 5px 5px !important;
+    margin: 6px 6px!important;
     height: 60px;
     width: 60px;
     border: 4px solid #062768;
@@ -54,15 +54,7 @@ canvas {
 .bottom-btns a:focus {
     outline:none;
 }
-.bottom-btns a {
-    border-radius: 10px;
-    margin: 0 5px;
-    padding: 2px;
-    font-size: 11px;
-    text-align: center;
-    color: #062768;
-    text-decoration: none;
-}
+
 
 @media screen and (max-width: 1800px) {
     /* start of large tablet styles */
@@ -97,11 +89,19 @@ canvas {
 .back-btn {
     margin: 6px !important;
     padding: 4px !important;
-    background-color: red !important;
-    color: white !important;
+    background-color: lightgreen !important;
+    color: whitesmoke !important;
     right: 50% !important;
     transform: translateX(50%) !important;
     position: relative !important;
+    /*border-radius: 10% !important;*/
+    border: 1px solid black !important;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+.back-btn:hover{
+    opacity: 1;
 }
 /*.play-btn {*/
 /*    border-radius: 100%;*/
