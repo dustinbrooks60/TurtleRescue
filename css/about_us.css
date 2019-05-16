@@ -44,10 +44,6 @@
     transition-duration: 1s;
 }
 
-.about-us-modal-body {
-    background-color: floralwhite;
-}
-
 .cbutton {
     position: relative;
     overflow: visible;

@@ -1,6 +1,6 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Turtle Rescue</title>
@@ -18,7 +18,7 @@
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-    <!-- CSS files    -->
+    <!-- CSS files -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/animation.css">
     <link rel="stylesheet" type="text/css" href="css/logo.css">
@@ -34,179 +34,178 @@
 
 <body ontouchstart='clickManager(-99)' onload="loadSound();">
 
-<div id="start" class='containers animate-zoom'>
+    <div id="start" class='containers animate-zoom'>
 
-    <img id="gameName" src="images/logo_pink.PNG" alt="Turtle Rescue">
+        <img id="gameName" src="images/logo_pink.PNG" alt="Turtle Rescue">
 
-<!--    <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>-->
-    <div class='bubble' onclick="startGame()">
-        <div class="play-tri"></div>
-    </div>
-
-    <div class="bottom-btns">
-        <a href="#">
-            <img class="smollbtn" src="images/leaderboard_green.png" alt="">
-        </a>
-        <a href="#" data-toggle="modal" data-target="#aboutUs" id="aboutUsBtn">
-<!--            <img class="smollbtn" src="images/logoabout.png" alt="">-->
-            <div class="smollbtn">
-                <div class="logo">
-                    <div class="left-front"></div>
-                    <div class="right-front"></div>
-                    <div class="front"></div>
-                    <div class="left-back"></div>
-                    <div class="right-back"></div>
-                </div>
-            </div>
-        </a>
-        <a href="#" data-toggle="modal" data-target="#loginModal">
-            <img class="smollbtn" src="images/logIn_green.png" alt="">
-        </a>
-        <a href="#" data-toggle="modal" data-target="#howTo">
-            <img class="smollbtn" src="images/question_mark_pink.png" alt="">
-        </a>
-    </div>
-</div>
-
-<!-- Turtle Logo -->
-<div id="restart" class="containers">
-    <h2 class="animate-top">Game Over</h2>
-    <h2 class="animate-zoom" id="score">Score: 0</h2>
-    <a class="animate-bottom" onclick="startGame()">Restart</a>
-    <a class="animate-bottom" onclick="backHome()">Home</a>
-</div>
-
-<div id="trivia" class="containers animate-zoom">
-    <p id='trivia-title'>Trivia Time!</p>
-    <h4 id="question">question here?</h4>
-    <a class="answers" id="a1">Answer 1</a>
-    <a class="answers" id="a2">Answer 2</a>
-    <a class="answers" id="a3">Answer 3</a>
-    <a class="answers" id="a4">Answer 4</a>
-
-    <div class="progress">
-        <div id="time" class="progress-bar active"></div>
-    </div>
-</div>
-
-<div class="modal animate-zoom" id="aboutUs">
-    <div class="modal-dialog" style="top:10%">
-        <div class="modal-content">
-
-            <!-- Modal body -->
-            <div class="modal-body  about-us-modal-body" >
-
-                <div class="tab">
-                    <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Krystal')">Krystal</button>
-                    <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Allen')">Allen</button>
-                    <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Theoren')">Theoren</button>
-                    <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Dustin')">Dustin</button>
-                    <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Trung')">Trung</button>
-                    <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Story')">Our story</button>
-                </div>
-                <div id="Krystal" class="tabcontent">
-                    <div class="animate-bottom">
-                    <h3>Krystal Wong</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, aperiam blanditiis dolores eius eos eum fuga laudantium odio officiis omnis perspiciatis porro quam quidem quod quos rerum saepe sit sunt.</p>
-                </div></div>
-                <div id="Allen" class="tabcontent">
-                    <div class="animate-bottom">
-                    <h3>Allen Wong</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut deserunt ducimus eos fuga, labore magni, modi molestiae porro quas, sit tempora temporibus veniam vitae. Corporis cupiditate deleniti eaque incidunt laboriosam.</p>
-                </div></div>
-                <div id="Trung" class="tabcontent">
-                    <div class="animate-bottom">
-                    <h3>Trung Bui</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque dolor esse, maxime molestiae nemo vero. Ab accusamus cum delectus dicta earum modi nesciunt perferendis porro possimus quasi! Ab, illo!</p>
-                </div></div>
-                <div id="Theoren" class="tabcontent">
-                    <div class="animate-bottom">
-                    <h3>Theoren Leveille</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda, ducimus esse explicabo fugit inventore ipsum itaque, laudantium necessitatibus odio porro quas, quia ratione repudiandae similique sint sit? Facilis, reprehenderit.</p>
-                </div></div>
-                <div id="Dustin" class="tabcontent">
-                    <div class="animate-bottom">
-                    <h3>Dustin Brooks</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
-                </div></div>
-                <div id="Story" class="tabcontent">
-                    <div class="animate-bottom">
-                    <h3>Shell Shocked</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
-                </div></div>
-                <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
-
-            </div>
+    <!--    <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>-->
+        <div class='bubble' onclick="startGame()">
+            <div class="play-tri"></div>
         </div>
-    </div>
-</div>
 
-<div class="modal animate-top" id="howTo">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div id="howToImg" class="carousel slide" data-ride="carousel">
-                    <!-- The slideshow -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="./images/htp_movement.jpg" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/htp_objective.jpg" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/htp_pretrivia.jpg" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/htp_trivia.jpg" alt="">
-                        </div>
+        <div class="bottom-btns">
+            <a href="#">
+                <img class="smollbtn" src="images/leaderboard_green.png" alt="">
+            </a>
+            <a href="#" data-toggle="modal" data-target="#aboutUs" id="aboutUsBtn">
+    <!--            <img class="smollbtn" src="images/logoabout.png" alt="">-->
+                <div class="smollbtn">
+                    <div class="logo">
+                        <div class="left-front"></div>
+                        <div class="right-front"></div>
+                        <div class="front"></div>
+                        <div class="left-back"></div>
+                        <div class="right-back"></div>
                     </div>
-
-                    <!-- Left and right controls -->
-                    <a class="carousel-control-prev" href="#howToImg" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#howToImg" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
                 </div>
-                <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
+            </a>
+            <a href="#" data-toggle="modal" data-target="#loginModal">
+                <img class="smollbtn" src="images/logIn_green.png" alt="">
+            </a>
+            <a href="#" data-toggle="modal" data-target="#howTo">
+                <img class="smollbtn" src="images/question_mark_pink.png" alt="">
+            </a>
+        </div>
+    </div>
+
+    <div id="restart" class="containers">
+        <h2 class="animate-top">Game Over</h2>
+        <h2 class="animate-zoom" id="score">Score: 0</h2>
+        <a class="animate-bottom" onclick="startGame()">Restart</a>
+        <a class="animate-bottom" onclick="backHome()">Home</a>
+    </div>
+
+    <div id="trivia" class="containers animate-zoom">
+        <p id='trivia-title'>Trivia Time!</p>
+        <h4 id="question">question here?</h4>
+        <a class="answers" id="a1">Answer 1</a>
+        <a class="answers" id="a2">Answer 2</a>
+        <a class="answers" id="a3">Answer 3</a>
+        <a class="answers" id="a4">Answer 4</a>
+
+        <div class="progress">
+            <div id="time" class="progress-bar active"></div>
+        </div>
+    </div>
+
+    <div class="modal animate-zoom" id="aboutUs">
+        <div class="modal-dialog" style="top:10%">
+            <div class="modal-content">
+
+                <!-- Modal body -->
+                <div class="modal-body" >
+
+                    <div class="tab">
+                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Krystal')">Krystal</button>
+                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Allen')">Allen</button>
+                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Theoren')">Theoren</button>
+                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Dustin')">Dustin</button>
+                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Trung')">Trung</button>
+                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Story')">Our story</button>
+                    </div>
+                    <div id="Krystal" class="tabcontent">
+                        <div class="animate-bottom">
+                        <h3>Krystal Wong</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, aperiam blanditiis dolores eius eos eum fuga laudantium odio officiis omnis perspiciatis porro quam quidem quod quos rerum saepe sit sunt.</p>
+                    </div></div>
+                    <div id="Allen" class="tabcontent">
+                        <div class="animate-bottom">
+                        <h3>Allen Wong</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut deserunt ducimus eos fuga, labore magni, modi molestiae porro quas, sit tempora temporibus veniam vitae. Corporis cupiditate deleniti eaque incidunt laboriosam.</p>
+                    </div></div>
+                    <div id="Trung" class="tabcontent">
+                        <div class="animate-bottom">
+                        <h3>Trung Bui</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque dolor esse, maxime molestiae nemo vero. Ab accusamus cum delectus dicta earum modi nesciunt perferendis porro possimus quasi! Ab, illo!</p>
+                    </div></div>
+                    <div id="Theoren" class="tabcontent">
+                        <div class="animate-bottom">
+                        <h3>Theoren Leveille</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda, ducimus esse explicabo fugit inventore ipsum itaque, laudantium necessitatibus odio porro quas, quia ratione repudiandae similique sint sit? Facilis, reprehenderit.</p>
+                    </div></div>
+                    <div id="Dustin" class="tabcontent">
+                        <div class="animate-bottom">
+                        <h3>Dustin Brooks</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
+                    </div></div>
+                    <div id="Story" class="tabcontent">
+                        <div class="animate-bottom">
+                        <h3>Shell Shocked</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
+                    </div></div>
+                    <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal animate-zoom " id="loginModal">
-    <div class="modal-dialog" style="top:30%">
-        <div class="modal-content">
-            <div class="modal-body" >
-                <br><div id="firebaseui-auth-container" ></div>
-                <div id="loader">Loading...</div>
-                <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
+    <div class="modal animate-top" id="howTo">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div id="howToImg" class="carousel slide" data-ride="carousel">
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="./images/htp_movement.jpg" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/htp_objective.jpg" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/htp_pretrivia.jpg" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/htp_trivia.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#howToImg" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#howToImg" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+                    </div>
+                    <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
+                </div>
             </div>
-
         </div>
     </div>
-</div>
 
-<div id="count-down">
-    <div class="animate-zoom" id="count4">4</div>
-    <div class="animate-zoom" id="count3">3</div>
-    <div class="animate-zoom" id="count2">2</div>
-    <div class="animate-zoom" id="count1">1</div>
-    <div class="animate-zoom" id="count0">GO!</div>
-</div>
+    <div class="modal animate-zoom " id="loginModal">
+        <div class="modal-dialog" style="top:30%">
+            <div class="modal-content">
+                <div class="modal-body" >
+                    <br><div id="firebaseui-auth-container" ></div>
+                    <div id="loader">Loading...</div>
+                    <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
 
-<script type="text/javascript" src="js/firebaseauthentication.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/trivia.js"></script>
-<script type="text/javascript" src="js/gameElement.js"></script>
-<script type="text/javascript" src="js/about_us.js"></script>
-<script type="text/javascript" src="js/firebase_highscore.js"></script>
-<script type="text/javascript" src="js/sounds.js"></script>
-<script src="js/classie.js"></script>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="count-down">
+        <div class="animate-zoom" id="count4">4</div>
+        <div class="animate-zoom" id="count3">3</div>
+        <div class="animate-zoom" id="count2">2</div>
+        <div class="animate-zoom" id="count1">1</div>
+        <div class="animate-zoom" id="count0">GO!</div>
+    </div>
+
+    <script type="text/javascript" src="js/firebaseauthentication.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/trivia.js"></script>
+    <script type="text/javascript" src="js/gameElement.js"></script>
+    <script type="text/javascript" src="js/about_us.js"></script>
+    <script type="text/javascript" src="js/firebase_highscore.js"></script>
+    <script type="text/javascript" src="js/sounds.js"></script>
+    <script src="js/classie.js"></script>
 </body>
 </html>
