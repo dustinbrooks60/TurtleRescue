@@ -1,5 +1,7 @@
+//Reveal first tab
 document.getElementById('aboutUsBtn').onclick = function () {openCity(event, 'Krystal')};
 
+// Reveal and hide tabs
 function openCity(evt, cityName) {
     var currentTab, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
