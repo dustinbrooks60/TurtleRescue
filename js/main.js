@@ -18,6 +18,7 @@ let audio_classical = new Audio('./sounds/allegro.mp3');
 // Create main elements for game
 function startGame() {
     audio_classical.pause();
+    audio_classical.currentTime = 0;
     audio_music.play();
     resetGame();
     turtle = new GameElement(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
@@ -32,6 +33,9 @@ function startGame() {
 
 // Reset game elements for a new round of game play
 function resetGame() {
+    audio_music.pause();
+    audio_music.currentTime = 0;
+    audio_music.play();
     score = 0;
     multiplier = 1;
     enemies = [];
@@ -165,6 +169,7 @@ function checkCollision() {
         topHat = false;
         turtle.image.src = './images/dapper-sprite2.png';
         audio_music.pause();
+        audio_classical.currentTime = 0;
         audio_classical.play();
     }
 
