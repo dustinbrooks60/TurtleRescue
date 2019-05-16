@@ -5,6 +5,7 @@
     border: 1px solid #ccc;
     display: flex;
     height: 5em;
+    background-color: floralwhite;
 }
 
 /* Style the buttons inside the tab */
@@ -12,7 +13,7 @@
     float: left;
     border: none;
     color: black;
-    background-color: white;
+    background-color: floralwhite;
     outline: none;
     cursor: pointer;
     padding: 14px;
@@ -44,7 +45,7 @@
 }
 
 .about-us-modal-body {
-    background-color: white;
+    background-color: floralwhite;
 }
 
 .cbutton {
@@ -106,4 +107,122 @@
         -webkit-transform: scale3d(0.75, 0.75, 1);
         transform: scale3d(0.75, 0.75, 1);
     }
+}
+
+
+/* Milan */
+.cbutton--effect-milan::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -35px 0 0 -35px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cbutton--effect-milan::after,
+.cbutton--effect-milan::before {
+    border: 4px solid rgba(111,148,182,0.1);
+    /*border-top: 5px solid rgba(255,255,0,0.2);*/
+    /*border-right: 3px solid rgba(0,255,255,0.4);*/
+    /*border-bottom: 5px solid rgba(255,0,0,0.2);*/
+    /*border-left: 3px solid rgba(0,0,255,0.3);*/
+}
+
+.cbutton--effect-milan:focus::after {
+    -webkit-animation-name: anim-effect-milan-3, anim-effect-milan-1;
+    animation-name: anim-effect-milan-3, anim-effect-milan-1;
+    -webkit-animation-duration: 5s, 2s;
+    animation-duration: 5s, 2s;
+    -webkit-animation-iteration-count: 1, infinite;
+    animation-iteration-count: 1, infinite;
+    -webkit-animation-timing-function: ease, linear;
+    animation-timing-function: ease, linear;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.cbutton--effect-milan:focus::before {
+    -webkit-animation-name: anim-effect-milan-3, anim-effect-milan-2;
+    animation-name: anim-effect-milan-3, anim-effect-milan-2;
+    -webkit-animation-duration: 5s, 2s;
+    animation-duration: 5s, 2s;
+    -webkit-animation-iteration-count: 1, infinite;
+    animation-iteration-count: 1, infinite;
+    -webkit-animation-timing-function: ease, linear;
+    animation-timing-function: ease, linear;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes anim-effect-milan-1 {
+    0% {
+        -webkit-transform: perspective(1000px) rotate3d(1, 1, 1, 0deg);
+        transform: perspective(1000px) rotate3d(1, 1, 1, 0deg);
+    }
+    100% {
+        -webkit-transform: perspective(1000px) rotate3d(1, 1, 1, 360deg);
+        transform: perspective(1000px) rotate3d(1, 1, 1, 360deg);
+    }
+}
+
+@keyframes anim-effect-milan-1 {
+    0% {
+        -webkit-transform: perspective(1000px) rotate3d(1, 1, 1, 0deg);
+        transform: perspective(1000px) rotate3d(1, 1, 1, 0deg);
+    }
+    100% {
+        -webkit-transform: perspective(1000px) rotate3d(1, 1, 1, 360deg);
+        transform: perspective(1000px) rotate3d(1, 1, 1, 360deg);
+    }
+}
+
+@-webkit-keyframes anim-effect-milan-2 {
+    0% {
+        -webkit-transform: perspective(1000px) rotate3d(-1, -1, -1, 0deg);
+        transform: perspective(1000px) rotate3d(-1, -1, -1, 0deg);
+    }
+    100% {
+        -webkit-transform: perspective(1000px) rotate3d(-1, -1, -1, 360deg);
+        transform: perspective(1000px) rotate3d(-1, -1, -1, 360deg);
+    }
+}
+
+@keyframes anim-effect-milan-2 {
+    0% {
+        -webkit-transform: perspective(1000px) rotate3d(1, -1, 1, 0deg);
+        transform: perspective(1000px) rotate3d(1, -1, 1, 0deg);
+    }
+    100% {
+        -webkit-transform: perspective(1000px) rotate3d(1, -1, 1, 360deg);
+        transform: perspective(1000px) rotate3d(1, -1, 1, 360deg);
+    }
+}
+
+@-webkit-keyframes anim-effect-milan-3 {
+    0%, 100% {
+        opacity: 0;
+    }
+    25%, 75% {
+        opacity: 1;
+    }
+}
+
+@keyframes anim-effect-milan-3 {
+    0%, 100% {
+        opacity: 0;
+    }
+    25%, 75% {
+        opacity: 1;
+    }
+}
+
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
 }

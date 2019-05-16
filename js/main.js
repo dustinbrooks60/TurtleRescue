@@ -23,7 +23,7 @@ function startGame() {
     turtle = new GameElement(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
     oceanBackground = new GameElement(1800, window.innerHeight, './images/ocean_2.png', 0, 0, "background"); // game background
-    displayScore = new GameElement("20px", "Play", "black", 10, 30, "text");
+    displayScore = new GameElement("20px", "Play", "black bold", 10, 30, "text");
     multiplierIcon = new GameElement(30, 20, './images/saved_turtle2.png', 10, 42, "image");
     displayMultiplier = new GameElement("20px", "Play", "black", 45, 60, "text");
     pullQuestion();
@@ -217,4 +217,10 @@ function addObjects() {
         let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
         garbageClump = new GameElement(180, 180, './images/clump.png', x, garbageY, "image")
     }
+}
+
+function backHome(){
+    document.getElementById('restart').style.display = "none";
+    document.getElementById('start').style.display = "flex";
+    gameCanvas.clear()
 }
