@@ -83,5 +83,6 @@
     width: 0;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 25px solid rgba(6,39,104, 0.8);
+    border-left: 25px solid rgba(6, 39, 104, 0.8);
     border-right: 15px solid transparent;
+}

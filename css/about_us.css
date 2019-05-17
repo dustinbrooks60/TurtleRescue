@@ -217,10 +217,14 @@
 /*        opacity: 1;*/
 /*    }*/
 /*}*/
-#aboutUs .modal {
+#aboutUs .modal, #leaderBoard .modal, #loginModal .modal, #howTo .modal {
     padding-left: 0 !important;
 }
-#aboutUs .modal-content {
+#leaderBoard .modal-dialog{
+    top: 10%;
+    /*margin: 100px 0px;*/
+}
+#aboutUs .modal-content, #leaderBoard .modal-content, #loginModal .modal-content, #howTo .modal-content {
     background-color: #eeeeee;
     font-family: Play;
     border: 7px solid #062768;
@@ -240,4 +244,12 @@
 .carousel-inner img {
     width: 100%;
     height: 100%;
+}
+
+.modal-dialog-scrollable {
+    margin: 10px;
+}
+#closeBtn {
+    font-size: 32px;
+    /*background-color: #333333;*/
 }
