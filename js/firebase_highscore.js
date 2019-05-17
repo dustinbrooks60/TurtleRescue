@@ -83,6 +83,10 @@ function populateLeaderBoard(){
             $("#top" + String(i+1) + "Name").html(topFiveArr[i].userName);
             $("#top" + String(i+1) +"Score").html(topFiveArr[i].bestScore);
         }
+        for (let j = topFiveArr.length; j < 5; j++){ // to clear the loading if topFiveArr.length < 5
+            $("#top" + String(j+1) + "Name").html("");
+            $("#top" + String(j+1) +"Score").html("");
+        }
     })
 }
 
