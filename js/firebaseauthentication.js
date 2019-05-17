@@ -1,4 +1,5 @@
 var provider = new firebase.auth.GoogleAuthProvider(); // create an instance for google provider
+var provider = new firebase.auth.FacebookAuthProvider();
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
@@ -23,9 +24,10 @@ var uiConfig = {
         // Leave the lines as is for the providers you want to offer your users.
         {
             provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            scopes: [
-                'https://www.googleapis.com/auth/contacts.readonly'
-            ],
+            //scopes: [
+            //    'https://www.googleapis.com/auth/contacts.readonly'
+            //]
+            //,
             customParameters: {
                 // Forces account selection even when one account
                 // is available.
@@ -99,8 +101,11 @@ firebase.auth().getRedirectResult().then(function(result) {
 });
 
 function signOut() {
-    firebase.auth().signOut();
-    console.log('shit')
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+    }).catch(function(error) {
+        // An error happened.
+    });
 }
 
 function showUserName(user_name){
