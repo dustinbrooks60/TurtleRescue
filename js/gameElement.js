@@ -83,14 +83,14 @@ function GameElement(width, height, src, x, y, type, num_frames) {
     };
     // Sets the hit boxes of turtle, enemies, and garbage and detects if they collide
     this.collidesWith = function(otherObject) {
-        let myLeft = this.x;
-        let myRight = this.x + this.hitbox_width;
-        let myTop = this.y;
-        let myBottom = this.y + this.hitbox_height;
-        let objectLeft = otherObject.x + 85;
-        let objectRight = otherObject.x + (otherObject.hitbox_width) - 85;
-        let objectTop = otherObject.y + 85;
-        let objectBottom = otherObject.y + (otherObject.hitbox_height) - 75;
+        let myLeft = this.x + 50;
+        let myRight = this.x + this.hitbox_width - 50;
+        let myTop = this.y + 50;
+        let myBottom = this.y + this.hitbox_height - 50;
+        let objectLeft = otherObject.x + 25;
+        let objectRight = otherObject.x + otherObject.hitbox_width - 20;
+        let objectTop = otherObject.y + 30;
+        let objectBottom = otherObject.y + otherObject.hitbox_height - 20;
         let collision = true;
         if ((myBottom < objectTop) || (myTop > objectBottom) || (myRight < objectLeft) || (myLeft > objectRight)) {
             collision = false;

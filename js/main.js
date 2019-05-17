@@ -151,6 +151,7 @@ function checkCollision() {
             playSound_Oof();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
+            console.log(turtle.x, turtle.y, enemies[i].x, enemies[i].y)
         }
         // remove enemy from array once it has gone off the screen
         if (enemies[i].x < -100) {
@@ -221,7 +222,7 @@ function addObjects() {
         let x = gameCanvas.canvas.width;
         // Determines y-axis position of garbage clump spawn
         let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
-        garbageClump = new GameElement(180, 180, './images/clump.png', x, garbageY, "image")
+        garbageClump = new GameElement(160, 130, './images/clump.png', x, garbageY, "image")
     }
 }
 
