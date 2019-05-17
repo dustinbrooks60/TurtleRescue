@@ -168,5 +168,6 @@ function displayAnswer(){
     } else {
         document.getElementById("trivia-title").innerHTML = "Incorrect!";
         document.getElementById("trivia-title").style.color = "red";
+        playSound_Incorrect();
     }
 }
