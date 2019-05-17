@@ -238,7 +238,7 @@
 }
 #aboutUs .modal-content {
     /*text-align: justify;*/
-    line-height: 135%;
+    line-height: 140%;
 }
 .modal-title {
     color: #062768 !important;
@@ -262,4 +262,5 @@
     height: 100px;
     float: left;
     margin-right: 11px;
+    margin-top: 6px;
 }

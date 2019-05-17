@@ -88,9 +88,9 @@ function GameElement(width, height, src, x, y, type, num_frames) {
         let myTop = this.y + 50;
         let myBottom = this.y + this.hitbox_height - 50;
         let objectLeft = otherObject.x + 25;
-        let objectRight = otherObject.x + otherObject.hitbox_width - 20;
+        let objectRight = otherObject.x + otherObject.hitbox_width - 25;
         let objectTop = otherObject.y + 30;
-        let objectBottom = otherObject.y + otherObject.hitbox_height - 20;
+        let objectBottom = otherObject.y + otherObject.hitbox_height - 25;
         let collision = true;
         if ((myBottom < objectTop) || (myTop > objectBottom) || (myRight < objectLeft) || (myLeft > objectRight)) {
             collision = false;
