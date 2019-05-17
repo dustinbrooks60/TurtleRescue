@@ -127,6 +127,16 @@ canvas {
     background-color: white !important;
 }
 
+#userName{
+    position: absolute;
+    top: 70%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-size: 1em;
+    font-family: Play;
+    color: whitesmoke;
+}
+
 /*.play-btn {*/
 /*    border-radius: 100%;*/
 /*    border: 8px solid #062768;*/
