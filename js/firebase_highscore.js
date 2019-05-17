@@ -45,7 +45,11 @@ scoresRoot.on('value', (snapshot) => {
         }
     });
     sortScore();
-    topFiveArr = leaderboardArr.slice(leaderboardArr.length - 5); // get the top five users
+    if (leaderboardArr.length >= 5) {
+        topFiveArr = leaderboardArr.slice(leaderboardArr.length - 5); // get the top five users
+    } else {
+        topFiveArr = leaderboardArr.slice();
+    }
     populateLeaderBoard();
     console.log("Top score is " + highestScore+" by "+highestUser);
 
@@ -73,12 +77,12 @@ function sortScore(){
 }
 
 function populateLeaderBoard(){
+    topFiveArr.reverse();
     $(document).ready(function(){
-        $("#top1Name").html(topFiveArr[4].userName); $("#top1Score").html(topFiveArr[4].bestScore);
-        $("#top2Name").html(topFiveArr[3].userName); $("#top2Score").html(topFiveArr[3].bestScore);
-        $("#top3Name").html(topFiveArr[2].userName); $("#top3Score").html(topFiveArr[2].bestScore);
-        $("#top4Name").html(topFiveArr[1].userName); $("#top4Score").html(topFiveArr[1].bestScore);
-        $("#top5Name").html(topFiveArr[0].userName); $("#top5Score").html(topFiveArr[0].bestScore);
+        for (let i = 0; i < topFiveArr.length; i++){
+            $("#top" + String(i+1) + "Name").html(topFiveArr[i].userName);
+            $("#top" + String(i+1) +"Score").html(topFiveArr[i].bestScore);
+        }
     })
 }
 
