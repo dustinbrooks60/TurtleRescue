@@ -41,9 +41,11 @@ firebase.auth().onAuthStateChanged(function(user) {
         var uid = user.uid;
         var providerData = user.providerData;
         // ...
+        showUserName(displayName);
         document.getElementById('firebaseui-auth-container').style.display = 'none';
         document.getElementById('logout').style.display = 'inline-block';
     } else {
+        document.getElementById('userName').innerHTML = "";
         document.getElementById('logout').style.display = 'none';
         document.getElementById('firebaseui-auth-container').style.display = 'inline-block';
 
@@ -52,4 +54,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 function signOut() {
     firebase.auth().signOut();
     console.log('shit')
+}
+
+function showUserName(user_name){
+    let name = user_name.trim().split(" ");
+    document.getElementById('userName').innerHTML = "Welcome, " + name[0];
 }
