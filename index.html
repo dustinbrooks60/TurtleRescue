@@ -68,12 +68,19 @@
     </div>
 </div>
 
-<!-- Turtle Logo -->
-<div id="restart" class="containers">
-    <h2 class="animate-top">Game Over</h2>
-    <h2 class="animate-zoom" id="score">Score: 0</h2>
-    <a class="animate-bottom" onclick="startGame()">Restart</a>
-    <a class="animate-bottom" onclick="backHome()">Home</a>
+<div class="modal animate-zoom" id="game-over">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <img id="game-over-image" src="./images/gameOver1.png" alt="game over">
+                <p id="score">Score: 0</p>
+                <p id="turtles-saved">Turtles Saved: 0</p>
+                <div id="play"><a onclick="startGame()">Play Again</a></div>
+                <div id="home"><a onclick="backHome()">Home</a></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="trivia" class="containers animate-zoom">
@@ -136,10 +143,10 @@
     </div>
 
     <div class="modal animate-top" id="howTo">
-        <div class="modal-dialog">
-            <div class="modal-content">
+                <div class="modal-dialog">
+                    <div class="modal-content">
 
-                <!-- Modal body -->
+                        <!-- Modal body -->
                 <div class="modal-body">
                     <div id="howToImg" class="carousel slide" data-ride="carousel">
                         <!-- The slideshow -->

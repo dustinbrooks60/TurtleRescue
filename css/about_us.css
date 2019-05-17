@@ -217,14 +217,15 @@
 /*        opacity: 1;*/
 /*    }*/
 /*}*/
-#aboutUs .modal, #leaderBoard .modal, #loginModal .modal, #howTo .modal {
+#aboutUs .modal, #leaderBoard .modal, #loginModal .modal, #howTo .modal, #game-over .modal{
     padding-left: 0 !important;
 }
 #leaderBoard .modal-dialog{
     top: 10%;
     /*margin: 100px 0px;*/
 }
-#aboutUs .modal-content, #leaderBoard .modal-content, #loginModal .modal-content, #howTo .modal-content {
+#aboutUs .modal-content, #leaderBoard .modal-content, #loginModal .modal-content,
+#howTo .modal-content, #game-over .modal-content{
     background-color: #eeeeee;
     font-family: Play;
     border: 7px solid #062768;
@@ -243,6 +244,12 @@
 .modal-title {
     color: #062768 !important;
     font-weight:bold;
+}
+#footer {
+    position: sticky;
+}
+#about-body {
+    overflow: scroll;
 }
 /* Make the image fully responsive */
 .carousel-inner img {
@@ -279,4 +286,44 @@
 }
 .btn-img:focus .bio-pic{
     border: 10px double lightgreen;
+}
+
+
+/*Game over screen css*/
+#game-over{
+    display: none;
+    z-index: 10;
+    text-align: center;
+}
+#game-over .modal-dialog {
+    margin: 55% 5% 0 5%;
+    width: 90%;
+    max-width: 400px;
+}
+#game-over-image {
+    height: 50%;
+    width: 100%;
+    margin-top: -30%;
+}
+#play, #home {
+    display: inline-block;
+    width: 35%;
+    padding: 1% 0 1% 0;
+    border-radius: 5px;
+    color: white;
+}
+#play {
+    margin-right: 2px;
+    background-color: #47C034;
+}
+#home {
+    margin-left: 2px;
+    background-color: #df575f;
+}
+#score, #turtles-saved {
+    font-size: 1.2em;
+}
+#turtles-saved {
+    margin-top: -2%;
+    margin-bottom: 8%;
 }

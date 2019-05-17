@@ -44,7 +44,7 @@ function resetGame() {
     topHat = false;
     garbageClump = false;
     document.getElementById("start").style.display = "none";
-    document.getElementById("restart").style.display = "none";
+    document.getElementById("game-over").style.display = "none";
     document.getElementById("trivia").style.display = "none";
 }
 
@@ -152,8 +152,9 @@ function checkCollision() {
             gameCanvas.stop();
             scoreToDB();
             playSound_Oof();
-            document.getElementById('restart').style = "display: flex; z-index: 10";
+            document.getElementById('game-over').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
+            document.getElementById("turtles-saved").innerHTML = "Turtles Saved: " + (multiplier - 1);
         }
         // remove enemy from array once it has gone off the screen
         if (enemies[i].x < -100) {
@@ -233,7 +234,7 @@ function backHome(){
     audio_music.currentTime = 0;
     audio_classical.pause();
     audio_classical.currentTime = 0;
-    document.getElementById('restart').style.display = "none";
+    document.getElementById('game-over').style.display = "none";
     document.getElementById('start').style.display = "flex";
     gameCanvas.clear()
 }
