@@ -212,7 +212,7 @@ function addObjects() {
     // Adds top hat easter egg to the game canvas
     if (gameCanvas.frameNo === 1500) {
         let x = gameCanvas.canvas.width;
-        let y = gameCanvas.canvas.height - 135;
+        let y = gameCanvas.canvas.height - 120;
         topHat = new GameElement(70, 45, './images/top_hat.png', x, y, "image")
     }
 

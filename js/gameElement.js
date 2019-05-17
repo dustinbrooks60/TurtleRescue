@@ -67,7 +67,7 @@ function GameElement(width, height, src, x, y, type, num_frames) {
     };
     // Prevents element from falling past ocean floor
     this.hitBottom = function() {
-        let oceanFloor = gameCanvas.canvas.height - this.height + 425;
+        let oceanFloor = gameCanvas.canvas.height - this.height + 450;
         if (this.y > oceanFloor) {
             this.y = oceanFloor;
             this.gravitySpeed = -2.8;
