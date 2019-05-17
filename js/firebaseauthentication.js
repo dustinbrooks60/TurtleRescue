@@ -51,5 +51,4 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 function signOut() {
     firebase.auth().signOut();
-    console.log('shit')
 }
