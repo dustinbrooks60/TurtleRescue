@@ -67,7 +67,6 @@ function scoreToDB(){
         }
 
     }
-    console.log('You got ' + infoJSONobj.bestScore);
 }
 
 function sortScore(){

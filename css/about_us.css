@@ -262,5 +262,21 @@
     height: 100px;
     float: left;
     margin-right: 11px;
+    border: 0 double lightgreen;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
     margin-top: 6px;
+}
+
+.btn-img {
+    float: left;
+    padding: 0 !important;
+    border: none;
+    margin: 0 !important;
+    outline: none !important;
+}
+.btn-img:focus .bio-pic{
+    border: 10px double lightgreen;
 }
