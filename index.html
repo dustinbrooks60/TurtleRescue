@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Turtle Rescue</title>
@@ -34,107 +34,98 @@
 
 <body ontouchstart='clickManager(-99)' onload="loadSound();">
 
-    <div id="start" class='containers animate-zoom'>
+<div id="start" class='containers animate-zoom'>
 
-        <img id="gameName" src="images/logo_pink.PNG" alt="Turtle Rescue">
+    <img id="gameName" src="images/logo_pink.PNG" alt="Turtle Rescue">
 
-    <!--    <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>-->
-        <div class='bubble' onclick="startGame()">
-            <div class="play-tri"></div>
-        </div>
+<!--    <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>-->
+    <div class='bubble' onclick="startGame()">
+        <div class="play-tri"></div>
+    </div>
 
-        <div class="bottom-btns">
-            <a href="#">
-                <img class="smollbtn" src="images/leaderboard_green.png" alt="">
-            </a>
-            <a href="#" data-toggle="modal" data-target="#aboutUs" id="aboutUsBtn">
-    <!--            <img class="smollbtn" src="images/logoabout.png" alt="">-->
-                <div class="smollbtn">
-                    <div class="logo">
-                        <div class="left-front"></div>
-                        <div class="right-front"></div>
-                        <div class="front"></div>
-                        <div class="left-back"></div>
-                        <div class="right-back"></div>
-                    </div>
+    <div class="bottom-btns">
+        <a href="#" data-toggle="modal" data-target="#leaderBoard" id="leaderBtn">
+            <img class="smollbtn" src="images/leaderboard_green.png" alt="">
+        </a>
+        <a href="#" data-toggle="modal" data-target="#aboutUs" id="aboutUsBtn">
+<!--            <img class="smollbtn" src="images/logoabout.png" alt="">-->
+            <div class="smollbtn">
+                <div class="logo">
+                    <div class="left-front"></div>
+                    <div class="right-front"></div>
+                    <div class="front"></div>
+                    <div class="left-back"></div>
+                    <div class="right-back"></div>
                 </div>
-            </a>
-            <a href="#" data-toggle="modal" data-target="#loginModal">
-                <img class="smollbtn" src="images/logIn_green.png" alt="">
-            </a>
-            <a href="#" data-toggle="modal" data-target="#howTo">
-                <img class="smollbtn" src="images/question_mark_pink.png" alt="">
-            </a>
-        </div>
+            </div>
+        </a>
+        <a href="#" data-toggle="modal" data-target="#loginModal">
+            <img class="smollbtn" src="images/logIn_green.png" alt="">
+        </a>
+        <a href="#" data-toggle="modal" data-target="#howTo">
+            <img class="smollbtn" src="images/question_mark_pink.png" alt="">
+        </a>
     </div>
+</div>
 
-    <div id="restart" class="containers">
-        <h2 class="animate-top">Game Over</h2>
-        <h2 class="animate-zoom" id="score">Score: 0</h2>
-        <a class="animate-bottom" onclick="startGame()">Restart</a>
-        <a class="animate-bottom" onclick="backHome()">Home</a>
+<!-- Turtle Logo -->
+<div id="restart" class="containers">
+    <h2 class="animate-top">Game Over</h2>
+    <h2 class="animate-zoom" id="score">Score: 0</h2>
+    <a class="animate-bottom" onclick="startGame()">Restart</a>
+    <a class="animate-bottom" onclick="backHome()">Home</a>
+</div>
+
+<div id="trivia" class="containers animate-zoom">
+    <p id='trivia-title'>Trivia Time!</p>
+    <h4 id="question">question here?</h4>
+    <a class="answers" id="a1">Answer 1</a>
+    <a class="answers" id="a2">Answer 2</a>
+    <a class="answers" id="a3">Answer 3</a>
+    <a class="answers" id="a4">Answer 4</a>
+
+    <div class="progress">
+        <div id="time" class="progress-bar active"></div>
     </div>
-
-    <div id="trivia" class="containers animate-zoom">
-        <p id='trivia-title'>Trivia Time!</p>
-        <h4 id="question">question here?</h4>
-        <a class="answers" id="a1">Answer 1</a>
-        <a class="answers" id="a2">Answer 2</a>
-        <a class="answers" id="a3">Answer 3</a>
-        <a class="answers" id="a4">Answer 4</a>
-
-        <div class="progress">
-            <div id="time" class="progress-bar active"></div>
-        </div>
-    </div>
+</div>
 
     <div class="modal animate-zoom" id="aboutUs">
-        <div class="modal-dialog" style="top:10%">
+        <div class="modal-dialog">
             <div class="modal-content">
-
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">About</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
                 <!-- Modal body -->
-                <div class="modal-body" >
-
-                    <div class="tab">
-                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Krystal')">Krystal</button>
-                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Allen')">Allen</button>
-                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Theoren')">Theoren</button>
-                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Dustin')">Dustin</button>
-                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Trung')">Trung</button>
-                        <button class="tablinks cbutton cbutton--effect-milan" onclick="openCity(event, 'Story')">Our story</button>
-                    </div>
-                    <div id="Krystal" class="tabcontent">
-                        <div class="animate-bottom">
-                        <h3>Krystal Wong</h3>
+                <div class="modal-body">
+                    <div id="Story">
+                            <h3 id="t-rescue">Turtle Rescue</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
+                        </div><hr>
+                    <div id="Allen">
+                        <h4>Allen Wong</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, aperiam blanditiis dolores eius eos eum fuga laudantium odio officiis omnis perspiciatis porro quam quidem quod quos rerum saepe sit sunt.</p>
-                    </div></div>
-                    <div id="Allen" class="tabcontent">
-                        <div class="animate-bottom">
-                        <h3>Allen Wong</h3>
+                    </div><hr>
+                    <div id="Dustin">
+                        <h4>Dustin Brooks</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut deserunt ducimus eos fuga, labore magni, modi molestiae porro quas, sit tempora temporibus veniam vitae. Corporis cupiditate deleniti eaque incidunt laboriosam.</p>
-                    </div></div>
-                    <div id="Trung" class="tabcontent">
-                        <div class="animate-bottom">
-                        <h3>Trung Bui</h3>
+                    </div><hr>
+                    <div id="Krystal">
+                        <h4>Krystal Wong</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque dolor esse, maxime molestiae nemo vero. Ab accusamus cum delectus dicta earum modi nesciunt perferendis porro possimus quasi! Ab, illo!</p>
-                    </div></div>
-                    <div id="Theoren" class="tabcontent">
-                        <div class="animate-bottom">
-                        <h3>Theoren Leveille</h3>
+                    </div><hr>
+                    <div id="Theoren">
+                        <h4>Theoren Leveille</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda, ducimus esse explicabo fugit inventore ipsum itaque, laudantium necessitatibus odio porro quas, quia ratione repudiandae similique sint sit? Facilis, reprehenderit.</p>
-                    </div></div>
-                    <div id="Dustin" class="tabcontent">
-                        <div class="animate-bottom">
-                        <h3>Dustin Brooks</h3>
+                    </div><hr>
+                    <div id="Trung">
+                        <h4>Trung Bui</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
-                    </div></div>
-                    <div id="Story" class="tabcontent">
-                        <div class="animate-bottom">
-                        <h3>Shell Shocked</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
-                    </div></div>
+                    </div>
+                    <div class="modal-footer">
                     <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -195,6 +186,56 @@
             </div>
         </div>
     </div>
+
+<div class="modal animate-zoom " id="leaderBoard">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" >
+                <div class="container">
+                    <h2>Leaderboard</h2>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Ranking</th>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td id="top1Name">Loading..</td>
+                            <td id="top1Score">Loading..</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td id="top2Name">Loading..</td>
+                            <td id="top2Score">Loading..</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td id="top3Name">Loading..</td>
+                            <td id="top3Score">Loading..</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td id="top4Name">Loading..</td>
+                            <td id="top4Score">Loading..</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td id="top5Name">Loading..</td>
+                            <td id="top5Score">Loading..</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
     <div id="count-down">
         <div class="animate-zoom" id="count4">4</div>
