@@ -1,6 +1,26 @@
+var provider = new firebase.auth.GoogleAuthProvider(); // create an instance for google provider
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
+    googleAuth: function(){
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // ...
+        }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+
+        });
+    },
     callbacks: {
         signInSuccessWithAuthResult: function(authResult, redirectUrl) {
             // User successfully signed in.
@@ -19,14 +39,39 @@ var uiConfig = {
     signInSuccessUrl: 'index.html',
     signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
-        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        {
+            provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            scopes: [
+                'https://www.googleapis.com/auth/contacts.readonly'
+            ],
+            customParameters: {
+                // Forces account selection even when one account
+                // is available.
+                prompt: 'select_account'
+            }
+        },
+        {
+            provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            scopes: [
+                'public_profile',
+                'email',
+                'user_likes',
+                'user_friends'
+            ],
+            customParameters: {
+                // Forces password re-entry.
+                auth_type: 'reauthenticate'
+            }
+        },
         firebase.auth.EmailAuthProvider.PROVIDER_ID
+
     ],
 // Terms of service url.
     tosUrl: 'index.html',
 // Privacy policy url.
     privacyPolicyUrl: 'index.html'
 };
+
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
 
