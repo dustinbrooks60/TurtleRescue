@@ -33,6 +33,7 @@ scoresRoot.on('value', (snapshot) => {
 
 // Top score grabber:
 scoresRoot.on('value', (snapshot) => {
+    leaderboardArr = [];
     let playerData = snapshot.val();
     var highestScore = -10000;
     var highestUser = "";
