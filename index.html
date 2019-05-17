@@ -184,7 +184,11 @@
                     <div style="text-align: center">
                         <br><div id="firebaseui-auth-container" ></div>
                         <div id="loader">Loading...</div>
-                        <a href="#" id="logout" onclick="signOut()">Log Out</a>
+                        <div id="logout">
+                            <p>You are already logged in.</p>
+                            <p>Would you like to <a href="#" onclick="signOut()">Log Out</a> ?
+                            </p>
+                        </div>
                     </div>
                     <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
                 </div>

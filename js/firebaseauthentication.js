@@ -42,6 +42,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         var providerData = user.providerData;
         // ...
         document.getElementById('firebaseui-auth-container').style.display = 'none';
+        document.getElementById('logout').style.display = 'inline-block';
     } else {
         document.getElementById('logout').style.display = 'none';
         document.getElementById('firebaseui-auth-container').style.display = 'inline-block';
