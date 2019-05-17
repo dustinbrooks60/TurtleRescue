@@ -1,5 +1,4 @@
 var provider = new firebase.auth.GoogleAuthProvider(); // create an instance for google provider
-var provider = new firebase.auth.FacebookAuthProvider();
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
@@ -33,19 +32,6 @@ var uiConfig = {
                 prompt: 'select_account'
             }
         },
-        {
-            provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-            scopes: [
-                'public_profile',
-                'email',
-                'user_likes',
-                'user_friends'
-            ],
-            customParameters: {
-                // Forces password re-entry.
-                auth_type: 'reauthenticate'
-            }
-        },
         firebase.auth.EmailAuthProvider.PROVIDER_ID
     ],
 // Terms of service url.
@@ -77,27 +63,28 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     }
 });
-
-firebase.auth().getRedirectResult().then(function(result) {
-    if (result.credential) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // ...
-    }
-    // The signed-in user info.
-    var user = result.user;
-}).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
-});
+//
+// firebase.auth().getRedirectResult().then(function(result) {
+//     if (result.credential) {
+//         // This gives you a Google Access Token. You can use it to access the Google API.
+//         var token = result.credential.accessToken;
+//         // ...
+//     }
+//     // The signed-in user info.
+//     var user = result.user;
+// }).catch(function(error) {
+//     // Handle Errors here.
+//     var errorCode = error.code;
+//     var errorMessage = error.message;
+//     // The email of the user's account used.
+//     var email = error.email;
+//     // The firebase.auth.AuthCredential type that was used.
+//     var credential = error.credential;
+//     // ...
+// });
 
 function signOut() {
+    console.log('signed out');
     firebase.auth().signOut().then(function() {
         // Sign-out successful.
     }).catch(function(error) {
@@ -106,6 +93,7 @@ function signOut() {
 }
 
 function showUserName(user_name){
+    console.log('confirmed');
     let name = user_name.trim().split(" ");
     document.getElementById('userName').innerHTML = "Welcome, " + name[0];
 }
