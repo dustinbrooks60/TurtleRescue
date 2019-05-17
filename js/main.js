@@ -13,7 +13,8 @@ let multiplier;
 let topHat;
 let audio_music = new Audio('./sounds/aqualounge.mp3');
 let audio_classical = new Audio('./sounds/allegro.mp3');
-
+audio_music.loop = true;
+audio_classical.loop = true;
 
 // Create main elements for game
 function startGame() {
