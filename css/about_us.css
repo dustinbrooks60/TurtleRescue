@@ -236,6 +236,10 @@
 #t-rescue {
     color: #062768 !important;
 }
+#aboutUs .modal-content {
+    /*text-align: justify;*/
+    line-height: 135%;
+}
 .modal-title {
     color: #062768 !important;
     font-weight:bold;
@@ -252,4 +256,10 @@
 #closeBtn {
     font-size: 32px;
     /*background-color: #333333;*/
+}
+.bio-pic {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 11px;
 }
