@@ -83,7 +83,9 @@ function clickManager(n){
 }
 
 function accelerate(n){
-    turtle.gravity = n;
+    if (turtle) {
+        turtle.gravity = n;
+    }
 }
 
 // Return true if the canvas frame number is a multiple of the argument, n
@@ -152,7 +154,6 @@ function checkCollision() {
             playSound_Oof();
             document.getElementById('restart').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
-            console.log(turtle.x, turtle.y, enemies[i].x, enemies[i].y)
         }
         // remove enemy from array once it has gone off the screen
         if (enemies[i].x < -100) {
