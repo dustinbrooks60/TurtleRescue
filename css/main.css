@@ -130,36 +130,3 @@ canvas {
     font-family: Play;
     color: whitesmoke;
 }
-
-/*.play-btn {*/
-/*    border-radius: 100%;*/
-/*    border: 8px solid #062768;*/
-/*    height:100px;*/
-/*    width:100px;*/
-/*    background: linear-gradient(to bottom, whitesmoke 50%, #EEEEEE 50%);*/
-/*    !*box-shadow: -2px 5px rgba(0, 0, 0, 0.6);*!*/
-/*    margin: 30px;*/
-/*    position: absolute;*/
-/*    left: 50%;*/
-/*    top: 47%;*/
-/*    transform: translateX(-83%);*/
-/*}*/
-/*.play-btn:hover {*/
-/*    box-shadow: 0 0;*/
-/*    transform: translateX(-83%) translateY(5px) translateX(-2px);*/
-
-/*}*/
-/*.play-tri {*/
-/*    !*Positioning*!*/
-/*    position: relative;*/
-/*    left: 50%;*/
-/*    transform: translateX(-25%);*/
-/*    !*Shaping*!*/
-/*    height: 0;*/
-/*    width: 0;*/
-/*    border-top: 15px solid transparent;*/
-/*    border-bottom: 15px solid transparent;*/
-/*    border-left: 25px solid #062768;*/
-/*    border-right: 15px solid transparent;*/
-
-/*}*/

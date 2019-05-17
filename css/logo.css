@@ -5,9 +5,7 @@
     height: 20px;
     transform: rotate(45deg) translate(-70%);
     border-radius: 5px;
-    /*background-image: url(https://i1.wp.com/www.thegamegal.com/wp-content/uploads/2018/08/ultimate-tic-tac-toe12-01.png?resize=340%2C340&ssl=1);*/
     background-size: cover;
-    /*position:absolute;*/
     background-color: #df575f;
     left:50%;
     top: 55%;
