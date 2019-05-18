@@ -11,16 +11,11 @@ let displayMultiplier;
 let score;
 let multiplier;
 let topHat;
-let audio_music = new Audio('./sounds/aqualounge.mp3');
-let audio_classical = new Audio('./sounds/allegro.mp3');
-audio_music.loop = true;
-audio_classical.loop = true;
 
 // Create main elements for game
 function startGame() {
-    audio_classical.pause();
-    audio_classical.currentTime = 0;
-    audio_music.play();
+    stopAllSound();
+    playSound_Music();
     resetGame();
     turtle = new GameElement(9600, 600, './images/turtle-sprite2.png', 10, 120, "sprite", 12); // turtle object
     turtle.gravity = 0.08;
@@ -34,9 +29,7 @@ function startGame() {
 
 // Reset game elements for a new round of game play
 function resetGame() {
-    audio_music.pause();
-    audio_music.currentTime = 0;
-    audio_music.play();
+    playSound_Music();
     score = 0;
     multiplier = 1;
     enemies = [];
@@ -65,7 +58,7 @@ let gameCanvas = {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
     // Stops updating the game canvas
-    stop : function() {
+    stopCanvas : function() {
         clearInterval(this.interval);
     },
     continue : function(){
@@ -78,8 +71,8 @@ let gameCanvas = {
 
 // Accelerates turtle upon screen touch
 function clickManager(n){
-    accelerate(n);
     playSound_Bubble();
+    accelerate(n);
 }
 
 function accelerate(n){
@@ -149,7 +142,7 @@ function checkCollision() {
     for (let i = 0; i < enemies.length; i++) {
         // Check if turtle has collided with enemy
         if (turtle.collidesWith(enemies[i])) {
-            gameCanvas.stop();
+            gameCanvas.stopCanvas();
             scoreToDB();
             playSound_Oof();
             document.getElementById('game-over').style = "display: flex; z-index: 10";
@@ -173,15 +166,14 @@ function checkCollision() {
     if (topHat && turtle.collidesWith(topHat)) {
         topHat = false;
         turtle.image.src = './images/dapper-sprite2.png';
-        audio_music.pause();
-        audio_classical.currentTime = 0;
-        audio_classical.play();
+        stopAllSound();
+        playSound_Classical();
     }
 
 
     // Check if turtle has collided with large garbage clump
     if (garbageClump && turtle.collidesWith(garbageClump)) {
-        gameCanvas.stop();
+        gameCanvas.stopCanvas();
         startTrivia();
 
 
@@ -230,11 +222,8 @@ function addObjects() {
 }
 
 function backHome(){
-    audio_music.pause();
-    audio_music.currentTime = 0;
-    audio_classical.pause();
-    audio_classical.currentTime = 0;
     document.getElementById('game-over').style.display = "none";
     document.getElementById('start').style.display = "flex";
+    stopAllSound();
     gameCanvas.clear()
 }
