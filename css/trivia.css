@@ -85,7 +85,7 @@
 #count1, #count2, #count3, #count4, #count0 {
     position: absolute;
     display: none;
-    font-family: "Franklin Gothic Heavy";
+    font-family: Franklin Gothic Heavy;
     font-size: 9em;
     color: rgb(6, 39, 104);
     top: 35%;
