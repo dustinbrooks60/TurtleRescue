@@ -1,11 +1,11 @@
 html, body {
+    background-image: url("../images/ocean_2.png");
+    background-size: cover;
     overflow: hidden ;
     margin: 0;
     width: 100%;
     height: 100%;
     position: relative;
-    background-image: url("../images/ocean_2.png");
-    background-size: cover;
 }
 canvas {
     width:100%;
@@ -15,13 +15,13 @@ canvas {
 #start {
     z-index: 10;
 }
-
 .bottom-btns {
+    opacity: 0;
+    display: flex;
     font-family: Play;
     font-weight: bold;
     border-radius: 20px;
     padding: 20px 20px;
-    display: flex;
     position: absolute;
     bottom: -0.5%;
     overflow: hidden;
@@ -31,6 +31,9 @@ canvas {
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
 }
 .smollbtn {
     float: left;
@@ -48,8 +51,6 @@ canvas {
 .bottom-btns a:focus {
     outline:none;
 }
-
-
 @media screen and (max-width: 1800px) {
     /* start of large tablet styles */
     #gameName {
@@ -80,7 +81,6 @@ canvas {
     top: 20%;
     transform: translateX(-50%);
 }
-
 #userName{
     position: absolute;
     top: 70%;
@@ -89,4 +89,27 @@ canvas {
     font-size: 1em;
     font-family: Play;
     color: whitesmoke;
+}
+.lds-dual-ring {
+    width: 69px;
+    height: 69px;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 69px;
+    height: 69px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: spin 1.2s linear infinite;
 }
