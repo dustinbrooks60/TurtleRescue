@@ -45,14 +45,17 @@ function playSound_Incorrect() {
     createjs.Sound.play(soundID_Incorrect);
 }
 
+// Play classical music
 function playSound_Classical() {
     createjs.Sound.play(soundID_Classical, {loop: -1});
 }
 
+// Play regular music
 function playSound_Music() {
     createjs.Sound.play(soundID_Music, {loop: -1});
 }
 
+// Stop all music
 function stopAllSound() {
     createjs.Sound.stop();
 }
