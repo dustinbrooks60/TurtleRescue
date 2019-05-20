@@ -98,3 +98,43 @@
     margin-top: -2%;
     margin-bottom: 8%;
 }
+.back-btn {
+    margin: 6px !important;
+    padding: 5px 15px 5px 15px !important;
+    background-color: #062768 !important;
+    color: whitesmoke !important;
+    right: 15% !important;
+    transform: translateX(50%) !important;
+    position: relative !important;
+    /*border-radius: 10% !important;*/
+    border-radius: 6px;
+    filter: none !important;
+    opacity: 1 !important;
+    font-family: Play;
+    font-weight: lighter;
+    font-size: 20px ;
+}
+.back-btn:hover{
+    opacity: 1;
+}
+
+#logout {
+    width: 100%;
+    max-height: 300px;
+    background-color: floralwhite;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+#logout a {
+    /*text-decoration: underline;*/
+    padding: 5px;
+    color: white;
+    background-color: #062768;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+#loginModal .modal-content {
+    max-height: 400px !important;
+    background-color: white !important;
+}
