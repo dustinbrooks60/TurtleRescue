@@ -110,7 +110,7 @@
                     <div id="Allen">
                         <h4>Allen Wong</h4>
                         <img class="bio-pic" src="./images/allen.jpg" alt="Allen">
-                        <p>Allen is your average dude who enjoys to code and learn from https://www.w3schools.com. When Allen is not coding, he goes on food adventures, spends time with family and friends, and plays video games.</p>
+                        <p>Allen is your average dude who enjoys to code and learn from www.w3schools.com. When Allen is not coding, he goes on food adventures, spends time with family and friends, and plays video games.</p>
                     </div><hr>
                     <div id="Dustin">
                         <h4>Dustin Brooks</h4>
@@ -130,7 +130,7 @@
                     <div id="Trung">
                         <h4>Trung Bui</h4>
                         <img class="bio-pic" src="./images/trung.jpg" alt="Trung">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi iure non porro provident. Accusamus ipsam laudantium necessitatibus quibusdam, quis quo similique voluptatum. Assumenda consectetur officia, perferendis provident repellat sit totam!</p>
+                        <p>Trung is a CST student who likes photography, music, CSS and basketball. <br> Also, Trung loves his girlfriend a lot.<br> Anyways, here is a quote from tumblr:<br>"Have you ever really thought about how when you look at the moon, it's the same moon that Shakespeare and Van Gogh and Einstein looked at?"</p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -267,8 +267,12 @@
 <script>
     setTimeout(function loading(){
         document.querySelector('.lds-dual-ring').style.opacity = 0;
-        document.querySelector('.bubble').style.opacity = 1;
-        document.querySelector('.bottom-btns').style.opacity = 1;
+        document.querySelector('.bubble').style.display = 'block';
+        document.querySelector('.bottom-btns').style.display = 'flex';
+        setTimeout(function () {
+            document.querySelector('.bubble').style.opacity = 1;
+            document.querySelector('.bottom-btns').style.opacity = 1;
+        }, 500)
     }, 3000)
 </script>
 </body>
