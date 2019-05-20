@@ -1,0 +1,140 @@
+#aboutUs .modal, #leaderBoard .modal, #loginModal .modal, #howTo .modal, #game-over .modal{
+    padding-left: 0 !important;
+}
+#leaderBoard .modal-dialog{
+    top: 10%;
+    /*margin: 100px 0px;*/
+}
+#aboutUs .modal-content, #leaderBoard .modal-content, #loginModal .modal-content,
+#howTo .modal-content, #game-over .modal-content{
+    background-color: #eeeeee;
+    font-family: Play;
+    border: 7px solid #062768;
+    border-radius: 30px;
+}
+#firebaseui-auth-container, #loginModal .modal-body, #howTo .modal-body {
+    background-color: #eeeeee;
+    border-radius: 30px;
+
+
+}
+#aboutUs h4 {
+    color: #df575f;
+}
+#t-rescue {
+    color: #062768 !important;
+}
+#aboutUs .modal-content {
+    /*text-align: justify;*/
+    line-height: 140%;
+}
+.modal-title {
+    color: #062768 !important;
+    font-weight:bold;
+}
+#footer {
+    position: sticky;
+}
+#about-body {
+    overflow: scroll;
+}
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.modal-dialog-scrollable {
+    margin: 10px;
+}
+#closeBtn {
+    font-size: 32px;
+    /*background-color: #333333;*/
+}
+.bio-pic {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 11px;
+    margin-top: 6px;
+}
+
+/*Game over screen css*/
+#game-over{
+    display: none;
+    z-index: 10;
+    text-align: center;
+}
+#game-over .modal-dialog {
+    margin: 55% 5% 0 5%;
+    width: 90%;
+    max-width: 400px;
+}
+#game-over-image {
+    height: 50%;
+    width: 100%;
+    margin-top: -30%;
+}
+#play, #home {
+    display: inline-block;
+    width: 35%;
+    padding: 1% 0 1% 0;
+    border-radius: 5px;
+    color: white;
+}
+#play {
+    margin-right: 2px;
+    background-color: #47C034;
+}
+#home {
+    margin-left: 2px;
+    background-color: #df575f;
+}
+#score, #turtles-saved {
+    font-size: 1.2em;
+}
+#turtles-saved {
+    margin-top: -2%;
+    margin-bottom: 8%;
+}
+.back-btn {
+    margin: 6px !important;
+    padding: 5px 15px 5px 15px !important;
+    background-color: #062768 !important;
+    color: whitesmoke !important;
+    right: 15% !important;
+    transform: translateX(50%) !important;
+    position: relative !important;
+    /*border-radius: 10% !important;*/
+    border-radius: 6px;
+    filter: none !important;
+    opacity: 1 !important;
+    font-family: Play;
+    font-weight: lighter;
+    font-size: 20px ;
+}
+.back-btn:hover{
+    opacity: 1;
+}
+
+#logout {
+    width: 100%;
+    max-height: 300px;
+    background-color: floralwhite;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+#logout a {
+    /*text-decoration: underline;*/
+    padding: 5px;
+    color: white;
+    background-color: #062768;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+#loginModal .modal-content {
+    max-height: 400px !important;
+    background-color: white !important;
+}

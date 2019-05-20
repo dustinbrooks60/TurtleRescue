@@ -1,0 +1,99 @@
+#trivia button, #trivia a, #trivia h1{
+    font-size: 1em;
+}
+
+/*#trivia h1, #trivia h2, #trivia h3, #trivia h4, #trivia h5, #trivia h6, #trivia button, #trivia a {*/
+/*    font-weight: 700;*/
+/*    letter-spacing: 0.1em;*/
+/*    margin: 20px;*/
+/*    padding: 5px 10px;*/
+/*}*/
+
+#trivia .containers {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+}
+.containers {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+#trivia {
+    display: none;
+    height: 90%;
+    width: 90%;
+    margin: 10% 5% 5% 5%;
+    background-color: rgba(6, 39, 104, 0.85);
+    border: 10px solid white;
+    border-radius: 25px;
+    font-family: Play;
+    color: white;
+}
+#trivia-title {
+    position: absolute;
+    font-size: 2em;
+    top: 5%;
+}
+#question {
+    position: relative;
+    text-align: center;
+    /*top: -5% !important;*/
+    margin: 0 5% 10% 5%;
+    font-size: 1.5em;
+}
+#trivia a {
+    border: 2px solid  white;
+    border-radius: 10px;
+    background-color: #119EDC;
+    width: 90%;
+    margin-bottom: 5%;
+    margin-top: 7%;
+    text-align: center;
+    padding: 0 5% 0 5%;
+}
+.progress{
+    position: absolute !important;
+    background-color: transparent;
+    bottom: 0;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 90%;
+    transition-property: width;
+    transition-duration: 5s;
+    border: 1px solid white !important;
+    border-radius: 25px !important;
+}
+.progress-bar {
+    background-color: #47C034 !important;
+    border: 1px solid white !important;
+    border-radius: 25px !important;
+    width:100%;
+    height:20px;
+}
+
+#count-down{
+    /*text-align: center;*/
+}
+
+#count1, #count2, #count3, #count4, #count0 {
+    position: absolute;
+    display: none;
+    font-family: Franklin Gothic Heavy;
+    font-size: 9em;
+    color: rgb(6, 39, 104);
+    top: 35%;
+    left: 39%;
+    -webkit-text-stroke: 5px white;
+}
+#count0 {
+    left: 27%;
+    top: 41%;
+    font-size: 7em;
+}
