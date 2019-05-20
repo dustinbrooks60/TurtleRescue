@@ -111,11 +111,11 @@ function triviaHandler(seconds){
             clearInterval(timeBarInterval);
             garbageClump = false;
             clearNearbyEnemies();
-             sleep(3000).then(() => {
-                    clearTrivia();
-                    trivia.style.display = "none";
-                    countDown();
-                })
+            sleep(3000).then(() => {
+                clearTrivia();
+                trivia.style.display = "none";
+                countDown();
+            })
 
         }else {
             percentage -= 1;
@@ -133,9 +133,6 @@ function countDown() {
             clearInterval(count);
         }
     },  700);
-
-
-
     // for (let i = 3; i > 0; i--) {
     //     setTimeout (function() {
     //         document.getElementById("count" + String(i + 1)).style= "display: none;";
@@ -146,7 +143,6 @@ function countDown() {
         document.getElementById("count0").style= "display: none;";
         gameCanvas.continue();
     }, 3500);
-
 }
 
 function displayAnswer(){

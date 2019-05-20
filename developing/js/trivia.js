@@ -111,11 +111,11 @@ function triviaHandler(seconds){
             clearInterval(timeBarInterval);
             garbageClump = false;
             clearNearbyEnemies();
-             sleep(3000).then(() => {
-                    clearTrivia();
-                    trivia.style.display = "none";
-                    countDown();
-                })
+            sleep(3000).then(() => {
+                clearTrivia();
+                trivia.style.display = "none";
+                countDown();
+            })
 
         }else {
             percentage -= 1;
@@ -133,9 +133,6 @@ function countDown() {
             clearInterval(count);
         }
     },  700);
-
-
-
     // for (let i = 3; i > 0; i--) {
     //     setTimeout (function() {
     //         document.getElementById("count" + String(i + 1)).style= "display: none;";
@@ -146,12 +143,11 @@ function countDown() {
         document.getElementById("count0").style= "display: none;";
         gameCanvas.continue();
     }, 3500);
-
 }
 
-function displayAnswer(){
+function displayAnswer() {
     let answerArray = document.getElementsByClassName("answers");
-    for (let i = 0; i < answerArray.length; i++){
+    for (let i = 0; i < answerArray.length; i++) {
         let answer = answerArray[i].innerHTML;
         if (answer === getAnswer(answerObject, copyAnswerArray)) {
             answerArray[i].style.backgroundColor = "#2EB518";
@@ -161,7 +157,7 @@ function displayAnswer(){
         }
     }
     if (userChoice === getAnswer(answerObject, copyAnswerArray)) {
-        multiplier ++;
+        multiplier++;
         document.getElementById("trivia-title").innerHTML = "Correct!";
         document.getElementById("trivia-title").style.color = "#47C034";
         playSound_Correct();
