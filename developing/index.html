@@ -32,21 +32,21 @@
 
 <body ontouchstart='clickManager(-99)' onload="loadSound();">
 
-    <div id="start" class='containers animate-zoom'>
-        <img id="gameName" src="images/logo_pink.PNG" alt="Turtle Rescue">
 
-    <!--    <button class="play-btn" onclick="startGame()"><div class="play-tri"></div></button>-->
-        <p id="userName"></p>
+    <div id="start" class='containers animate-zoom'>
+        <img id="gameName" src="images/logo_pink.PNG">
+        <div class="lds-dual-ring"></div>
         <div class='bubble' onclick="startGame()">
             <div class="play-tri"></div>
         </div>
+        <p id="userName"></p>
+
 
         <div class="bottom-btns">
             <a href="#" data-toggle="modal" data-target="#leaderBoard" id="leaderBtn">
                 <img class="smollbtn" src="images/leaderboard_green.png" alt="">
             </a>
             <a href="#" data-toggle="modal" data-target="#aboutUs" id="aboutUsBtn">
-    <!--            <img class="smollbtn" src="images/logoabout.png" alt="">-->
                 <div class="smollbtn">
                     <div class="logo">
                         <div class="left-front"></div>
@@ -263,5 +263,13 @@
     <script type="text/javascript" src="js/about_us.js"></script>
     <script type="text/javascript" src="js/firebase_highscore.js"></script>
     <script type="text/javascript" src="js/sounds.js"></script>
+
+<script>
+    setTimeout(function loading(){
+        document.querySelector('.lds-dual-ring').style.opacity = 0;
+        document.querySelector('.bubble').style.opacity = 1;
+        document.querySelector('.bottom-btns').style.opacity = 1;
+    }, 3000)
+</script>
 </body>
 </html>
