@@ -74,8 +74,8 @@
                     <img id="game-over-image" src="./images/gameOver1.png" alt="game over">
                     <p id="score">Score: 0</p>
                     <p id="turtles-saved">Turtles Saved: 0</p>
-                    <div id="play"><a onclick="startGame()">Play Again</a></div>
-                    <div id="home"><a onclick="backHome()">Home</a></div>
+                    <div id="play" onclick="startGame()"><a>Play Again</a></div>
+                    <div id="home" onclick="backHome()"><a>Home</a></div>
                 </div>
             </div>
         </div>
@@ -272,7 +272,7 @@
             document.querySelector('.bubble').style.opacity = 1;
             document.querySelector('.bottom-btns').style.opacity = 1;
         }, 500)
-    }, 3000)
+    }, 2500)
 </script>
 </body>
 </html>

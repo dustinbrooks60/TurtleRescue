@@ -145,6 +145,7 @@ function checkCollision() {
             gameCanvas.stopCanvas();
             scoreToDB();
             playSound_Oof();
+            document.querySelector('canvas').style.filter = 'blur(4px)';
             document.getElementById('game-over').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
             document.getElementById("turtles-saved").innerHTML = "Turtles Saved: " + (multiplier - 1);
@@ -222,6 +223,7 @@ function addObjects() {
 }
 
 function backHome(){
+    document.querySelector('canvas').style.filter = 'none';
     document.getElementById('game-over').style.display = "none";
     document.getElementById('start').style.display = "flex";
     stopAllSound();
