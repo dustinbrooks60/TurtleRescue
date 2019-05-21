@@ -25,6 +25,8 @@ function startGame() {
     displayMultiplier = new GameElement("20px", "Play", "black", 45, 60, "text");
     pullQuestion();
     gameCanvas.start(); // appends game canvas to the body
+    document.querySelector('canvas').style.filter = 'none';
+
 }
 
 // Reset game elements for a new round of game play
@@ -145,6 +147,7 @@ function checkCollision() {
             gameCanvas.stopCanvas();
             scoreToDB();
             playSound_Oof();
+            document.querySelector('canvas').style.filter = 'blur(4px)';
             document.getElementById('game-over').style = "display: flex; z-index: 10";
             document.getElementById("score").innerHTML = "Score: " + score;
             document.getElementById("turtles-saved").innerHTML = "Turtles Saved: " + (multiplier - 1);
@@ -222,6 +225,7 @@ function addObjects() {
 }
 
 function backHome(){
+    document.querySelector('canvas').style.filter = 'none';
     document.getElementById('game-over').style.display = "none";
     document.getElementById('start').style.display = "flex";
     stopAllSound();

@@ -3,11 +3,12 @@ let userChoice;
 let randomQuestion;
 
 function startTrivia() {
+    document.querySelector('canvas').style.filter = 'blur(5px)';
     trivia = document.getElementById('trivia');
     generateQuestion();
     trivia.style = "display: flex; z-index: 10";
     displayTrivia();
-    triviaHandler(10);
+    triviaHandler(10)
 }
 
 // Trivia display
@@ -114,6 +115,7 @@ function triviaHandler(seconds){
             sleep(3000).then(() => {
                 clearTrivia();
                 trivia.style.display = "none";
+                document.querySelector('canvas').style.filter = 'none';
                 countDown();
             })
 
@@ -145,9 +147,9 @@ function countDown() {
     }, 3500);
 }
 
-function displayAnswer(){
+function displayAnswer() {
     let answerArray = document.getElementsByClassName("answers");
-    for (let i = 0; i < answerArray.length; i++){
+    for (let i = 0; i < answerArray.length; i++) {
         let answer = answerArray[i].innerHTML;
         if (answer === getAnswer(answerObject, copyAnswerArray)) {
             answerArray[i].style.backgroundColor = "#2EB518";
@@ -157,7 +159,7 @@ function displayAnswer(){
         }
     }
     if (userChoice === getAnswer(answerObject, copyAnswerArray)) {
-        multiplier ++;
+        multiplier++;
         document.getElementById("trivia-title").innerHTML = "Correct!";
         document.getElementById("trivia-title").style.color = "#47C034";
         playSound_Correct();

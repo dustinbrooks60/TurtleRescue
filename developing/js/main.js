@@ -25,6 +25,8 @@ function startGame() {
     displayMultiplier = new GameElement("20px", "Play", "black", 45, 60, "text");
     pullQuestion();
     gameCanvas.start(); // appends game canvas to the body
+    document.querySelector('canvas').style.filter = 'none';
+
 }
 
 // Reset game elements for a new round of game play
