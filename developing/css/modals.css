@@ -102,7 +102,7 @@
 
 /* Back button on many screens. */
 .back-btn {
-    margin: 6px !important;
+    margin: 14px 0 0 0  !important;
     padding: 5px 15px 5px 15px !important;
     background-color: #062768 !important;
     color: whitesmoke !important;
