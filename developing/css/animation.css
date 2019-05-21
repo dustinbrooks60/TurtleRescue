@@ -1,3 +1,5 @@
+/* These are the animations that determine how items would be loaded on to the screen */
+
 .animate-top{position:relative;animation:animatetop 0.4s}
 @keyframes animatetop{from{top:-300px;opacity:0} to{top:0;opacity:1}}
 

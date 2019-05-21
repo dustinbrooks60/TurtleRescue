@@ -33,244 +33,244 @@
 <body ontouchstart='clickManager(-99)' onload="loadSound();">
 
 
-<div id="start" class='containers animate-zoom'>
-    <img id="gameName" src="images/logo_pink.PNG">
-    <div class="lds-dual-ring"></div>
-    <div class='bubble' onclick="startGame()">
-        <div class="play-tri"></div>
-    </div>
-    <p id="userName"></p>
-
-
-    <div class="bottom-btns">
-        <a href="#" data-toggle="modal" data-target="#leaderBoard" id="leaderBtn">
-            <img class="smollbtn" src="images/leaderboard_green.png" alt="">
-        </a>
-        <a href="#" data-toggle="modal" data-target="#aboutUs" id="aboutUsBtn">
-            <div class="smollbtn">
-                <div class="logo">
-                    <div class="left-front"></div>
-                    <div class="right-front"></div>
-                    <div class="front"></div>
-                    <div class="left-back"></div>
-                    <div class="right-back"></div>
-                </div>
-            </div>
-        </a>
-        <a href="#" data-toggle="modal" data-target="#loginModal">
-            <img class="smollbtn" src="images/logIn_green.png" alt="">
-        </a>
-        <a href="#" data-toggle="modal" data-target="#howTo">
-            <img class="smollbtn" src="images/question_mark_pink.png" alt="">
-        </a>
-    </div>
-</div>
-
-<div class="modal animate-zoom" id="game-over">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal body -->
-            <div class="modal-body">
-                <img id="game-over-image" src="./images/gameOver1.png" alt="game over">
-                <p id="score">Score: 0</p>
-                <p id="turtles-saved">Turtles Saved: 0</p>
-                <div id="play" onclick="startGame()"><a>Play Again</a></div>
-                <div id="home" onclick="backHome()"><a>Home</a></div>
-            </div>
+    <div id="start" class='containers animate-zoom'>
+        <img id="gameName" src="images/logo_pink.PNG">
+        <div class="lds-dual-ring"></div>
+        <div class='bubble' onclick="startGame()">
+            <div class="play-tri"></div>
         </div>
-    </div>
-</div>
+        <p id="userName"></p>
 
-<div id="trivia" class="containers animate-zoom">
-    <p id='trivia-title'>Trivia Time!</p>
-    <h4 id="question">question here?</h4>
-    <a class="answers" id="a1">Answer 1</a>
-    <a class="answers" id="a2">Answer 2</a>
-    <a class="answers" id="a3">Answer 3</a>
-    <a class="answers" id="a4">Answer 4</a>
 
-    <div class="progress">
-        <div id="time" class="progress-bar active"></div>
-    </div>
-</div>
-
-<div class="modal animate-zoom" id="aboutUs">
-    <div class="modal-dialog-scrollable">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">About</h4>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div id="Story">
-                    <h3 id="t-rescue">Turtle Rescue</h3>
-                    <p>The idea of Turtle Rescue began when five like-minded students came together and discovered a shared passion for education. We wanted to create an application that not only raised awareness on the issue of plastics in our ocean, but also created a fun and intuitive experience for the user. Protecting the Earth’s Oceans is an ecological endeavor that we cannot take on individually. We need to educate future generations so that they can begin to rethink the way that plastic is used and inspire behavioral change from within. </p>
-                </div><hr>
-                <div id="Allen">
-                    <h4>Allen Wong</h4>
-                    <img class="bio-pic" src="./images/allen.jpg" alt="Allen">
-                    <p>Allen is your average dude who enjoys to code and learn from www.w3schools.com. When Allen is not coding, he goes on food adventures, spends time with family and friends, and plays video games.</p>
-                </div><hr>
-                <div id="Dustin">
-                    <h4>Dustin Brooks</h4>
-                    <img class="bio-pic" src="./images/dustin.jpg" alt="Dustin">
-                    <p>Dustin is a first year CST student who previously studied History at the University of British Columbia. Currently, he is self-employed as a wedding DJ in the lower mainland. Dustin enjoys traveling, trying new craft beers, making personal projects, and long walks on the beach.</p>
-                </div><hr>
-                <div id="Krystal">
-                    <h4>Krystal Wong</h4>
-                    <img class="bio-pic" src="./images/krystal.jpg" alt="Krystal">
-                    <p>Krystal is currently studying computer science at the British Columbia Institute of Technology. When she's not at school or studying at home, she's usually eating ice cream or looking at pictures of cute animals.</p>
-                </div><hr>
-                <div id="Theoren">
-                    <h4>Theoren Leveille</h4>
-                    <img class="bio-pic" src="./images/theoren.jpg" alt="Theoren">
-                    <p>Theoren is a first year CST student at BCIT. Previously, he received a Bachelors of Science, majoring in Chemical Biology</p>
-                </div><hr>
-                <div id="Trung">
-                    <h4>Trung Bui</h4>
-                    <img class="bio-pic" src="./images/trung.jpg" alt="Trung">
-                    <p>Trung is a CST student who likes photography, music, CSS and basketball. <br> Also, Trung loves his girlfriend a lot.<br> Anyways, here is a quote from tumblr:<br>"Have you ever really thought about how when you look at the moon, it's the same moon that Shakespeare and Van Gogh and Einstein looked at?"</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal animate-top" id="howTo">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div id="howToImg" class="carousel slide" data-ride="carousel">
-                    <!-- The slideshow -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="./images/picture1.png" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/collectGarbage.png" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/avoidEnemies.png" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/turtleFriend.png" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/question.png" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/multiplier.png" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/have_fun%20.png" alt="">
-                        </div>
-                    </div>
-
-                    <!-- Left and right controls -->
-                    <a class="carousel-control-prev" href="#howToImg" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#howToImg" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
-                </div>
-                <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal animate-zoom " id="loginModal">
-    <div class="modal-dialog" style="top:30%">
-        <div class="modal-content">
-            <div class="modal-body" >
-                <div style="text-align: center">
-                    <br><div id="firebaseui-auth-container" ></div>
-                    <div id="loader">Loading...</div>
-                    <div id="logout">
-                        <p>You are already logged in.</p>
-                        <p>Would you like to <a href="#" onclick="signOut()">Log Out</a> ?
-                        </p>
+        <div class="bottom-btns">
+            <a href="#" data-toggle="modal" data-target="#leaderBoard" id="leaderBtn">
+                <img class="smollbtn" src="images/leaderboard_green.png" alt="">
+            </a>
+            <a href="#" data-toggle="modal" data-target="#aboutUs" id="aboutUsBtn">
+                <div class="smollbtn">
+                    <div class="logo">
+                        <div class="left-front"></div>
+                        <div class="right-front"></div>
+                        <div class="front"></div>
+                        <div class="left-back"></div>
+                        <div class="right-back"></div>
                     </div>
                 </div>
-                <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
-            </div>
+            </a>
+            <a href="#" data-toggle="modal" data-target="#loginModal">
+                <img class="smollbtn" src="images/logIn_green.png" alt="">
+            </a>
+            <a href="#" data-toggle="modal" data-target="#howTo">
+                <img class="smollbtn" src="images/question_mark_pink.png" alt="">
+            </a>
         </div>
     </div>
-</div>
 
-<div class="modal animate-zoom " id="leaderBoard">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body" >
-                <div class="container">
-                    <h2>Leaderboard</h2>
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>Ranking</th>
-                            <th>Username</th>
-                            <th>Score</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td id="top1Name">Loading..</td>
-                            <td id="top1Score">Loading..</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td id="top2Name">Loading..</td>
-                            <td id="top2Score">Loading..</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td id="top3Name">Loading..</td>
-                            <td id="top3Score">Loading..</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td id="top4Name">Loading..</td>
-                            <td id="top4Score">Loading..</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td id="top5Name">Loading..</td>
-                            <td id="top5Score">Loading..</td>
-                        </tr>
-                        </tbody>
-                    </table>
+    <div class="modal animate-zoom" id="game-over">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <img id="game-over-image" src="./images/gameOver1.png" alt="game over">
+                    <p id="score">Score: 0</p>
+                    <p id="turtles-saved">Turtles Saved: 0</p>
+                    <div id="play" onclick="startGame()"><a>Play Again</a></div>
+                    <div id="home" onclick="backHome()"><a>Home</a></div>
                 </div>
-                <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
-
             </div>
-
         </div>
     </div>
-</div>
+
+    <div id="trivia" class="containers animate-zoom">
+        <p id='trivia-title'>Trivia Time!</p>
+        <h4 id="question">question here?</h4>
+        <a class="answers" id="a1">Answer 1</a>
+        <a class="answers" id="a2">Answer 2</a>
+        <a class="answers" id="a3">Answer 3</a>
+        <a class="answers" id="a4">Answer 4</a>
+
+        <div class="progress">
+            <div id="time" class="progress-bar active"></div>
+        </div>
+    </div>
+
+    <div class="modal animate-zoom" id="aboutUs">
+        <div class="modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">About</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div id="Story">
+                            <h3 id="t-rescue">Turtle Rescue</h3>
+                            <p>The idea of Turtle Rescue began when five like-minded students came together and discovered a shared passion for education. We wanted to create an application that not only raised awareness on the issue of plastics in our ocean, but also created a fun and intuitive experience for the user. Protecting the Earth’s Oceans is an ecological endeavor that we cannot take on individually. We need to educate future generations so that they can begin to rethink the way that plastic is used and inspire behavioral change from within. </p>
+                        </div><hr>
+                    <div id="Allen">
+                        <h4>Allen Wong</h4>
+                        <img class="bio-pic" src="./images/allen.jpg" alt="Allen">
+                        <p>Allen is your average dude who enjoys to code and learn from www.w3schools.com. When Allen is not coding, he goes on food adventures, spends time with family and friends, and plays video games.</p>
+                    </div><hr>
+                    <div id="Dustin">
+                        <h4>Dustin Brooks</h4>
+                        <img class="bio-pic" src="./images/dustin.jpg" alt="Dustin">
+                        <p>Dustin is a first year CST student who previously studied History at the University of British Columbia. Currently, he is self-employed as a wedding DJ in the lower mainland. Dustin enjoys traveling, trying new craft beers, making personal projects, and long walks on the beach.</p>
+                    </div><hr>
+                    <div id="Krystal">
+                        <h4>Krystal Wong</h4>
+                        <img class="bio-pic" src="./images/krystal.jpg" alt="Krystal">
+                        <p>Krystal is currently studying computer science at the British Columbia Institute of Technology. When she's not at school or studying at home, she's usually eating ice cream or looking at pictures of cute animals.</p>
+                    </div><hr>
+                    <div id="Theoren">
+                        <h4>Theoren Leveille</h4>
+                        <img class="bio-pic" src="./images/theoren.jpg" alt="Theoren">
+                        <p>Theoren is a first year CST student at BCIT. Previously, he received a Bachelors of Science, majoring in Chemical Biology</p>
+                    </div><hr>
+                    <div id="Trung">
+                        <h4>Trung Bui</h4>
+                        <img class="bio-pic" src="./images/trung.jpg" alt="Trung">
+                        <p>Trung is a CST student who likes photography, music, CSS and basketball. <br> Also, Trung loves his girlfriend a lot.<br> Anyways, here is a quote from tumblr:<br>"Have you ever really thought about how when you look at the moon, it's the same moon that Shakespeare and Van Gogh and Einstein looked at?"</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal animate-top" id="howTo">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div id="howToImg" class="carousel slide" data-ride="carousel">
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="./images/picture1.png" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/collectGarbage.png" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/avoidEnemies.png" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/turtleFriend.png" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/question.png" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/multiplier.png" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./images/have_fun%20.png" alt="">
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#howToImg" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#howToImg" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+                    </div>
+                    <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal animate-zoom " id="loginModal">
+        <div class="modal-dialog" style="top:30%">
+            <div class="modal-content">
+                <div class="modal-body" >
+                    <div style="text-align: center">
+                        <br><div id="firebaseui-auth-container" ></div>
+                        <div id="loader">Loading...</div>
+                        <div id="logout">
+                            <p>You are already logged in.</p>
+                            <p>Would you like to <a href="#" onclick="signOut()">Log Out</a> ?
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal animate-zoom " id="leaderBoard">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" >
+                    <div class="container">
+                        <h2>Leaderboard</h2>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Ranking</th>
+                                <th>Username</th>
+                                <th>Score</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td id="top1Name">Loading..</td>
+                                <td id="top1Score">Loading..</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td id="top2Name">Loading..</td>
+                                <td id="top2Score">Loading..</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td id="top3Name">Loading..</td>
+                                <td id="top3Score">Loading..</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td id="top4Name">Loading..</td>
+                                <td id="top4Score">Loading..</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td id="top5Name">Loading..</td>
+                                <td id="top5Score">Loading..</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="close back-btn" data-dismiss="modal">Back</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
-<div id="count-down">
-    <div class="animate-zoom" id="count4">4</div>
-    <div class="animate-zoom" id="count3">3</div>
-    <div class="animate-zoom" id="count2">2</div>
-    <div class="animate-zoom" id="count1">1</div>
-    <div class="animate-zoom" id="count0">GO!</div>
-</div>
+    <div id="count-down">
+        <div class="animate-zoom" id="count4">4</div>
+        <div class="animate-zoom" id="count3">3</div>
+        <div class="animate-zoom" id="count2">2</div>
+        <div class="animate-zoom" id="count1">1</div>
+        <div class="animate-zoom" id="count0">GO!</div>
+    </div>
 
-<script type="text/javascript" src="js/firebaseauthentication.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/trivia.js"></script>
-<script type="text/javascript" src="js/gameElement.js"></script>
-<script type="text/javascript" src="js/firebase_highscore.js"></script>
-<script type="text/javascript" src="js/sounds.js"></script>
+    <script type="text/javascript" src="js/firebaseauthentication.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/trivia.js"></script>
+    <script type="text/javascript" src="js/gameElement.js"></script>
+    <script type="text/javascript" src="js/firebase_highscore.js"></script>
+    <script type="text/javascript" src="js/sounds.js"></script>
 
 <script>
     setTimeout(function loading(){

@@ -15,8 +15,6 @@
 #firebaseui-auth-container, #loginModal .modal-body, #howTo .modal-body {
     background-color: #eeeeee;
     border-radius: 30px;
-
-
 }
 #aboutUs h4 {
     color: #df575f;
@@ -25,7 +23,6 @@
     color: #062768 !important;
 }
 #aboutUs .modal-content {
-    /*text-align: justify;*/
     line-height: 140%;
 }
 #aboutUs {
@@ -55,7 +52,6 @@
 }
 #closeBtn {
     font-size: 32px;
-    /*background-color: #333333;*/
 }
 .bio-pic {
     width: 100px;
@@ -103,6 +99,8 @@
     margin-top: -2%;
     margin-bottom: 8%;
 }
+
+/* Back button on many screens. */
 .back-btn {
     margin: 6px !important;
     padding: 5px 15px 5px 15px !important;
@@ -123,6 +121,7 @@
     opacity: 1;
 }
 
+/* Log out button .*/
 #logout {
     width: 100%;
     max-height: 300px;

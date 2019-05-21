@@ -1,6 +1,7 @@
 html, body {
     background-image: url("../images/ocean_2.png");
     background-size: cover;
+    background-color: #eee;
     overflow: hidden ;
     margin: 0;
     width: 100%;
@@ -90,6 +91,7 @@ canvas {
     font-family: Play;
     color: whitesmoke;
 }
+/* Loading animation */
 .lds-dual-ring {
     width: 69px;
     height: 69px;
