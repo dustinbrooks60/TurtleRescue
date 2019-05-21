@@ -28,6 +28,10 @@
     /*text-align: justify;*/
     line-height: 140%;
 }
+#aboutUs {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
 .modal-title {
     color: #062768 !important;
     font-weight:bold;
@@ -47,6 +51,7 @@
 
 .modal-dialog-scrollable {
     margin: 10px;
+    margin-bottom: 0;
 }
 #closeBtn {
     font-size: 32px;
