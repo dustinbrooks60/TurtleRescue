@@ -3,11 +3,12 @@ let userChoice;
 let randomQuestion;
 
 function startTrivia() {
+    document.querySelector('canvas').style.filter = 'blur(5px)';
     trivia = document.getElementById('trivia');
     generateQuestion();
     trivia.style = "display: flex; z-index: 10";
     displayTrivia();
-    triviaHandler(10);
+    triviaHandler(10)
 }
 
 // Trivia display
@@ -114,6 +115,7 @@ function triviaHandler(seconds){
             sleep(3000).then(() => {
                 clearTrivia();
                 trivia.style.display = "none";
+                document.querySelector('canvas').style.filter = 'none';
                 countDown();
             })
 
