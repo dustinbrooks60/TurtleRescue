@@ -11,6 +11,7 @@ let displayMultiplier;
 let score;
 let multiplier;
 let topHat;
+let topHatPosition;
 
 // Create main elements for game
 function startGame() {
@@ -23,6 +24,7 @@ function startGame() {
     displayScore = new GameElement("20px", "Play", "black bold", 10, 30, "text");
     multiplierIcon = new GameElement(30, 20, './images/saved_turtle2.png', 10, 42, "image");
     displayMultiplier = new GameElement("20px", "Play", "black", 45, 60, "text");
+    topHatPosition = Math.floor((Math.random() * 2000) + 1500);
     pullQuestion();
     gameCanvas.start(); // appends game canvas to the body
     document.querySelector('canvas').style.filter = 'none';
@@ -209,14 +211,14 @@ function addObjects() {
     }
 
     // Adds top hat easter egg to the game canvas
-    if (gameCanvas.frameNo === 1500) {
+    if (gameCanvas.frameNo === topHatPosition) {
         let x = gameCanvas.canvas.width;
         let y = gameCanvas.canvas.height - 120;
         topHat = new GameElement(70, 45, './images/top_hat.png', x, y, "image")
     }
 
     // Adds large garbage clump w/ trapped turtle in it to game canvas
-    if (gameCanvas.frameNo === 50 || everyInterval(2500)) {
+    if (everyInterval(2000)) {
         let x = gameCanvas.canvas.width;
         // Determines y-axis position of garbage clump spawn
         let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
