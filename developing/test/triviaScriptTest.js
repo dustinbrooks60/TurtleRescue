@@ -1,27 +1,28 @@
 TestCase("shuffle testSuite", {
-    "test shuffle integers random": function(){
-        let arrayTest = [2, 4 ,6, 8];
-        assertNotEquals(arrayTest, shuffle(arrayTest));
-    },
     "test empty array shuffle": function(){
         let arrayTest = [];
-        let expected = undefined;
+        let expected = [];
         assertEquals(expected, shuffle(arrayTest));
-    },
-    "test array of strings": function(){
-        let arrayTest = ['a','b','c','d'];
-        let notExpected = ['a','b','c','d'];
-        assertNotEquals(notExpected, shuffle(arrayTest));
     },
     "test single element string": function(){
         let arrayTest = ['a'];
         let expected = ['a'];
-        assertNotEquals(expected, shuffle(arrayTest));
+        assertEquals(expected, shuffle(arrayTest));
     },
     "test single element integer": function(){
         let arrayTest = [1];
         let expected = [1];
-        assertNotEquals(expected, shuffle(arrayTest));
+        assertEquals(expected, shuffle(arrayTest));
+    },
+    "test type of element shuffled": function(){
+        let arrayTest = ["1", "2", "3"];
+        for (let i = 0; i < arrayTest.length; i++){
+            assertEquals(typeof(arrayTest[i]), "string")
+        }
+    },
+    "test type of object shuffled": function(){
+        let arrayTest = ["1", "2", "3"];
+        assertEquals(typeof(arrayTest), "object")
     }
 });
 
@@ -46,5 +47,16 @@ TestCase("getAnswer testSuite", {
         let answerArr = Object.keys(answerObj);
         let expected = "Human activities";
         assertEquals(expected, getAnswer(answerObj, answerArr))
-    }
+    },
+    "test getAnswers typeof return value": function() {
+        let answerObj = {
+            "Drought": false,
+            "Human activities": true,
+            "Storms": false,
+            "Volcanic eruptions": false
+        };
+        let answerArr = Object.keys(answerObj);
+        let expected = "string";
+        assertEquals(expected, typeof(getAnswer(answerObj, answerArr)))
+    },
 });
