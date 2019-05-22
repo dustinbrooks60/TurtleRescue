@@ -1,4 +1,5 @@
 # Turtle Rescue
+Link: https://turtlerescue2930.web.app/
 
 [Description]:
 With this simple and intuitive side scroller tap game, we hope to raise
@@ -20,3 +21,8 @@ Tools used:
 - Bootstrap4
 - Sound.js
 - Firebase
+
+[Running unit tests]:
+    Step 1: Ensure you have the JSTestDriver plugin.
+    Step 2: Set up the configuration file to the relative path \Team-07-COMP-2930\developing\jstestdriver.jstd
+    Step 3: Select the JSTD configuration on the top-right rectangle and run tests.
