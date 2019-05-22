@@ -12,6 +12,18 @@ let score;
 let multiplier;
 let topHat;
 
+// Loading screen
+
+setTimeout(function loading(){
+    document.querySelector('.lds-dual-ring').style.opacity = 0;
+    document.querySelector('.bubble').style.display = 'block';
+    document.querySelector('.bottom-btns').style.display = 'flex';
+    setTimeout(function () {
+        document.querySelector('.bubble').style.opacity = 1;
+        document.querySelector('.bottom-btns').style.opacity = 1;
+    }, 500)
+}, 2500);
+
 // Create main elements for game
 function startGame() {
     stopAllSound();
