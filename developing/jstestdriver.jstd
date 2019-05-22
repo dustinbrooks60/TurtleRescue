@@ -1,0 +1,4 @@
+load:
+  - js/trivia.js
+test:
+  - test/triviaScriptTest.js
