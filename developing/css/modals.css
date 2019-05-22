@@ -19,7 +19,7 @@
 #aboutUs h4 {
     color: #df575f;
 }
-#t-rescue {
+#t-rescue, #leaderBoard h4{
     color: #062768 !important;
 }
 #aboutUs .modal-content {

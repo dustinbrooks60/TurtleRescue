@@ -216,7 +216,7 @@ function addObjects() {
     }
 
     // Adds large garbage clump w/ trapped turtle in it to game canvas
-    if (gameCanvas.frameNo === 50 || everyInterval(2500)) {
+    if (everyInterval(2000)) {
         let x = gameCanvas.canvas.width;
         // Determines y-axis position of garbage clump spawn
         let garbageY = Math.floor(Math.random() * (gameCanvas.canvas.height - 400) + 150);
