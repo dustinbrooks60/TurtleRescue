@@ -54,6 +54,7 @@ function getAnswer(answerObj, answerArray){
 // Shuffle Trivia answers for display
 function shuffle(array){
     array.sort(() => Math.random() - 0.5);
+    return array
 }
 
 // Display Trivia question and shuffled answers
