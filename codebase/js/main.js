@@ -14,7 +14,6 @@ let topHat;
 let topHatPosition;
 
 // Loading screen
-
 setTimeout(function loading(){
     document.querySelector('.lds-dual-ring').style.opacity = 0;
     document.querySelector('.bubble').style.display = 'block';

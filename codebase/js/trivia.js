@@ -1,7 +1,9 @@
+// initialize variables
 let trivia;
 let userChoice;
 let randomQuestion;
 
+// start trivia functionality
 function startTrivia() {
     document.querySelector('canvas').style.filter = 'blur(5px)';
     trivia = document.getElementById('trivia');
@@ -136,12 +138,6 @@ function countDown() {
             clearInterval(count);
         }
     },  700);
-    // for (let i = 3; i > 0; i--) {
-    //     setTimeout (function() {
-    //         document.getElementById("count" + String(i + 1)).style= "display: none;";
-    //         document.getElementById("count" + String(i)).style = "display: inline; z-index: 50;";
-    //     }, 1000);
-    // }
     setTimeout(function() {
         document.getElementById("count0").style= "display: none;";
         gameCanvas.continue();
